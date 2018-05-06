@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
+import { LocaleProvider } from "antd";
+import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import reducer from './pages/reducers'
 
-import Home from './home/Home';
-import Info from './info/Info';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import Routes from "./routes";
+import './global.scss';
 
+const store = createStore(reducer);
 const Main = (
-  <Router>
-    <div>
-      <Route exact={true} path="/" component={Home}/>
-      <Route path="/info" component={Info}/>
-      <Route path="/home" component={Home}/>
-    </div>
-  </Router>
+  <Provider store={store}>
+    <LocaleProvider locale={zhCN}>
+      <Routes/>
+    </LocaleProvider>
+  </Provider>
 );
 
 ReactDOM.render(

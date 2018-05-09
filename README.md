@@ -16,11 +16,12 @@
 
 # 技术栈:
 - React
-- Mobx | Rxjs
+- Redux
 - TypeScript
 - React-Router
 - Sass | PostCss
 - Antd
+- Rx.js
 - Node.js | Python
 - MongoDB
 

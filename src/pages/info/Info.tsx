@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
-export default class Info extends React.PureComponent<InfoTypes> {
-  public state = {
+class Info extends React.PureComponent<InfoTypes> {
+  state = {
 
   };
 
-  public render() {
+  render() {
     return (
       <div>
         Info Works!<br/>
@@ -21,3 +22,11 @@ export default class Info extends React.PureComponent<InfoTypes> {
 interface InfoTypes {
   anything?: string
 }
+
+function mapStateToProps(state: any) {
+  console.log(state)
+}
+
+let cet: Function = connect(mapStateToProps);
+
+export default cet(Info)

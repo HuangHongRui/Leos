@@ -27,6 +27,6 @@ function mapStateToProps(state: any) {
   console.log(state)
 }
 
-let cet: Function = connect(mapStateToProps);
+let cet: any = connect(mapStateToProps);
 
 export default cet(Info)

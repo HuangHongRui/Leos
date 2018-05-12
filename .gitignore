@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+#/build
 
 # misc
 .DS_Store
@@ -24,6 +24,7 @@ yarn-error.log*
 
 # IntelliJ project files
 .idea
+.package-lock.json
 *.iml
 out
 gen

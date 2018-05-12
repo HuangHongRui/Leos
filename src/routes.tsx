@@ -1,10 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 /** 组件导入 */
 import Home from './pages/home/Home';
 import Info from './pages/info/Info';
 import Test from './pages/test/Redux';
+import {ConnectedRouter} from "react-router-redux";
+import history from './utils/history';
 // import Test from './pages/test/Rxjs';
 
 /**
@@ -14,14 +16,14 @@ export default class Routes extends React.Component {
 
   render() {
     return (
-      <Router>
+      <ConnectedRouter history={history}>
         <div>
           <Route exact={true} path="/" component={Home}/>
           <Route path="/info" component={Info}/>
           <Route path="/home" component={Home}/>
           <Route path="/test" component={Test}/>
         </div>
-      </Router>
+      </ConnectedRouter>
     )
   }
 }

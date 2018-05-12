@@ -1,4 +1,5 @@
 {
+  "module": "commonjs",
   "compilerOptions": {
     "outDir": "build/dist",
     "module": "esnext",

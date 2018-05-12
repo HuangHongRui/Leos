@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+#/build
 
 # misc
 .DS_Store
@@ -24,6 +24,10 @@ yarn-error.log*
 
 # IntelliJ project files
 .idea
+.package-lock.json
 *.iml
 out
 gen
+将删除 build/
+将删除 package-lock.json
+将删除 src/component/

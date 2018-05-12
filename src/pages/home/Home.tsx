@@ -3,12 +3,7 @@ import { Layout } from 'antd';
 import { Link } from "react-router-dom";
 import './Home.scss';
 
-export default class Home extends React.PureComponent {
-  state = {
-    messages: [],
-    count : 0
-  };
-
+export default class Home extends React.PureComponent<any> {
   render() {
     const {Header, Footer, Sider, Content} = Layout;
     return (
@@ -17,8 +12,9 @@ export default class Home extends React.PureComponent {
         <Layout className="content">
           <Content>
             <button> <Link to='/test'>Route Jump To Test/Rxjs </Link> </button>
+            <img src="picture/bgPic.jpeg" alt=""/>
           </Content>
-          <Sider>Sider</Sider>
+          <Sider> Sider </Sider>
         </Layout>
         <Footer>Footer</Footer>
       </Layout>

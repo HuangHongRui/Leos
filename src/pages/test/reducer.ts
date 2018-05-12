@@ -7,7 +7,6 @@ const val = {
 };
 
 const counter = (state: any = val, action: any) => {
-  console.log('☞☞☞ 9527 something 8', state);
   switch (action.type) {
     case ActionType.ADD:
       return {...state, hehe: state['hehe'] + 1 };

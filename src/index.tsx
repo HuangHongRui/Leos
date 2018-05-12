@@ -1,24 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
-import { LocaleProvider } from "antd";
-import { Provider } from 'react-redux';
-import store from './store'
-
+import {LocaleProvider} from "antd";
+import {Provider} from 'react-redux';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import Routes from "./routes";
+import store from './redux/store';
 import './global.scss';
 
-const Main = (
+ReactDOM.render(
   <Provider store={store}>
     <LocaleProvider locale={zhCN}>
       <Routes/>
     </LocaleProvider>
   </Provider>
+  , document.getElementById('root')
 );
 
-ReactDOM.render(
-  Main,
-  document.getElementById('root') as HTMLElement
-);
-registerServiceWorker();
+// if (module.hot) {
+//   module.hot.accept('./pages/home/Home', () => {
+//     ReactDOM.render(
+//       <Provider store={store}>
+//         <ConnectedRouter history={history}>
+//           <Routes/>
+//         </ConnectedRouter>
+//       </Provider>,
+//       document.getElementById('root'),
+//     );
+//   });
+// }

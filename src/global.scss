@@ -1,11 +1,13 @@
 /**
  *  全局变量
  */
-@import './../node_modules/antd/dist/antd.css';
+@import "~antd/dist/antd.min.css";
 
 * {
   color: #333;
   font-size: 18px;
   text-align: center;
+  color: red;
+  border: solid 1px red;
 }
 

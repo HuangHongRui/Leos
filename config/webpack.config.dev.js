@@ -185,13 +185,17 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            // test: /\.css$/,
+            test: /\.(scss|css)$/,
+              include: [
+                  path.resolve(__dirname, paths.appSrc), /antd/,
+              ],
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1,
+                  importLoaders: 2,
                 },
               },
               {
@@ -214,6 +218,7 @@ module.exports = {
                   ],
                 },
               },
+                require.resolve('sass-loader'),
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -234,24 +239,37 @@ module.exports = {
           },
 
           // Sass Begin
-          {
-            test: /\.scss$/,
-            use: [{
-              loader: "style-loader" // 将 JS 字符串生成为 style 节点
-            }, {
-              loader: "css-loader", //  将 CSS 转化成 CommonJS 模块
-              options: {
-                sourceMap: true,
-                minimize: true
-              }
-            }, {
-              loader: "sass-loader", // 将 Sass 编译成 CSS
-              options: {
-                sourceMap: true,
-                minimize: true
-              }
-            }]
-          },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, paths.appSrc),
+                use: [
+                    require.resolve('style-loader'),
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 2,
+                            modules: true,
+                            localIdentName: '[name]__[local]--[hash:5]',
+                        },
+                    },
+                    require.resolve('sass-loader'),
+                    // {
+                    //     loader: "style-loader" // 将 JS 字符串生成为 style 节点
+                    // }, {
+                    //     loader: "css-loader", //  将 CSS 转化成 CommonJS 模块
+                    //     options: {
+                    //         sourceMap: true,
+                    //         minimize: true
+                    //     }
+                    // }, {
+                    //     loader: "sass-loader", // 将 Sass 编译成 CSS
+                    //     options: {
+                    //         sourceMap: true,
+                    //         minimize: true
+                    //     }
+                    // }
+                    ]
+            },
           // Sass End
         ],
       },

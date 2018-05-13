@@ -48,6 +48,23 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
     { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
+const cssExtractor = new ExtractTextPlugin({
+    disable: false,
+    filename: `${paths.appBuild}/static/css/[name].css?[contenthash:8]`,
+    allChunks: true
+});
+
+const sassExtractor = new ExtractTextPlugin({
+    disable: false,
+    filename: `${paths.appBuild}/static/css/[name].css?[contenthash:8]`,
+    allChunks: true
+});
+
+const extractSass = new ExtractTextPlugin({
+    filename: "static/css/[name].[contenthash].css",
+    disable: process.env.NODE_ENV === "development"
+});
+
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -121,6 +138,7 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
+
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
@@ -137,6 +155,56 @@ module.exports = {
         oneOf: [
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
+
+          //   {
+          //       test: /\.css$/,
+          //       // 提取CSS文件
+          //       use: cssExtractor.extract({
+          //           // 如果配置成不提取，则此类文件使用style-loader插入到<head>标签中
+          //           fallback: 'style-loader',
+          //           use: [{
+          //               loader: 'css-loader',
+          //               options: {
+          //                   // url: false,
+          //                   minimize: true
+          //               }
+          //           },
+          //               // 'postcss-loader'
+          //           ]
+          //       })
+          //   }, {
+          //       test: /\.scss$/,
+          //       // 编译Sass文件 提取CSS文件
+          //       use: sassExtractor.extract({
+          //           // 如果配置成不提取，则此类文件使用style-loader插入到<head>标签中
+          //           fallback: 'style-loader',
+          //           use: [
+          //               'css-loader',
+          //               // 'postcss-loader',
+          //               {
+          //                   loader: 'sass-loader',
+          //                   options: {
+          //                       sourceMap: true,
+          //                       outputStyle: 'compressed'
+          //                   }
+          //               }
+          //           ]
+          //       })
+          //   },
+
+            {
+                test: /\.scss$/,
+                use: extractSass.extract({
+                    use: [{
+                        loader: "css-loader"
+                    }, {
+                        loader: "sass-loader"
+                    }],
+                    // 在开发环境使用 style-loader
+                    fallback: "style-loader"
+                })
+            },
+
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
@@ -249,6 +317,10 @@ module.exports = {
     ],
   },
   plugins: [
+      cssExtractor,
+      sassExtractor,
+      extractSass,
+
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

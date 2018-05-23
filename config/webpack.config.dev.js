@@ -12,6 +12,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -125,6 +126,12 @@ module.exports = {
             // { parser: { requireEnsure: false } },
 
             {
+                test: /\.(ts|tsx)$/,
+                loader: require.resolve('tslint-loader'),
+                enforce: 'pre',
+                include: paths.appSrc,
+            },
+            {
                 test: /\.(js|jsx|mjs)$/,
                 loader: require.resolve('source-map-loader'),
                 enforce: 'pre',
@@ -166,6 +173,20 @@ module.exports = {
                                 options: {
                                     // disable type checker - we will use it in fork plugin
                                     transpileOnly: true,
+                                    getCustomTransformers: () => ({
+                                        before: [
+                                            tsImportPluginFactory([
+                                                {
+                                                    libraryName: 'antd',
+                                                    libraryDirectory: 'lib',
+                                                },
+                                                {
+                                                    libraryName: 'antd-mobile',
+                                                    libraryDirectory: 'lib',
+                                                },
+                                            ]),
+                                        ],
+                                    }),
                                 },
                             },
                         ],
@@ -223,6 +244,49 @@ module.exports = {
                             name: 'static/media/[name].[hash:8].[ext]',
                         },
                     },
+                    {
+                        // local
+                        test: /\.less$/,
+                        exclude: /antd|node_modules/,
+                        use: [
+                            require.resolve('style-loader'),
+                            {
+                                loader: require.resolve('css-loader'),
+                                options: {
+                                    // local
+                                    importLoaders: 1,
+                                    modules: true,
+                                    localIdentName: '[name]__[local]__[hash:5]',
+                                },
+                            },
+                            // {
+                            //   loader: paths.antdCssLoaderPath,
+                            // },
+                            {
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    plugins: () => [
+                                        require('postcss-flexbugs-fixes'),
+                                        autoprefixer({
+                                            browsers: [
+                                                '>1%',
+                                                'last 4 versions',
+                                                'Firefox ESR',
+                                                'not ie < 9', // React doesn't support IE8 anyway
+                                            ],
+                                            flexbox: 'no-2009',
+                                        }),
+                                    ],
+                                },
+                            },
+                            {
+                                loader: require.resolve('less-loader'),
+                            },
+                        ],
+                    },
 
                     // Sass Begin
                     {
@@ -230,12 +294,42 @@ module.exports = {
                         use: [{
                             loader: "style-loader" // 将 JS 字符串生成为 style 节点
                         }, {
-                            loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+                            loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
                         }, {
                             loader: "sass-loader" // 将 Sass 编译成 CSS
                         }]
-                    }
+                    },
                     // Sass End
+                    {
+                        test: /\.tsx?$/,
+                        use: [
+                            {
+                                loader: 'babel-loader',
+                                options: {
+                                    babelrc: false,
+                                    plugins: ['react-hot-loader/babel'],
+                                },
+                            },
+                            'ts-loader', // (or awesome-typescript-loader)
+                        ],
+                    },
+                    {
+                        test: /\.tsx?$/,
+                        use: [
+                            'ts-loader', // (or awesome-typescript-loader)
+                            {
+                                loader: 'babel-loader',
+                                options: {
+                                    plugins: [
+                                        '@babel/plugin-syntax-typescript',
+                                        '@babel/plugin-syntax-decorators',
+                                        '@babel/plugin-syntax-jsx',
+                                        'react-hot-loader/babel',
+                                    ],
+                                },
+                            }
+                        ],
+                    }
                 ],
             },
 // ** STOP ** Are you adding a new loader?
@@ -285,25 +379,21 @@ module.exports = {
     ],
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
-    node:
-        {
-            dgram: 'empty',
-            fs:
-                'empty',
-            net:
-                'empty',
-            tls:
-                'empty',
-            child_process:
-                'empty',
-        }
-    ,
+    node: {
+        dgram: 'empty',
+        fs:
+            'empty',
+        net:
+            'empty',
+        tls:
+            'empty',
+        child_process:
+            'empty',
+    },
 // Turn off performance hints during development because we don't do any
 // splitting or minification in interest of speed. These warnings become
 // cumbersome.
     performance: {
         hints: false,
-    }
-    ,
-}
-;
+    },
+};

@@ -7,7 +7,8 @@ const config = require('./webpack.config.dev');
 const paths = require('./paths');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const host = process.env.HOST || '0.0.0.0';
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || "8888";
 
 module.exports = function(proxy, allowedHost) {
   return {
@@ -72,7 +73,8 @@ module.exports = function(proxy, allowedHost) {
     },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     https: protocol === 'https',
-    host: host,
+    host: HOST,
+    port: PORT,
     overlay: false,
     historyApiFallback: {
       // Paths with dots should still use the history fallback.

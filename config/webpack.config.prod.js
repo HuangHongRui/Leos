@@ -14,6 +14,7 @@ const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -142,6 +143,12 @@ module.exports = {
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
+        {
+            test: /\.(ts|tsx)$/,
+            loader: require.resolve('tslint-loader'),
+            enforce: 'pre',
+            include: paths.appSrc,
+        },
       {
         test: /\.(js|jsx|mjs)$/,
         loader: require.resolve('source-map-loader'),
@@ -155,7 +162,135 @@ module.exports = {
         oneOf: [
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
+            },
+            //Compile .tsx?
+            {
+                test: /\.(ts|tsx)$/,
+                include: paths.appSrc,
+                loader: require.resolve('ts-loader'),
+                options: {
+                    transpileOnly: true,
+                    getCustomTransformers: () => ({
+                        before: [
+                            tsImportPluginFactory([
+                                {
+                                    libraryName: 'antd',
+                                    libraryDirectory: 'lib',
+                                },
+                                {
+                                    libraryName: 'antd-mobile',
+                                    libraryDirectory: 'lib',
+                                },
+                            ]),
+                        ],
+                    }),
+                },
+            },
 
+            {
+                // local
+                test: /\.(css|less)$/,
+                exclude: /antd/,
+                loader: ExtractTextPlugin.extract(
+                    Object.assign(
+                        {
+                            fallback: require.resolve('style-loader'),
+                            use: [
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 1,
+                                        minimize: true,
+                                        sourceMap: shouldUseSourceMap,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        // Necessary for external CSS imports to work
+                                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            require('postcss-flexbugs-fixes'),
+                                            autoprefixer({
+                                                browsers: [
+                                                    '>1%',
+                                                    'last 4 versions',
+                                                    'Firefox ESR',
+                                                    'not ie < 9', // React doesn't support IE8 anyway
+                                                ],
+                                                flexbox: 'no-2009',
+                                            }),
+                                        ],
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('less-loader'),
+                                },
+                                // {
+                                //   loader: paths.antdCssLoaderPath,
+                                // }
+                            ],
+                        },
+                        extractTextPluginOptions
+                    )
+                ),
+                // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+            },
+            {
+                // antd
+                test: /\.(css|less)$/,
+                include: /antd/,
+                loader: ExtractTextPlugin.extract(
+                    Object.assign(
+                        {
+                            fallback: require.resolve('style-loader'),
+                            use: [
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 1,
+                                        minimize: true,
+                                        sourceMap: shouldUseSourceMap,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        // Necessary for external CSS imports to work
+                                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            require('postcss-flexbugs-fixes'),
+                                            autoprefixer({
+                                                browsers: [
+                                                    '>1%',
+                                                    'last 4 versions',
+                                                    'Firefox ESR',
+                                                    'not ie < 9', // React doesn't support IE8 anyway
+                                                ],
+                                                flexbox: 'no-2009',
+                                            }),
+                                        ],
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('less-loader'),
+                                },
+                            ],
+                        },
+                        extractTextPluginOptions
+                    )
+                ),
+                // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+            },
           //   {
           //       test: /\.css$/,
           //       // 提取CSS文件

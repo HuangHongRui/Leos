@@ -1,5 +1,3 @@
-.content {
-  height: 100vh; }
 /*!
  * 
  * antd v3.5.3
@@ -14,8 +12,29 @@
  */
 body {
   font-size: 14px;
+  height: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/*# sourceMappingURL=main.4a23120b206545655ff3ae14815685f3.css.map*/
+/*
+ |--------------------------------------------------------------------------
+ | Animation
+ |--------------------------------------------------------------------------
+ */
+.am-my-face {
+  animation: my-face .3s infinite ease-in-out;
+  display: inline-block;
+  margin: 0 5px; }
+
+@keyframes my-face {
+  0% {
+    transform: rotate(0deg); }
+  30% {
+    transform: rotate(9deg); }
+  60% {
+    transform: rotate(0deg); }
+  90% {
+    transform: rotate(-9deg); } }
+
+/*# sourceMappingURL=main.42567e09403bb369acdb3673712abc89.css.map*/

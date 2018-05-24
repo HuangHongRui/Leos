@@ -8,7 +8,7 @@ const paths = require('./paths');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const HOST = process.env.HOST || '127.0.0.1';
-const PORT = process.env.PORT || "8888";
+const PORT = process.env.PORT || "3000";
 
 module.exports = function(proxy, allowedHost) {
   return {

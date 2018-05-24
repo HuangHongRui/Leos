@@ -1,6 +1,11 @@
 import React from 'react';
 import { List, Card } from 'antd';
+import styled from "styled-components";
 
+
+const Wrap = styled(List)`
+  overflow: hidden;
+`;
 export default class ListComponent extends React.Component {
   render() {
     const data = [
@@ -24,7 +29,7 @@ export default class ListComponent extends React.Component {
       },
     ];
     return (
-      <List
+      <Wrap
         grid={{gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 3}}
         dataSource={data}
         renderItem={(item: any) => (

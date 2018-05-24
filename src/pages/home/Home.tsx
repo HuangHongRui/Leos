@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Card } from 'antd';
 import Menu from '../../component/Menu'
-import './Home.scss';
 import ListComponent from "../../component/List";
+import FootComponent from "../../component/Foot";
+import './Home.scss';
 
 const Wrap = styled.div`
   .card {
     border: none;
+    margin-bottom: 1vh;
     .ant-card-body {
       padding: 0 !important;
     }
@@ -72,6 +74,7 @@ export default class Home extends React.PureComponent<any> {
           <Menu/>
         </Card>
         <ListComponent />
+        <FootComponent />
       </Wrap>
     );
   }

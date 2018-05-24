@@ -3,11 +3,14 @@
  */
 @import "~antd/dist/antd.min.css";
 
-* {
-  color: #333;
-  font-size: 18px;
-  text-align: center;
-  color: red;
-  border: solid 1px red;
+body {
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  //color: #333;
+  //text-align: center;
+  //color: red;
+  //border: solid 1px red;
 }
 

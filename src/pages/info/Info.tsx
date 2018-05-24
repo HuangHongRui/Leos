@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 class Info extends React.PureComponent<InfoTypes> {
@@ -11,8 +11,10 @@ class Info extends React.PureComponent<InfoTypes> {
     return (
       <div>
         Info Works!<br/>
-        <button>
-          <Link to="home"> onClick </Link>
+        <button onClick={() => console.log('☞☞☞ 9527 Info 14', this.props)}>
+          haha
+          {/*<Link to="home"> onClick </Link>*/}
+
         </button>
       </div>
     );

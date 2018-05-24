@@ -12,11 +12,10 @@
 /**
  *  全局变量
  */
-* {
-  color: #333;
-  font-size: 18px;
-  text-align: center;
-  color: red;
-  border: solid 1px red; }
+body {
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
-/*# sourceMappingURL=main.e20c2dd1bff844368095d9b4e89dbe5b.css.map*/
+/*# sourceMappingURL=main.4a23120b206545655ff3ae14815685f3.css.map*/

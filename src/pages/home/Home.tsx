@@ -5,6 +5,7 @@ import Menu from '../../component/Menu'
 import ListComponent from "../../component/List";
 import FootComponent from "../../component/Foot";
 import './Home.scss';
+import NameSvg from "../../component/Svg/Name_Svg";
 
 const Wrap = styled.div`
   .card {
@@ -65,7 +66,9 @@ export default class Home extends React.PureComponent<any> {
               <img className="cover_pic" alt="Cover" src="picture/001.jpeg"/>
               <div className="avatar">
                 <img src="picture/000.jpeg"/>
-                <span className="name">HongRui.</span>
+                {/*<span className="name">HongRui.</span>*/}
+                <NameSvg/>
+
                 <span className="description">Follow Your Heart..</span>
               </div>
             </div>

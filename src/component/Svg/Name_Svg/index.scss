@@ -1,5 +1,6 @@
 /*  Coloe_variable  */
-$val_blue: #0074D9;
+$val_red:   #39CCCCd6;
+$val_blue: #FFDC00d6;
 
 .hello-parent {
   display: flex;
@@ -19,7 +20,7 @@ g > line, path, circle {
   stroke-dasharray: 124px;
   stroke-dashoffset: 124px;
   animation: H-left-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
@@ -27,7 +28,7 @@ g > line, path, circle {
   stroke-dasharray: 37px;
   stroke-dashoffset: 37px;
   animation: H-mid-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
@@ -35,12 +36,12 @@ g > line, path, circle {
   stroke-dasharray: 124px;
   stroke-dashoffset: 124px;
   animation: H-right-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
 @keyframes H-left-move {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
   50% {
@@ -52,7 +53,7 @@ g > line, path, circle {
 }
 
 @keyframes H-mid-move {
-  5% {
+  0% {
     stroke-dashoffset: 37px;
   }
   50% {
@@ -64,7 +65,7 @@ g > line, path, circle {
 }
 
 @keyframes H-right-move {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
   50% {
@@ -80,15 +81,15 @@ g > line, path, circle {
   stroke-dasharray: 302px;
   stroke-dashoffset: 302px;
   animation: O-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
 @keyframes O-move {
-  5% {
+  0% {
     stroke-dashoffset: 302px;
   }
-  70% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -101,7 +102,7 @@ g > line, path, circle {
   stroke-dasharray: 124px;
   stroke-dashoffset: 124px;
   animation: N-left-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
@@ -109,7 +110,7 @@ g > line, path, circle {
   stroke-dasharray: 124px;
   stroke-dashoffset: 124px;
   animation: N-mid-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
@@ -117,12 +118,12 @@ g > line, path, circle {
   stroke-dasharray: 124px;
   stroke-dashoffset: 124px;
   animation: N-right-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
 @keyframes N-left-move {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
   50% {
@@ -134,7 +135,7 @@ g > line, path, circle {
 }
 
 @keyframes N-mid-move {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
   50% {
@@ -146,7 +147,7 @@ g > line, path, circle {
 }
 
 @keyframes N-right-move {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
   50% {
@@ -162,15 +163,15 @@ g > line, path, circle {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000px;
   animation: G-left-move 20s ease forwards;
-  stroke: $val_blue;
+  stroke: $val_red;
   fill: none;
 }
 
 @keyframes G-left-move {
-  5% {
+  0% {
     stroke-dashoffset: 1000px;
   }
-  70% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -188,10 +189,10 @@ g > line, path, circle {
 }
 
 @keyframes R-move {
-  5% {
+  0% {
     stroke-dashoffset: 1000px;
   }
-  70% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -204,15 +205,16 @@ g > line, path, circle {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000px;
   animation: U-move 20s ease forwards;
+  stroke-linecap: round;
   stroke: $val_blue;
   fill: none;
 }
 
 @keyframes U-move {
-  5% {
+  0% {
     stroke-dashoffset: 1000px;
   }
-  70% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -235,14 +237,14 @@ g > line, path, circle {
   stroke-dashoffset: 123px;
   animation: I-dot 20s ease forwards;
   stroke: $val_blue;
-  fill: yellow;
+  fill: #FF4136;
 }
 
 @keyframes I-move {
-  5% {
+  0% {
     stroke-dashoffset: 1000px;
   }
-  70% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -251,10 +253,10 @@ g > line, path, circle {
 }
 
 @keyframes I-dot {
-  5% {
+  0% {
     stroke-dashoffset: 124px;
   }
-  80% {
+  50% {
     stroke-dashoffset: 0px;
   }
   100% {
@@ -424,7 +426,7 @@ g > line, path, circle {
   0% {
     stroke-dashoffset: 44px;
   }
-  15% {
+  10% {
     stroke-dashoffset: 44px;
   }
   20% {
@@ -447,7 +449,7 @@ g > line, path, circle {
   0% {
     stroke-width: 0px;
   }
-  15% {
+  10% {
     stroke-width: 0px;
   }
   20% {

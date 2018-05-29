@@ -66,9 +66,7 @@ export default class Home extends React.PureComponent<any> {
               <img className="cover_pic" alt="Cover" src="picture/001.jpeg"/>
               <div className="avatar">
                 <img src="picture/000.jpeg"/>
-                {/*<span className="name">HongRui.</span>*/}
                 <NameSvg/>
-
                 <span className="description">Follow Your Heart..</span>
               </div>
             </div>

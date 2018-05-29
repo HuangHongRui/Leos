@@ -88,12 +88,16 @@ class MenuComponent extends React.PureComponent {
             </Link>
           </Menu.Item>
 
-          <Menu.Item key="user" className="user">
-            <Link to='/user'>
-              <Icon type="user"/>
-              用户
-            </Link>
-          </Menu.Item>
+          <Menu.SubMenu
+            key="user"
+            className="user"
+            title={<span><Icon type="user"/>用户</span>}
+          >
+            <Menu.ItemGroup>
+              <Menu.Item key="setting:1"><Link to='/login'>登录</Link></Menu.Item>
+              <Menu.Item key="setting:2"><Link to='/sign'>注册</Link></Menu.Item>
+            </Menu.ItemGroup>
+          </Menu.SubMenu>
         </Menu>
       </Wrap>
     );

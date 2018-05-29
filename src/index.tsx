@@ -14,6 +14,9 @@ import Test from './pages/test/Redux';
 import User from './pages/user/User';
 import Name from './pages/message';
 
+import Login from './pages/user';
+import Sign from './pages/user';
+
 import './global.scss';
 
 ReactDOM.render(
@@ -30,6 +33,8 @@ ReactDOM.render(
           <Route path="/message" component={Name}/>
           <Route path="/about" component={Test}/>
           <Route path="/user" component={User}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/sign" component={Sign}/>
         </div>
       </ConnectedRouter>
     </LocaleProvider>

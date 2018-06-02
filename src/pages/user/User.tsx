@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import WrappedNormalLoginForm from "../../component/Login";
+import WrappedNormalLoginForm from '../../component/Login';
 
 const Wrap = styled.div`
   height: 100vh;
@@ -19,10 +19,10 @@ export default class UserComponent extends React.Component {
   state = {};
 
   render() {
-    return(
+    return (
       <Wrap>
-        <WrappedNormalLoginForm />
+        <WrappedNormalLoginForm/>
       </Wrap>
-    )
+    );
   }
 }

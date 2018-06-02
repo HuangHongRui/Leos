@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Wrap = styled.div`
   display: flex;
@@ -22,35 +22,34 @@ const Wrap = styled.div`
  }
   `;
 
+// tslint:disable-next-line
 class Login extends React.Component<any> {
   handleSubmit = (e: { preventDefault: Function }) => {
     e.preventDefault();
     this.props.form.validateFields((err: object, values: {}) => {
       if (!err) {
+        // tslint:disable-next-line
         console.log('Received values of form: ', values);
       }
     });
-  };
+  }
 
+  // tslint:disable-next-line
   handleConfirmPassword = (rule: any, value: any, callback: any) => {
-    console.log('☞☞☞ 9527 Login 32', rule);
-    console.log('☞☞☞ 9527 Login 32', value);
-    console.log('☞☞☞ 9527 Login 32', callback);
-    console.log('☞☞☞ 9527 Login 32', 'haha');
-  };
+  }
 
   render() {
     const formItemLayout = {
       labelCol: {
-        xs: {span: 24},
-        sm: {span: 6},
+        xs: { span: 24 },
+        sm: { span: 6 }
       },
       wrapperCol: {
-        xs: {span: 24},
-        sm: {span: 18},
-      },
+        xs: { span: 24 },
+        sm: { span: 18 }
+      }
     };
-    const {getFieldDecorator} = this.props.form;
+    const { getFieldDecorator } = this.props.form;
     return (
       <Wrap>
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -58,7 +57,7 @@ class Login extends React.Component<any> {
             {...formItemLayout}
             hasFeedback={true}
             validateStatus="success"
-            label='账号邮箱'
+            label="账号邮箱"
             required={true}
           >
             {getFieldDecorator('email', {
@@ -75,7 +74,7 @@ class Login extends React.Component<any> {
             {...formItemLayout}
             hasFeedback={true}
             validateStatus="success"
-            label='账号密码'
+            label="账号密码"
             required={true}
           >
             {getFieldDecorator('password')(
@@ -85,16 +84,16 @@ class Login extends React.Component<any> {
           <Form.Item>
             {getFieldDecorator('remember', {
               valuePropName: 'checked',
-              initialValue: true,
+              initialValue: true
             })(
               <Checkbox>记住我的登录状态</Checkbox>
             )}
-            <Link className="login-form-forgot" to='/forgetPwd'>密码忘记了!</Link>
+            <Link className="login-form-forgot" to="/forgetPwd">密码忘记了!</Link>
             <Button type="primary" htmlType="submit" className="login-form-button">
               确定登录
             </Button>
             <Button type="default" htmlType="submit" className="login-form-button">
-              <Link to='/sign'>注册账号</Link>
+              <Link to="/sign">注册账号</Link>
             </Button>
           </Form.Item>
         </Form>

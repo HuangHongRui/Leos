@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { fetchOnline } from "../../request";
+import { fetchOnline } from '../../request';
 import { Icon } from 'antd';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Wrap = styled.div`
   display: flex;
@@ -29,8 +29,8 @@ export default class FootComponent extends Component {
   componentDidMount() {
     fetchOnline()
       .then((e) => {
-        this.setState({online: e.data.online}as object)
-      })
+        this.setState({ online: e.data.online }as object);
+      });
   }
 
   render() {
@@ -48,6 +48,6 @@ export default class FootComponent extends Component {
         </p>
         <p className="source">Made with <i>❤</i> by Rui</p>
       </Wrap>
-    )
+    );
   }
 }

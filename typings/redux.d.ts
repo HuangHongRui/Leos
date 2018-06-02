@@ -1,7 +1,5 @@
-import * as redux from 'redux';
-
-declare module 'redux' {
-  export type GenericStoreEnhancer = any;
-}
-
-
+// import * as redux from 'redux';
+//
+// declare module 'redux' {
+//   export type GenericStoreEnhancer = any;
+// }

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route} from 'react-router-dom';
-import {LocaleProvider} from "antd";
-import {Provider} from 'react-redux';
-import {ConnectedRouter} from "react-router-redux";
+import { Route } from 'react-router-dom';
+import { LocaleProvider } from 'antd';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import history from './utils/history';
 import store from './redux/store';
@@ -38,6 +38,6 @@ ReactDOM.render(
         </div>
       </ConnectedRouter>
     </LocaleProvider>
-  </Provider>
-  , document.getElementById('root')
+  </Provider>,
+  document.getElementById('root')
 );

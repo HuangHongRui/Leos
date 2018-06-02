@@ -6,4 +6,8 @@
  |--------------------------------------------------------------------------
  */
 
-export const LAYOUT_TAB_MENU = 'LAYOUT_TAB_MENU';
+export const TEST = 'TEST';
+
+export const TESTONE = 'TESTONE';
+
+export const API_SIGN = 'API_SIGN';

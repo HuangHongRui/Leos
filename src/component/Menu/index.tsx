@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 const Wrap = styled.div`
   .menu_ui {
@@ -14,21 +14,21 @@ const Wrap = styled.div`
 `;
 
 class MenuComponent extends React.PureComponent {
-  static getDerivedStateFromProps(nextProps: StateTypes, prevState: StateTypes): void | {} {
-    if (nextProps !== prevState) {
-      return {tag: nextProps.tag}
-    }
-  }
-
   state = {
     tag: 'home'
   };
 
+  static getDerivedStateFromProps(nextProps: StateTypes, prevState: StateTypes): void | {} {
+    if (nextProps !== prevState) {
+      return { tag: nextProps.tag };
+    }
+  }
+
   handleClick = (e: { key: string }) => {
     this.setState({
-      tag: e.key,
+      tag: e.key
     });
-  };
+  }
 
   render() {
     return (
@@ -54,35 +54,35 @@ class MenuComponent extends React.PureComponent {
           </Menu.Item>
 
           <Menu.Item key="test">
-            <Link to='/test'>
+            <Link to="/test">
               <Icon type="setting"/>
               实验室
             </Link>
           </Menu.Item>
 
           <Menu.Item key="gift">
-            <Link to='/gift'>
+            <Link to="/gift">
               <Icon type="gift"/>
               投喂
             </Link>
           </Menu.Item>
 
           <Menu.Item key="team">
-            <Link to='/team'>
+            <Link to="/team">
               <Icon type="team"/>
               后宫
             </Link>
           </Menu.Item>
 
           <Menu.Item key="message">
-            <Link to='/message'>
+            <Link to="/message">
               <Icon type="message"/>
               留言板
             </Link>
           </Menu.Item>
 
           <Menu.Item key="about">
-            <Link to='/about'>
+            <Link to="/about">
               <Icon type="notification"/>
               关于
             </Link>
@@ -94,8 +94,8 @@ class MenuComponent extends React.PureComponent {
             title={<span><Icon type="user"/>用户</span>}
           >
             <Menu.ItemGroup>
-              <Menu.Item key="setting:1"><Link to='/login'>登录</Link></Menu.Item>
-              <Menu.Item key="setting:2"><Link to='/sign'>注册</Link></Menu.Item>
+              <Menu.Item key="setting:1"><Link to="/login">登录</Link></Menu.Item>
+              <Menu.Item key="setting:2"><Link to="/sign">注册</Link></Menu.Item>
             </Menu.ItemGroup>
           </Menu.SubMenu>
         </Menu>
@@ -107,13 +107,14 @@ class MenuComponent extends React.PureComponent {
 const mapStateToProps = (state: StateTypes) => {
   const value = state.router.location.pathname.substr(1)
     ? state.router.location.pathname.substr(1)
-    : 'home'
+    : 'home';
   return {
     tag: value
-  }
+  };
 };
 
-export default connect(mapStateToProps)(MenuComponent as any)
+// tslint:disable-next-line
+export default connect(mapStateToProps)(MenuComponent as any);
 
 interface StateTypes {
   tag?: string;
@@ -121,5 +122,5 @@ interface StateTypes {
     location: {
       pathname: string;
     }
-  }
+  };
 }

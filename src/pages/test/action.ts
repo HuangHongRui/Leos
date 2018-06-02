@@ -1,10 +1,9 @@
-import * as ActionType from './actionType'
+import * as ActionType from './actionType';
 
 export const addTodo = () => ({
-  type: ActionType.ADD,
+  type: ActionType.ADD
 });
 
-
 export const deleteTodo = () => ({
-  type: ActionType.DELETE,
+  type: ActionType.DELETE
 });

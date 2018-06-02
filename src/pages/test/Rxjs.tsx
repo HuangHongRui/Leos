@@ -1,3 +1,4 @@
+// tslint:disable
 import React from 'react';
 import { Layout, Button } from 'antd';
 
@@ -45,19 +46,19 @@ export default class Rxjs extends React.PureComponent {
         observer.next(4);
         observer.complete();
       }, 1000);
-    })
+    });
     console.log('just before subscribe');
     observable.subscribe({
       next: (x: any) => console.log('got value ' + x),
       error: (err: any) => console.error('something wrong occurred: ' + err),
-      complete: () => console.log('done'),
+      complete: () => console.log('done')
     });
     console.log('just after subscribe');
     ;
-  }
+  };
 
   render() {
-    const {Header, Footer, Sider, Content} = Layout;
+    const { Header, Footer, Sider, Content } = Layout;
     return (
       <Layout>
         <Header>Header</Header>

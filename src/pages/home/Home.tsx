@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card } from 'antd';
-import Menu from '../../component/Menu'
-import ListComponent from "../../component/List";
-import FootComponent from "../../component/Foot";
+import Menu from '../../component/Menu';
+import ListComponent from '../../component/List';
+import FootComponent from '../../component/Foot';
 import './Home.scss';
-import NameSvg from "../../component/Svg/Name_Svg";
+import NameSvg from '../../component/Svg/Name_Svg';
 
 const Wrap = styled.div`
   .card {
@@ -55,6 +55,7 @@ const Wrap = styled.div`
     }
   }
 `;
+// tslint:disable-next-line
 export default class Home extends React.PureComponent<any> {
   render() {
     return (
@@ -74,8 +75,8 @@ export default class Home extends React.PureComponent<any> {
         >
           <Menu/>
         </Card>
-        <ListComponent />
-        <FootComponent />
+        <ListComponent/>
+        <FootComponent/>
       </Wrap>
     );
   }

@@ -7,7 +7,9 @@
  */
 
 export const TEST = 'TEST';
-
 export const TESTONE = 'TESTONE';
 
 export const API_SIGN = 'API_SIGN';
+export const API_ONLINE = 'API_ONLINE';
+
+export const SET_ONLINE = 'SET_ONLINE';

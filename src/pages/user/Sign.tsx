@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Input, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { fetchSign } from '../../redux/action';
+import { connect } from 'react-redux';
 
 const Wrap = styled.div`
   display: flex;
@@ -34,6 +36,7 @@ class Sign extends React.Component<any> {
       if (!err) {
         // tslint:disable-next-line
         console.log('Received values of form: ', values);
+        this.props.fetchSign(values);
       }
     });
   }
@@ -213,4 +216,8 @@ class Sign extends React.Component<any> {
   }
 }
 
-export default Form.create()(Sign);
+export default connect(
+  // tslint:disable
+  ((e) => console.log(e)),
+  { fetchSign }
+)(Form.create()(Sign) as any);

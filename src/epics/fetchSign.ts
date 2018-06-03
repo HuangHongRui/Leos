@@ -1,15 +1,11 @@
-import { Observable } from 'rxjs/Rx';
 import { push } from 'react-router-redux';
 import * as ActionTypes from '../redux/actionType';
-import { test1 } from '../redux/action';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/map';
 
 // tslint:disable-next-line
 export default function adminAccess(action$: any) {
-  return action$.ofType(ActionTypes.TEST)
+  return action$.ofType(ActionTypes.API_SIGN)
     .delay(2000)
-    .mergeMap(() => Observable.merge(
-      Observable.of(test1()),
-      Observable.timer(2000)
-        .map(() => push('/'))
-    ));
+    .map(() => push('/'));
 }

@@ -13,6 +13,7 @@ import Info from './pages/info/Info';
 import Test from './pages/test/Redux';
 import User from './pages/user/User';
 import Name from './pages/message';
+import Rx from './pages/test/Rxjs';
 
 import Login from './pages/user';
 import Sign from './pages/user';
@@ -27,7 +28,7 @@ ReactDOM.render(
           <Route exact={true} path="/" component={Home}/>
           <Route path="/home" component={Home}/>
           <Route path="/save" component={Info}/>
-          <Route path="/test" component={Test}/>
+          <Route path="/test" component={Rx}/>
           <Route path="/gift" component={Home}/>
           <Route path="/team" component={Info}/>
           <Route path="/message" component={Name}/>

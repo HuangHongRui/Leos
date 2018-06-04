@@ -4,7 +4,6 @@ import * as API from '../../request/api';
 /**
  * 在线人数
  * @param None
- * @return Promise response
  */
 export function fetchOnline() {
   return {
@@ -16,7 +15,6 @@ export function fetchOnline() {
 /**
  * 设置在线人数
  * @param {state、message、online}
- * @return Promise response
  */
 export function setOnline(param: {}) {
   return {
@@ -35,6 +33,31 @@ export function fetchSign(param: {}) {
   return {
     type: ActionTypes.API_SIGN,
     payload: { param }
+  };
+}
+
+/**
+ * 请求验证码
+ * @param email: string
+ */
+export function fetchCaptcha(param: string) {
+  return {
+    type: ActionTypes.API_CAPTCHA,
+    payload: {
+      api: API.CAPTCHA,
+      email: param
+    }
+  };
+}
+
+/**
+ *  倒数计时
+ *  @param: number
+ */
+export function setCaptchaCountdown(param: number) {
+  return {
+    type: ActionTypes.SET_CPATCHA_COUNTDOWN,
+    payload: param
   };
 }
 

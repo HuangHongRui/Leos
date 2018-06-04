@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { fetchOnline } from '../../request';
 import { Icon } from 'antd';
 import styled from 'styled-components';
 import { connect } from 'react-redux';

@@ -5,7 +5,7 @@ import 'rxjs/add/observable/merge';
 import * as ActionTypes from '../redux/actionType';
 import { setOnline } from '../redux/action';
 
-export default function adminAccess(action$: {ofType: Function}) {
+export default function fetchOnline(action$: {ofType: Function}) {
   return action$.ofType(ActionTypes.API_ONLINE)
     .mergeMap((action: {payload: string}) => Observable.merge(
       ajax.getJSON(action.payload)

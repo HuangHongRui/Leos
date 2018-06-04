@@ -4,7 +4,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
 
 // tslint:disable-next-line
-export default function adminAccess(action$: any) {
+export default function fetchSign(action$: any) {
   return action$.ofType(ActionTypes.API_SIGN)
     .delay(2000)
     .map(() => push('/'));

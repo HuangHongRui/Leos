@@ -6,6 +6,10 @@
 
 `.mergeMap(() => ())`: XXX
 
+`.interval(间隔时间，调度器)`: 返回无限自增的序列整数
+
+`.timer(第一个值发送等待的时间, 间隔时间, 调度器)`: 比interval 多一个可设置开始时间
+
 
 `Observable.of( action() )`: 调用动作
 

@@ -10,7 +10,9 @@ var Rx = require('rxjs/Rx');
  *  Test Page.
  */
 export default class Rxjs extends React.PureComponent {
-  state = {};
+  state = {
+    number: 60
+  };
 
   componentDidMount() {
     /** Purity */
@@ -35,6 +37,7 @@ export default class Rxjs extends React.PureComponent {
       .map((event: any) => event.clientX)
       .scan((count: any, clientX: any) => count + clientX, 0)
       .subscribe((count: any) => console.log(count));
+
   }
 
   observable = () => {
@@ -57,6 +60,31 @@ export default class Rxjs extends React.PureComponent {
     ;
   };
 
+  rang = () => {
+    let numbers = Rx.Observable.range(1, 10);
+    numbers.subscribe((x: any) => console.log(x));
+  }
+
+  timer = () => {
+    Rx.Observable
+      .timer(0, 1000)
+      .map((i: any) => this.state.number - i)
+      .subscribe((i: any) => console.log(i));
+  }
+
+  switchMap = () => {
+    let clicks = Rx.Observable.fromEvent(document, 'click');
+    let result = clicks.switchMap((ev: any) => Rx.Observable.interval(1000));
+    result.subscribe((x: any) => console.log(x));
+  }
+
+  takeUntil = () => {
+    let interval = Rx.Observable.interval(1000);
+    let clicks = Rx.Observable.fromEvent(document, 'click');
+    let result = interval.takeUntil(clicks);
+    result.subscribe((x: any) => console.log(x));
+  }
+
   render() {
     const { Header, Footer, Sider, Content } = Layout;
     return (
@@ -72,6 +100,14 @@ export default class Rxjs extends React.PureComponent {
             <Button className="value">Value</Button>
             <br/>
             <Button className="observable" onClick={this.observable}>Observable</Button>
+            <br/>
+            <Button className="rang" onClick={this.rang}>Rang</Button>
+            <br/>
+            <Button className="timer" onClick={this.timer}>Timer</Button>
+            <br/>
+            <Button className="switchMap" onClick={this.switchMap}>SwitchMap</Button>
+            <br/>
+            <Button onClick={this.takeUntil}>TakeUntil</Button>
             <br/>
 
           </Content>

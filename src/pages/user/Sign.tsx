@@ -1,8 +1,9 @@
+var Rx = require('rxjs/Rx');
 import React from 'react';
 import { Form, Input, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { fetchSign } from '../../redux/action';
+import { fetchSign, fetchCaptcha, setCaptchaCountdown } from '../../redux/action';
 import { connect } from 'react-redux';
 
 const Wrap = styled.div`
@@ -19,17 +20,46 @@ const Wrap = styled.div`
     display: flex;
     justify-content: start;
   }
-  .gotcaptcha {
+  .gotCaptcha {
     width: 100%;
   }
 `;
 
 // tslint:disable-next-line
-class Sign extends React.Component<any> {
+class SignComponent extends React.Component<any> {
   state = {
     confirmDirty: false,
-    autoCompleteResult: []
+    autoCompleteResult: [],
+    email: '',
+    captchaTime: 0
   };
+
+  static getDerivedStateFromProps(nextProps: StatePropsTypes, prevState: StatePropsTypes): void | {} {
+    if (nextProps !== prevState) {
+      return { captchaTime: nextProps.generalData.captchaTime };
+    }
+  }
+
+  handleCaptcha = () => {
+    let regexp = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$');
+    if (regexp.test(this.state.email)) {
+      this.props.fetchCaptcha(this.state.email);
+      this.props.setCaptchaCountdown(60);
+      let interval = Rx.Observable
+        .timer(0, 1000)
+        .scan((count: number) => count - 1, 60);
+      let sub = interval.subscribe((i: number) => {
+        if (i < 0) {
+          sub.unsubscribe();
+        } else {
+          this.props.setCaptchaCountdown(i);
+        }
+      });
+    } else {
+      this.props.form.validateFieldsAndScroll();
+    }
+  }
+
   handleSubmit = (e: { preventDefault: Function }) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err: {}, values: {}) => {
@@ -76,9 +106,7 @@ class Sign extends React.Component<any> {
 
   // tslint:disable-next-line
   handleEmailChange = (value: any) => {
-
-    // tslint:disable-next-line
-    let autoCompleteResult: any;
+    let autoCompleteResult: string[];
     if (value.indexOf('@') > -1) {
       autoCompleteResult = [];
     } else {
@@ -88,7 +116,10 @@ class Sign extends React.Component<any> {
         '@sina.com', '@126.com'
       ].map(domain => `${value}${domain}`);
     }
-    this.setState({ autoCompleteResult });
+    this.setState({
+      autoCompleteResult,
+      email: value
+    });
   }
 
   render() {
@@ -96,6 +127,7 @@ class Sign extends React.Component<any> {
     const AutoCompleteOption = AutoComplete.Option;
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
+    const captchaTime = this.state.captchaTime;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -191,7 +223,13 @@ class Sign extends React.Component<any> {
                 )}
               </Col>
               <Col span={12}>
-                <Button className="gotcaptcha">获取验证码</Button>
+                <Button className="gotCaptcha" disabled={captchaTime ? true : false} onClick={this.handleCaptcha}>
+                  {
+                    captchaTime
+                      ? `等待${captchaTime}秒可重发`
+                      : '获取验证码'
+                  }
+                </Button>
               </Col>
             </Row>
           </FormItem>
@@ -216,8 +254,17 @@ class Sign extends React.Component<any> {
   }
 }
 
+// tslint:disable-next-line
+let Sign = Form.create()(SignComponent as any);
 export default connect(
   // tslint:disable
-  ((e) => console.log(e)),
-  { fetchSign }
-)(Form.create()(Sign) as any);
+  ((e) => e),
+  { fetchSign, fetchCaptcha, setCaptchaCountdown }
+  // tslint:disable-next-line
+)(Sign as any);
+
+interface StatePropsTypes {
+  generalData: {
+    captchaTime: number;
+  }
+}

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/merge';
 import * as ActionTypes from '../redux/actionType';
 
-export default function fetchCaptcha(action$: {ofType: Function}) {
+export default function fetchCaptcha(action$: { ofType: Function }) {
   return action$.ofType(ActionTypes.API_CAPTCHA)
     .mergeMap((action: ActionTypes) => Observable.merge(
       ajax.getJSON(action.payload.api)

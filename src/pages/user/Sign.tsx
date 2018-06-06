@@ -47,7 +47,7 @@ class SignComponent extends React.Component<any> {
       this.props.setCaptchaCountdown(60);
       let interval = Rx.Observable
         .timer(0, 1000)
-        .scan((count: number) => count - 1, 60);
+        .scan((count: number) => count - 1, 10);
       let sub = interval.subscribe((i: number) => {
         if (i < 0) {
           sub.unsubscribe();

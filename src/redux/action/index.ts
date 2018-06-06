@@ -41,6 +41,8 @@ export function fetchSign(param: {}) {
  * @param email: string
  */
 export function fetchCaptcha(param: string) {
+  // tslint:disable-next-line
+  console.log('☞☞☞ 9527 index 44', 111);
   return {
     type: ActionTypes.API_CAPTCHA,
     payload: {

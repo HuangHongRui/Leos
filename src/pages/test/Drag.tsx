@@ -1,13 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import Icon from 'antd/lib/icon';
 
 const Wrap = styled.div`
-  ul.bMoveTag > li {
-    .serial {
-      background: rgba(0, 123, 236, 0.5);
+  background: #e8e8e8;
+  ul.bMoveTag {
+    .topAnimation {
+      animation-name: top-animation;
+      animation-duration: .5s;
     }
-    .hand {
-      opacity: 0;
+    .downAnimation {
+      animation-name: down-animation;
+      animation-duration: .5s;
+    }
+     > li {
+      .serial {
+        background: #cccccca3;
+      }
+      .hand {
+        opacity: 0;
+      }
     }
   }
   ul {
@@ -15,29 +27,45 @@ const Wrap = styled.div`
     padding: 0;
     >li{
       background: #fff;
-      line-height: 5rem;
-      height: 5rem;
+      line-height: 3.5rem;
+      height: 3.5rem;
       padding: 0 1rem;
+      ::after {
+        position: relative;
+        display: block;
+        content: '';
+        top: 0px;
+        width: 100vw;
+        border-top: solid .5px #ccccccab;
+      }
+      :last-of-type::after{
+        display: none;
+      }
       .serial {
         -webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 100%;
+        font-size: .8rem;
         display: inline-block;
         background: rgb(0, 123, 236);
         color: #fff;
-        width: 2rem;
-        height: 2rem;
-        line-height: 2rem;
+        width: 1.3rem;
+        height: 1.3rem;
+        line-height: 1.4rem;
         text-align: center;
         pointer-events:none;
       }
       .content {
         margin: 0 1rem;
-        font-size: 18px;
+        font-size: 1rem;
         pointer-events:none;
       }
       .hand {
         float: right;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         pointer-events:none;
+        color: #ccc;
+      }
+      .test {
+        
       }
     }
     .moveTag {
@@ -62,18 +90,53 @@ const Wrap = styled.div`
     .placeholder {
       visibility: hidden;
     }
+    
+  }
+  @keyframes top-animation {
+    from {
+        z-index: 100;
+        //margin-top: 3px;
+        box-shadow: 0px 10px 50px 0px rgba(0,0,0,0.75);
+    }
+    to {
+        z-index: auto;
+        margin-top: 0;
+        box-shadow: none;
+    }
+  }
+  @keyframes down-animation {
+    from {
+        z-index: 100;
+        //margin-bottom: 3px;
+        box-shadow: 0px -10px 50px 0px rgba(0,0,0,0.75);
+    }
+    to {
+        z-index: auto;
+        margin-bottom: 0;
+        box-shadow: none;
+    }
   }
 `;
 
-class DragComponent extends React.Component {
+class DragComponent extends React.Component<{}> {
+  state = {
+    targetDrag: false,
+    addClassNode: {
+      classList: {
+        remove: Function
+      }
+    },
+    addClass: ''
+  };
+
   componentDidMount() {
     let tag = document.querySelectorAll('li');
     let that = this;
     if (tag) {
       [].forEach.call(tag, function (item: { addEventListener: Function }) {
-        item.addEventListener('touchstart', that.handleStart, true);
-        item.addEventListener('touchmove', that.handleMove, true);
-        item.addEventListener('touchend', that.handleEnd, true);
+        item.addEventListener('touchstart', that.handleStart.bind(that), true);
+        item.addEventListener('touchmove', that.handleMove.bind(that), true);
+        item.addEventListener('touchend', that.handleEnd.bind(that), true);
       });
     }
   }
@@ -82,7 +145,12 @@ class DragComponent extends React.Component {
    *  首次触屏
    */
   handleStart(e: EvenTypes) {
+    this.setState({ targetDrag: true });
     e.preventDefault();
+    e.target.setAttribute(
+      'style',
+      `top: ${e.touches[0].pageY - e.target.offsetHeight / 2}px;`
+    );
     if (e.target.tagName !== 'LI') {
       return;
     }
@@ -90,10 +158,6 @@ class DragComponent extends React.Component {
     placeholder.classList.add('placeholder');
     e.target.classList.add('moveTag');
     e.target.parentElement.classList.add('bMoveTag');
-    e.target.setAttribute(
-      'style',
-      `top: ${e.touches[0].pageY - e.target.offsetHeight / 2}px;`
-    );
     e.target.parentElement.insertBefore(placeholder, e.target);
   }
 
@@ -101,24 +165,32 @@ class DragComponent extends React.Component {
    *  拖拽触发（按住拖拽）
    */
   handleMove(e: EvenTypes) {
-
-    if (e.target.tagName !== 'LI') {
-      return;
-    }
-    let toggleNode = document.createElement('li');
-    toggleNode.classList.add('placeholder');
-    let placeholder = document.querySelector('.placeholder');
     // tslint:disable-next-line
     let tagNode: any = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
-    let tagNum = tagNode.firstElementChild.innerText;
-    let targetNum = e.target.firstElementChild.innerText;
     e.target.setAttribute(
       'style',
       `top: ${e.touches[0].pageY - e.target.offsetHeight / 2}px;`
     );
     if (tagNode && tagNode.tagName === 'LI') {
-      e.target.firstElementChild.innerText = tagNum;
-      tagNode.firstElementChild.innerText = targetNum;
+      let downNum = tagNode.firstElementChild.innerText;
+      let dragNum = e.target.firstElementChild.innerText;
+      let toggleNode = document.createElement('li');
+      let placeholder = document.querySelector('.placeholder');
+      this.state.addClassNode.classList.remove(this.state.addClass);
+      this.setState({
+        addClassNode: tagNode,
+        nowNum: downNum
+      });
+      toggleNode.classList.add('placeholder');
+      if (downNum < dragNum) {
+        tagNode.classList.add('downAnimation');
+        this.setState({ addClass: 'downAnimation' });
+      } else {
+        tagNode.classList.add('topAnimation');
+        this.setState({ addClass: 'topAnimation' });
+      }
+      e.target.firstElementChild.innerText = downNum;
+      tagNode.firstElementChild.innerText = dragNum;
       e.target.parentElement.insertBefore(toggleNode, tagNode);
       e.target.parentElement.replaceChild(tagNode, placeholder);
     }
@@ -128,10 +200,13 @@ class DragComponent extends React.Component {
    *  松开
    */
   handleEnd(e: EvenTypes) {
-    if (e.target.tagName !== 'LI') {
-      return;
-    }
+    this.setState({ targetDrag: false });
+    // if (e.target.tagName !== 'LI') {
+    //   return;
+    // }
+    this.state.addClassNode.classList.remove(this.state.addClass);
     let placeholder = document.querySelector('.placeholder');
+    e.target.classList.add('test');
     if (placeholder) {
       e.target.classList.remove('moveTag');
       e.target.parentElement.classList.remove('bMoveTag');
@@ -151,15 +226,14 @@ class DragComponent extends React.Component {
                 <li key={i} draggable={true}>
                   <span className="serial">{e}</span>
                   <span className="content">内容Content内容{e}</span>
-                  <span className="hand">☰</span>
+                  <span className="hand">
+                    {this.state.targetDrag ? <Icon type="arrows-alt"/> : '☰'}
+                  </span>
                 </li>
               );
             })
           }
         </ul>
-        <a href="https://github.com/HuangHongRui/Vocation/blob/dev/src/pages/test/Drag.tsx">
-          Code.
-        </a>
       </Wrap>
     );
   }

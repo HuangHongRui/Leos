@@ -26,6 +26,7 @@ yarn-error.log*
 .idea
 .package-lock.json
 *.iml
+*.css
 out
 gen
 将删除 build/

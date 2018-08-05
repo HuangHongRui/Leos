@@ -3,64 +3,63 @@
  | Color
  |--------------------------------------------------------------------------
  */
-
-$Theme-bg-color: #fff;
-$Theme-font-color: #999;
-
 /*
  |--------------------------------------------------------------------------
  | Global
  |--------------------------------------------------------------------------
  */
-@import "~antd/dist/antd.min.css";
-
+@import url(~antd/dist/antd.min.css);
 * {
   font-size: 14px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: $Theme-font-color;
-}
+  color: #999; }
 
 body {
-  height: auto;
-}
+  height: auto; }
 
 /*
  |--------------------------------------------------------------------------
  | Button
  |--------------------------------------------------------------------------
  */
-
 .btn-none {
   border-style: none;
   outline: none;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 /*
  |--------------------------------------------------------------------------
  | Animation
  |--------------------------------------------------------------------------
  */
-
 .am-my-face {
   animation: my-face .3s infinite ease-in-out;
   display: inline-block;
-  margin: 0 5px;
-}
+  margin: 0 5px; }
 
 @keyframes my-face {
   0% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   30% {
-    transform: rotate(9deg)
-  }
+    transform: rotate(9deg); }
   60% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   90% {
-    transform: rotate(-9deg)
-  }
-}
+    transform: rotate(-9deg); } }
+.menu {
+  overflow: hidden;
+  height: 80px;
+  line-height: 80px;
+  background: #fff;
+  text-align: right;
+  padding: 0 40px; }
+  .menu > div {
+    display: inline-block; }
+  .menu .menu_logo {
+    float: left; }
+  .menu .menu_user > div {
+    display: inline; }
+
+/*# sourceMappingURL=index.css.map */

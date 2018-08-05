@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card } from 'antd';
-import Menu from '../../component/Menu';
 import ListComponent from '../../component/List';
 import FootComponent from '../../component/Foot';
 import './Home.scss';
-import NameSvg from '../../component/Svg/Name_Svg';
+import Menu from '../../component/Menu';
+// import { Card } from 'antd';
+// import NameSvg from '../../component/Svg/Name_Svg';
 
 const Wrap = styled.div`
   .card {
@@ -60,21 +60,21 @@ export default class Home extends React.PureComponent<any> {
   render() {
     return (
       <Wrap>
-        <Card
-          className="card"
-          cover={
-            <div className="ant-card-cover">
-              <img className="cover_pic" alt="Cover" src="picture/001.jpeg"/>
-              <div className="avatar">
-                <img src="picture/000.jpeg"/>
-                <NameSvg/>
-                <span className="description">Follow Your Heart..</span>
-              </div>
-            </div>
-          }
-        >
-          <Menu/>
-        </Card>
+        {/*<Card*/}
+          {/*className="card"*/}
+          {/*cover={*/}
+            {/*<div className="ant-card-cover">*/}
+              {/*<img className="cover_pic" alt="Cover" src="picture/001.jpeg"/>*/}
+              {/*<div className="avatar">*/}
+                {/*<img src="picture/000.jpeg"/>*/}
+                {/*<NameSvg/>*/}
+                {/*<span className="description">Follow Your Heart..</span>*/}
+              {/*</div>*/}
+            {/*</div>*/}
+          {/*}*/}
+        {/*>*/}
+        {/*</Card>*/}
+        <Menu/>
         <ListComponent/>
         <FootComponent/>
       </Wrap>

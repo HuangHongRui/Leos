@@ -1,17 +1,25 @@
+/**
+ *  作者: leo
+ *  功能: 顶部导航
+ *  日期：2018/8/3
+ *  文件：index
+ *  參數：
+ */
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
+import './index.scss';
+// import { Link } from 'react-router-dom';
+// import { Menu, Icon } from 'antd';
+// import styled from 'styled-components';
 
-const Wrap = styled.div`
-  .menu_ui {
-    padding: 0 2rem;
-    .user{
-      //float: right !important;
-    }
-  }
-`;
+// const Wrap = styled.div`
+//   .menu_ui {
+//     padding: 0 2rem;
+//     .user{
+//       //float: right !important;
+//     }
+//   }
+// `;
 
 class MenuComponent extends React.PureComponent {
   state = {
@@ -32,7 +40,24 @@ class MenuComponent extends React.PureComponent {
 
   render() {
     return (
-      <Wrap>
+      <div className="menu">
+
+        <div className="menu_logo">
+          <img src="" alt="logo"/>
+        </div>
+
+        <div className="menu_btn">
+          <button className="btn-none">Need Help</button>
+          <button className="btn-none">Go to Sunnyman.com</button>
+        </div>
+
+        <div className="menu_user">
+          <img src="" alt="headerPic"/>
+          <span>Leo</span>
+          <div><img src="" alt="More"/></div>
+        </div>
+
+      {/* <Wrap>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.tag]}
@@ -100,6 +125,8 @@ class MenuComponent extends React.PureComponent {
           </Menu.SubMenu>
         </Menu>
       </Wrap>
+      */}
+      </div>
     );
   }
 }

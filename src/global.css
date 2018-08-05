@@ -3,64 +3,40 @@
  | Color
  |--------------------------------------------------------------------------
  */
-
-$Theme-bg-color: #fff;
-$Theme-font-color: #999;
-
 /*
  |--------------------------------------------------------------------------
  | Global
  |--------------------------------------------------------------------------
  */
-@import "~antd/dist/antd.min.css";
-
+@import url(~antd/dist/antd.min.css);
 * {
   font-size: 14px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: $Theme-font-color;
-}
+  color: #666; }
 
 body {
-  height: auto;
-}
-
-/*
- |--------------------------------------------------------------------------
- | Button
- |--------------------------------------------------------------------------
- */
-
-.btn-none {
-  border-style: none;
-  outline: none;
-  cursor: pointer;
-}
+  height: auto; }
 
 /*
  |--------------------------------------------------------------------------
  | Animation
  |--------------------------------------------------------------------------
  */
-
 .am-my-face {
   animation: my-face .3s infinite ease-in-out;
   display: inline-block;
-  margin: 0 5px;
-}
+  margin: 0 5px; }
 
 @keyframes my-face {
   0% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   30% {
-    transform: rotate(9deg)
-  }
+    transform: rotate(9deg); }
   60% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   90% {
-    transform: rotate(-9deg)
-  }
-}
+    transform: rotate(-9deg); } }
+
+/*# sourceMappingURL=global.css.map */

@@ -1,0 +1,1 @@
+{"version":3,"file":"fileTransform.js","sourceRoot":"","sources":["../../../../config/jest/fileTransform.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;AAEb,IAAM,IAAI,GAAG,OAAO,CAAC,MAAM,CAAC,CAAC;AAE7B,yEAAyE;AACzE,sDAAsD;AAEtD,MAAM,CAAC,OAAO,GAAG;IACf,OAAO,YAAC,GAAG,EAAE,QAAQ;QACnB,OAAO,sBAAoB,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,QAAQ,CAAC,QAAQ,CAAC,CAAC,MAAG,CAAC;IACxE,CAAC;CACF,CAAC"}

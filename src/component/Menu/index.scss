@@ -1,0 +1,25 @@
+@import "../../global";
+
+.menu {
+  overflow: hidden;
+  height: 80px;
+  line-height: 80px;
+  background: $Theme-bg-color;
+  text-align: right;
+  padding: 0 40px;
+
+  & > div {
+    display: inline-block;
+  }
+
+  & .menu_logo {
+    float: left;
+  }
+
+  & .menu_user {
+    &>div {
+      display: inline;
+    }
+  }
+
+}

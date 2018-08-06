@@ -51,7 +51,7 @@ var MenuComponent = /** @class */ (function (_super) {
     MenuComponent.prototype.render = function () {
         return (React.createElement("div", { className: "menu" },
             React.createElement("div", { className: "menu_logo" },
-                React.createElement("img", { src: "", alt: "logo" })),
+                React.createElement("img", { src: "picture/logo.png", alt: "logo" })),
             React.createElement("div", { className: "menu_btn" },
                 React.createElement("button", { className: "btn-none" }, "Need Help"),
                 React.createElement("button", { className: "btn-none" }, "Go to Sunnyman.com")),

@@ -43,7 +43,7 @@ class MenuComponent extends React.PureComponent {
       <div className="menu">
 
         <div className="menu_logo">
-          <img src="" alt="logo"/>
+          <img src="picture/logo.png" alt="logo"/>
         </div>
 
         <div className="menu_btn">

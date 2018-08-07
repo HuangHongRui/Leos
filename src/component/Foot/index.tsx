@@ -1,26 +1,7 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { fetchOnline } from '../../redux/action';
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2vh;
-  background-color: rgba(0,0,0,.8);
-  color: hsla(0,0%,100%,.5);
-  p {
-    margin: 0;
-  }
-  .source {
-    i { 
-      color: #f73f51;
-      font-size: 22px;
-    }
-  }
-`;
+import './index.scss';
 
 // tslint:disable-next-line
 class FootComponent extends Component <any> {
@@ -40,19 +21,19 @@ class FootComponent extends Component <any> {
 
   render() {
     return (
-      <Wrap>
-        <p>
-          <a href="https://www.aliyun.com/"> <Icon type="aliyun"/> </a>
-          <a href="https://github.com/HuangHongRui"> <Icon type="github"/> </a>
-        </p>
-        <p>当前在线人数: {this.state.online}</p>
-        <p>
+      <div className="foot">
+        {/*<p className="foot-hot-link">*/}
+          {/*<a href="https://www.aliyun.com/"> ALiYun </a>*/}
+          {/*<a href="https://github.com/HuangHongRui"> GitHub </a>*/}
+        {/*</p>*/}
+        <p className="foot-inline-num">当前在线人数: {this.state.online}</p>
+        <p className="foot-go-data">
           博客已运行
-          <span>xxx天xx小时xx分xx秒</span>
+          <span>1329天18小时29分06秒</span>
           <span className="am-my-face">(●'◡'●)ﾉ♥</span>
         </p>
-        <p className="source">Made with <i>❤</i> by Rui</p>
-      </Wrap>
+        <p className="foot-source">Made with <i>❤</i> by Leo</p>
+      </div>
     );
   }
 }

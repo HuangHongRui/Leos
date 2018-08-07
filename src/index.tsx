@@ -9,6 +9,8 @@ import history from './utils/history';
 import store from './redux/store';
 
 import Home from './pages/home/Home';
+import Menu from './component/Menu';
+import Foot from './component/Foot';
 // import Info from './pages/info/Info';
 // import Test from './pages/test/Redux';
 // import User from './pages/user/User';
@@ -26,6 +28,7 @@ ReactDOM.render(
     <LocaleProvider locale={zhCN}>
       <ConnectedRouter history={history}>
         <div>
+        <Menu/>
           <Route exact={true} path="/" component={Home}/>
           {/*<Route path="/home" component={Home}/>*/}
           {/*<Route path="/save" component={Info}/>*/}
@@ -37,6 +40,7 @@ ReactDOM.render(
           {/*<Route path="/user" component={User}/>*/}
           {/*<Route path="/login" component={Login}/>*/}
           {/*<Route path="/sign" component={Sign}/>*/}
+        <Foot/>
         </div>
       </ConnectedRouter>
     </LocaleProvider>

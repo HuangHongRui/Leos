@@ -48,19 +48,10 @@ body {
     transform: rotate(0deg); }
   90% {
     transform: rotate(-9deg); } }
-.menu {
-  overflow: hidden;
-  height: 80px;
-  line-height: 80px;
-  background: #fff;
-  text-align: right;
-  padding: 0 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-  .menu > div {
-    display: inline-block; }
-  .menu .menu_logo {
-    float: left; }
-  .menu .menu_user > div {
-    display: inline; }
+.foot {
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05); }
+  .foot p {
+    margin: 5px; }
 
 /*# sourceMappingURL=index.css.map */

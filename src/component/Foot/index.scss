@@ -1,0 +1,9 @@
+@import "../../global";
+
+.foot {
+  text-align: center;
+  border-top: 1px solid $Theme-border-color;
+  p {
+    margin: 5px;
+  }
+}

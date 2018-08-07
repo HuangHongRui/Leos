@@ -8,6 +8,8 @@ import zhCN from 'antd/lib/locale-provider/zh_CN';
 import history from './utils/history';
 import store from './redux/store';
 import Home from './pages/home/Home';
+import Menu from './component/Menu';
+import Foot from './component/Foot';
 // import Info from './pages/info/Info';
 // import Test from './pages/test/Redux';
 // import User from './pages/user/User';
@@ -22,5 +24,7 @@ ReactDOM.render(React.createElement(Provider, { store: store },
     React.createElement(LocaleProvider, { locale: zhCN },
         React.createElement(ConnectedRouter, { history: history },
             React.createElement("div", null,
-                React.createElement(Route, { exact: true, path: "/", component: Home }))))), document.getElementById('root'));
+                React.createElement(Menu, null),
+                React.createElement(Route, { exact: true, path: "/", component: Home }),
+                React.createElement(Foot, null))))), document.getElementById('root'));
 //# sourceMappingURL=index.js.map

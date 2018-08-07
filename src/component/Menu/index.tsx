@@ -47,15 +47,19 @@ class MenuComponent extends React.PureComponent {
         </div>
 
         <div className="menu_btn">
-          <button className="btn-none">Need Help</button>
-          <button className="btn-none">Go to Sunnyman.com</button>
+          <button className="btn-none">Home</button>
+          <button className="btn-none">Music</button>
+          <button className="btn-none">Article</button>
+          <button className="btn-none">Laboratory</button>
         </div>
 
+        {/*
         <div className="menu_user">
           <img src="" alt="headerPic"/>
           <span>Leo</span>
           <div><img src="" alt="More"/></div>
         </div>
+        */}
 
       {/* <Wrap>
         <Menu

@@ -53,10 +53,10 @@ var MenuComponent = /** @class */ (function (_super) {
             React.createElement("div", { className: "menu_logo" },
                 React.createElement("img", { src: "picture/logo.png", alt: "logo" })),
             React.createElement("div", { className: "menu_btn" },
-                React.createElement("button", { className: "btn-none" }, "Home"),
-                React.createElement("button", { className: "btn-none" }, "Music"),
-                React.createElement("button", { className: "btn-none" }, "Article"),
-                React.createElement("button", { className: "btn-none" }, "Laboratory"))));
+                React.createElement("button", null, "Home"),
+                React.createElement("button", null, "Music"),
+                React.createElement("button", null, "Article"),
+                React.createElement("button", null, "Laboratory"))));
     };
     return MenuComponent;
 }(React.PureComponent));

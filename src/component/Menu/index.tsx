@@ -28,7 +28,7 @@ class MenuComponent extends React.PureComponent {
 
   static getDerivedStateFromProps(nextProps: StateTypes, prevState: StateTypes): void | {} {
     if (nextProps !== prevState) {
-      return { tag: nextProps.tag };
+      return {tag: nextProps.tag};
     }
   }
 
@@ -47,10 +47,10 @@ class MenuComponent extends React.PureComponent {
         </div>
 
         <div className="menu_btn">
-          <button className="btn-none">Home</button>
-          <button className="btn-none">Music</button>
-          <button className="btn-none">Article</button>
-          <button className="btn-none">Laboratory</button>
+          <button>Home</button>
+          <button>Music</button>
+          <button>Article</button>
+          <button>Laboratory</button>
         </div>
 
         {/*
@@ -61,7 +61,7 @@ class MenuComponent extends React.PureComponent {
         </div>
         */}
 
-      {/* <Wrap>
+        {/* <Wrap>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.tag]}

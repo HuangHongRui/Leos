@@ -6,7 +6,7 @@
 
 $Theme-bg-color: #fff;
 $Theme-font-color: #999;
-$Theme-border-color: rgba(0,0,0,0.05);
+$Theme-border-color: rgba(0, 0, 0, 0.05);
 
 /*
  |--------------------------------------------------------------------------
@@ -33,10 +33,14 @@ body {
  |--------------------------------------------------------------------------
  */
 
-.btn-none {
+button {
   border-style: none;
+  background: #fff;
   outline: none;
   cursor: pointer;
+}
+
+.btn-none {
 }
 
 /*

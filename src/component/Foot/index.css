@@ -24,8 +24,9 @@ body {
  | Button
  |--------------------------------------------------------------------------
  */
-.btn-none {
+button {
   border-style: none;
+  background: #fff;
   outline: none;
   cursor: pointer; }
 

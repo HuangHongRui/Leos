@@ -8,7 +8,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { Menu, Icon } from 'antd';
 // import styled from 'styled-components';
 
@@ -47,10 +47,21 @@ class MenuComponent extends React.PureComponent {
         </div>
 
         <div className="menu_btn">
-          <button>Home</button>
-          <button>Music</button>
-          <button>Article</button>
-          <button>Laboratory</button>
+          <span>
+            <Link to="/">Home</Link>
+          </span>
+          <span>
+            <Link to="todo">Todo</Link>
+          </span>
+          <span>
+            <Link to="article">Article</Link>
+          </span>
+          <span>
+            <Link to="music">Music</Link>
+          </span>
+          <span>
+            <Link to="laboratory">Laboratory</Link>
+          </span>
         </div>
 
         {/*

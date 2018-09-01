@@ -17,10 +17,16 @@
     float: left;
   }
 
+  & .menu_btn {
+    span {
+      display: inline-block;
+      padding-left: 10px;
+    }
+  }
+
   & .menu_user {
     &>div {
       display: inline;
     }
   }
-
 }

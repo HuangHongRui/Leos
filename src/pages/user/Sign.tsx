@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { fetchSign, fetchCaptcha, setCaptchaCountdown } from '../../redux/action';
 import { connect } from 'react-redux';
+import judge from '../../utils/judgement';
 
 const Wrap = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ class SignComponent extends React.Component<any> {
   }
 
   handleCaptcha = () => {
-    let regexp = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$');
+    let regexp = new RegExp(judge.email);
     if (regexp.test(this.state.email)) {
       this.props.fetchCaptcha(this.state.email);
       this.props.setCaptchaCountdown(60);
@@ -62,6 +63,7 @@ class SignComponent extends React.Component<any> {
         }
       });
     } else {
+      console.log('☞☞☞ 9527 Sign 65','Sad');
       this.props.form.validateFieldsAndScroll();
     }
   }
@@ -174,7 +176,7 @@ class SignComponent extends React.Component<any> {
                 type: 'email', message: '请输入正确 E-mail 格式!'
               }, {
                 required: true, message: '请输入您的 E-mail!'
-              }]
+              }],
             })(
               <AutoComplete
                 // tslint:disable-next-line
@@ -229,7 +231,11 @@ class SignComponent extends React.Component<any> {
                 )}
               </Col>
               <Col span={12}>
-                <Button className="gotCaptcha" disabled={captchaTime ? true : false} onClick={this.handleCaptcha}>
+                <Button
+                  className="gotCaptcha"
+                  disabled={!new RegExp(judge.email).test(this.state.email) || captchaTime ? true : false}
+                  onClick={this.handleCaptcha}
+                >
                   {
                     captchaTime
                       ? `等待${captchaTime}秒可重发`

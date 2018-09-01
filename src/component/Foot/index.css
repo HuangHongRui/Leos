@@ -3,77 +3,65 @@
  | Color
  |--------------------------------------------------------------------------
  */
-
-$Theme-bg-color: #fff;
-$Theme-font-color: #999;
-$Theme-border-color: rgba(0, 0, 0, 0.05);
-
 /*
  |--------------------------------------------------------------------------
  | Global
  |--------------------------------------------------------------------------
  */
-@import "~antd/dist/antd.min.css";
-
+@import url(~antd/dist/antd.min.css);
 * {
   font-size: 14px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: $Theme-font-color;
-}
+  color: #999; }
 
 body {
   height: 100%;
-  width: 100%;
-}
+  width: 100%; }
 
-@mixin a-style {
-  color: $Theme-font-color;
+a:link, a:visited, a:active {
+  color: #999;
+  text-decoration: none; }
+a:hover {
+  color: #999;
   text-decoration: none;
-}
-
-a {
-  &:link, &:visited, &:active {
-    @include a-style;
-  }
-  &:hover {
-    @include a-style;
-    color: #000;
-    border-bottom: 2px solid #ffaee2;
-  }
-}
+  color: #000;
+  border-bottom: 2px solid #ffaee2; }
 
 /*
  |--------------------------------------------------------------------------
  | Button
  |--------------------------------------------------------------------------
  */
-
 button {
   border-style: none;
   background: #fff;
   outline: none;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 /*
  |--------------------------------------------------------------------------
  | Animation
  |--------------------------------------------------------------------------
  */
-
 @keyframes my-face {
   0% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   30% {
-    transform: rotate(9deg)
-  }
+    transform: rotate(9deg); }
   60% {
-    transform: rotate(0deg)
-  }
+    transform: rotate(0deg); }
   90% {
-    transform: rotate(-9deg)
-  }
-}
+    transform: rotate(-9deg); } }
+.foot {
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05); }
+  .foot p {
+    margin: 5px; }
+  .foot .am-my-face {
+    animation: my-face .3s infinite ease-in-out;
+    display: inline-block;
+    margin: 0 5px; }
+
+/*# sourceMappingURL=index.css.map */

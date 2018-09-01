@@ -7,7 +7,8 @@ const config = require('./webpack.config.dev');
 const paths = require('./paths');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const HOST = process.env.HOST || '127.0.0.1';
+// const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || "3000";
 
 module.exports = function(proxy, allowedHost) {

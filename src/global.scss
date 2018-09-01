@@ -25,6 +25,23 @@ $Theme-border-color: rgba(0, 0, 0, 0.05);
 
 body {
   height: 100%;
+  width: 100%;
+}
+
+@mixin a-style {
+  color: $Theme-font-color;
+  text-decoration: none;
+}
+
+a {
+  &:link, &:visited, &:active {
+    @include a-style;
+  }
+  &:hover {
+    @include a-style;
+    color: #000;
+    border-bottom: 2px solid #ffaee2;
+  }
 }
 
 /*
@@ -40,20 +57,11 @@ button {
   cursor: pointer;
 }
 
-.btn-none {
-}
-
 /*
  |--------------------------------------------------------------------------
  | Animation
  |--------------------------------------------------------------------------
  */
-
-.am-my-face {
-  animation: my-face .3s infinite ease-in-out;
-  display: inline-block;
-  margin: 0 5px;
-}
 
 @keyframes my-face {
   0% {

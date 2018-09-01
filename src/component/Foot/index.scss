@@ -6,4 +6,9 @@
   p {
     margin: 5px;
   }
+  .am-my-face {
+    animation: my-face .3s infinite ease-in-out;
+    display: inline-block;
+    margin: 0 5px;
+  }
 }

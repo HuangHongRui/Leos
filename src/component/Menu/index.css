@@ -17,7 +17,17 @@
   color: #999; }
 
 body {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
+
+a:link, a:visited, a:active {
+  color: #999;
+  text-decoration: none; }
+a:hover {
+  color: #999;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 2px solid #ffaee2; }
 
 /*
  |--------------------------------------------------------------------------
@@ -35,11 +45,6 @@ button {
  | Animation
  |--------------------------------------------------------------------------
  */
-.am-my-face {
-  animation: my-face .3s infinite ease-in-out;
-  display: inline-block;
-  margin: 0 5px; }
-
 @keyframes my-face {
   0% {
     transform: rotate(0deg); }
@@ -61,6 +66,9 @@ button {
     display: inline-block; }
   .menu .menu_logo {
     float: left; }
+  .menu .menu_btn span {
+    display: inline-block;
+    padding-left: 10px; }
   .menu .menu_user > div {
     display: inline; }
 

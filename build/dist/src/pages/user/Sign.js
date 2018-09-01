@@ -27,7 +27,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { fetchSign, fetchCaptcha, setCaptchaCountdown } from '../../redux/action';
 import { connect } from 'react-redux';
-import judge from '../../utils/judgement';
 var Wrap = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  .sign-form {\n    max-width: 80vw;\n  }\n  .sign-form-button {\n    width: 100%;\n  }\n  .ant-form-item-label {\n    display: flex;\n    justify-content: start;\n  }\n  .gotCaptcha {\n    width: 100%;\n  }\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  .sign-form {\n    max-width: 80vw;\n  }\n  .sign-form-button {\n    width: 100%;\n  }\n  .ant-form-item-label {\n    display: flex;\n    justify-content: start;\n  }\n  .gotCaptcha {\n    width: 100%;\n  }\n"])));
 // tslint:disable-next-line
 var SignComponent = /** @class */ (function (_super) {
@@ -41,7 +40,7 @@ var SignComponent = /** @class */ (function (_super) {
             captchaTime: 0
         };
         _this.handleCaptcha = function () {
-            var regexp = new RegExp(judge.email);
+            var regexp = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$');
             if (regexp.test(_this.state.email)) {
                 _this.props.fetchCaptcha(_this.state.email);
                 _this.props.setCaptchaCountdown(60);
@@ -58,7 +57,6 @@ var SignComponent = /** @class */ (function (_super) {
                 });
             }
             else {
-                console.log('☞☞☞ 9527 Sign 65', 'Sad');
                 _this.props.form.validateFieldsAndScroll();
             }
         };
@@ -174,7 +172,7 @@ var SignComponent = /** @class */ (function (_super) {
                             type: 'email', message: '请输入正确 E-mail 格式!'
                         }, {
                             required: true, message: '请输入您的 E-mail!'
-                        }],
+                        }]
                 })(React.createElement(AutoComplete
                 // tslint:disable-next-line
                 , { 
@@ -201,7 +199,7 @@ var SignComponent = /** @class */ (function (_super) {
                             rules: [{ required: true, message: '请输入你收到的验证码!' }]
                         })(React.createElement(Input, { placeholder: "\u90AE\u7BB1\u9A8C\u8BC1\u7801" }))),
                         React.createElement(Col, { span: 12 },
-                            React.createElement(Button, { className: "gotCaptcha", disabled: !new RegExp(judge.email).test(this.state.email) || captchaTime ? true : false, onClick: this.handleCaptcha }, captchaTime
+                            React.createElement(Button, { className: "gotCaptcha", disabled: captchaTime ? true : false, onClick: this.handleCaptcha }, captchaTime
                                 ? "\u7B49\u5F85" + captchaTime + "\u79D2\u53EF\u91CD\u53D1"
                                 : '获取验证码')))),
                 React.createElement(FormItem, __assign({}, tailFormItemLayout), getFieldDecorator('agreement', {

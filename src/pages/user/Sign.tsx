@@ -41,11 +41,7 @@ class SignComponent extends React.Component<any> {
     }
   }
 
-  componentDidMount() {
-    // tslint:disable
-    console.log('☞☞☞ 9527 Sign 44', this);
-    console.log('☞☞☞ 9527 Sign 45', this.setState);
-  }
+  // componentDidMount() {}
 
   handleCaptcha = () => {
     let regexp = new RegExp(judge.email);
@@ -63,7 +59,6 @@ class SignComponent extends React.Component<any> {
         }
       });
     } else {
-      console.log('☞☞☞ 9527 Sign 65','Sad');
       this.props.form.validateFieldsAndScroll();
     }
   }

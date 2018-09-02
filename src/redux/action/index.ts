@@ -24,6 +24,28 @@ export function setOnline(param: {}) {
 }
 
 /**
+ * 运行历史时长
+ * @param None
+ */
+export function fetchRunTime() {
+  return {
+    type: ActionTypes.API_RUNTIME,
+    payload: API.RUNTIME
+  };
+}
+
+/**
+ * 设置运行历史时长
+ * @param {state、message、runtime}
+ */
+export function setRunTime(param: {}) {
+  return {
+    type: ActionTypes.SET_RUNTIME,
+    payload: param
+  };
+}
+
+/**
  * 注册
  * @param Email string
  * @param Password string
@@ -32,7 +54,7 @@ export function setOnline(param: {}) {
 export function fetchSign(param: {}) {
   return {
     type: ActionTypes.API_SIGN,
-    payload: { param }
+    payload: {param}
   };
 }
 

@@ -29,19 +29,96 @@
       border-radius: 999px;
       overflow: hidden; }
       #sky .bird .wind:nth-child(1) {
-        transform: translate3d(-60px, 37px, 66px) rotateY(90deg); }
+        transform: translate3d(-10px, -22px, 95px) rotateY(90deg); }
         #sky .bird .wind:nth-child(1)::before {
           content: '';
           position: absolute;
           width: 4px;
           height: 300px;
-          background: rgba(100, 200, 197, 0.3);
+          background: rgba(100, 200, 8, 0.3);
           border-radius: 999px;
           transform: translateY(-300px);
-          animation: wind 2445ms 1692ms linear infinite; }
+          animation: wind 2110ms 4736ms linear infinite; }
       #sky .bird .wind:nth-child(2) {
-        transform: translate3d(27px, 19px, -55px) rotateY(90deg); }
+        transform: translate3d(-142px, -102px, -87px) rotateY(90deg); }
         #sky .bird .wind:nth-child(2)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 182, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 1988ms 2113ms linear infinite; }
+      #sky .bird .wind:nth-child(3) {
+        transform: translate3d(-158px, 21px, -46px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(3)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 5, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 2656ms 2060ms linear infinite; }
+      #sky .bird .wind:nth-child(4) {
+        transform: translate3d(120px, 67px, -79px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(4)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 218, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 2400ms 3820ms linear infinite; }
+      #sky .bird .wind:nth-child(5) {
+        transform: translate3d(87px, -14px, -46px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(5)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 191, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 2642ms 2970ms linear infinite; }
+      #sky .bird .wind:nth-child(6) {
+        transform: translate3d(179px, 23px, -62px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(6)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 53, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 1898ms 3101ms linear infinite; }
+      #sky .bird .wind:nth-child(7) {
+        transform: translate3d(-62px, -88px, 17px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(7)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 199, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 2842ms 4146ms linear infinite; }
+      #sky .bird .wind:nth-child(8) {
+        transform: translate3d(114px, -63px, 65px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(8)::before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 300px;
+          background: rgba(100, 200, 254, 0.3);
+          border-radius: 999px;
+          transform: translateY(-300px);
+          animation: wind 1135ms 4187ms linear infinite; }
+      #sky .bird .wind:nth-child(9) {
+        transform: translate3d(-53px, 115px, -98px) rotateY(90deg); }
+        #sky .bird .wind:nth-child(9)::before {
           content: '';
           position: absolute;
           width: 4px;
@@ -49,116 +126,39 @@
           background: rgba(100, 200, 246, 0.3);
           border-radius: 999px;
           transform: translateY(-300px);
-          animation: wind 1569ms 2856ms linear infinite; }
-      #sky .bird .wind:nth-child(3) {
-        transform: translate3d(81px, -106px, 1px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(3)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 86, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 1903ms 4566ms linear infinite; }
-      #sky .bird .wind:nth-child(4) {
-        transform: translate3d(125px, -137px, -17px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(4)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 203, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 1789ms 3412ms linear infinite; }
-      #sky .bird .wind:nth-child(5) {
-        transform: translate3d(183px, -65px, -47px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(5)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 119, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 1546ms 1475ms linear infinite; }
-      #sky .bird .wind:nth-child(6) {
-        transform: translate3d(-48px, 124px, 96px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(6)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 38, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 2356ms 2706ms linear infinite; }
-      #sky .bird .wind:nth-child(7) {
-        transform: translate3d(8px, 124px, -47px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(7)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 88, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 1015ms 3752ms linear infinite; }
-      #sky .bird .wind:nth-child(8) {
-        transform: translate3d(-76px, -91px, -50px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(8)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 188, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 2788ms 2849ms linear infinite; }
-      #sky .bird .wind:nth-child(9) {
-        transform: translate3d(64px, -14px, -55px) rotateY(90deg); }
-        #sky .bird .wind:nth-child(9)::before {
-          content: '';
-          position: absolute;
-          width: 4px;
-          height: 300px;
-          background: rgba(100, 200, 50, 0.3);
-          border-radius: 999px;
-          transform: translateY(-300px);
-          animation: wind 2421ms 3030ms linear infinite; }
+          animation: wind 2528ms 2778ms linear infinite; }
       #sky .bird .wind:nth-child(10) {
-        transform: translate3d(-12px, 58px, 55px) rotateY(90deg); }
+        transform: translate3d(87px, 102px, -3px) rotateY(90deg); }
         #sky .bird .wind:nth-child(10)::before {
           content: '';
           position: absolute;
           width: 4px;
           height: 300px;
-          background: rgba(100, 200, 255, 0.3);
+          background: rgba(100, 200, 157, 0.3);
           border-radius: 999px;
           transform: translateY(-300px);
-          animation: wind 1327ms 4875ms linear infinite; }
+          animation: wind 1729ms 1616ms linear infinite; }
       #sky .bird .wind:nth-child(11) {
-        transform: translate3d(-78px, -74px, 16px) rotateY(90deg); }
+        transform: translate3d(109px, 70px, 41px) rotateY(90deg); }
         #sky .bird .wind:nth-child(11)::before {
           content: '';
           position: absolute;
           width: 4px;
           height: 300px;
-          background: rgba(100, 200, 107, 0.3);
+          background: rgba(100, 200, 153, 0.3);
           border-radius: 999px;
           transform: translateY(-300px);
-          animation: wind 2774ms 1408ms linear infinite; }
+          animation: wind 1611ms 1067ms linear infinite; }
     #sky .bird_body {
       position: relative;
       width: 30px;
       height: 40px;
-      background: #6cafcb; }
+      background: #aa8dd3; }
     #sky .bird_head {
       position: absolute;
       top: -30px;
       border-right: 15px solid transparent;
-      border-bottom: 30px solid #8277f3;
+      border-bottom: 30px solid #7774f5;
       border-left: 15px solid transparent;
       transform-origin: 50% 100%;
       transform: rotateX(-20deg); }
@@ -166,14 +166,14 @@
       position: absolute;
       left: -30px;
       height: 30px;
-      border-right: 30px solid #a899de;
+      border-right: 30px solid #a498eb;
       border-bottom: 10px solid transparent;
       transform-origin: 100% 0;
       animation: wingLeft 1000ms cubic-bezier(0.36, 0.1, 0.16, 1) infinite alternate; }
       #sky .bird_wing_left_top {
         position: absolute;
         left: -30px;
-        border-right: 30px solid #9479da;
+        border-right: 30px solid #a59cf9;
         border-bottom: 30px solid transparent;
         transform-origin: 100% 0;
         animation: wingLeft 1000ms cubic-bezier(0.545, 0.08, 0.52, 0.975) infinite alternate; }
@@ -181,13 +181,13 @@
       position: absolute;
       left: 30px;
       height: 30px;
-      border-left: 30px solid #6791e8;
+      border-left: 30px solid #7ca0f2;
       border-bottom: 10px solid transparent;
       transform-origin: 0 0;
       animation: wingRight 1000ms cubic-bezier(0.36, 0.1, 0.16, 1) infinite alternate; }
       #sky .bird_wing_right_top {
         position: absolute;
-        border-left: 30px solid #7dc3dc;
+        border-left: 30px solid #8d65c9;
         border-bottom: 30px solid transparent;
         transform-origin: 0 0;
         animation: wingRight 1000ms cubic-bezier(0.545, 0.08, 0.52, 0.975) infinite alternate; }
@@ -195,14 +195,14 @@
       position: absolute;
       top: 40px;
       border-right: 30px solid transparent;
-      border-top: 40px solid #b99ed3;
+      border-top: 40px solid #ad74fe;
       transform-origin: 50% 0;
       transform: rotateX(-20deg); }
     #sky .bird_tail_right {
       position: absolute;
       top: 40px;
       border-left: 30px solid transparent;
-      border-top: 40px solid #b275d4;
+      border-top: 40px solid #8ba3dc;
       transform-origin: 50% 0;
       transform: rotateX(-20deg); }
 
@@ -434,4 +434,4 @@ button {
   90% {
     transform: rotate(-9deg); } }
 
-/*# sourceMappingURL=main.3dac3deefd010e2cf4a5127b216d1010.css.map*/
+/*# sourceMappingURL=main.2da92689edd7f73ed75a360fa20b6790.css.map*/

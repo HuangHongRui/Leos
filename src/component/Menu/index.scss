@@ -1,11 +1,12 @@
 @import "../../global";
 
 .menu {
+  display: flex;
+  justify-content: space-between;
   overflow: hidden;
   height: 80px;
   line-height: 80px;
   background: $Theme-bg-color;
-  text-align: right;
   padding: 0 40px;
   border-bottom: 1px solid $Theme-border-color;
 
@@ -14,18 +15,33 @@
   }
 
   & .menu_logo {
-    float: left;
+    //float: left;
   }
 
   & .menu_btn {
     span {
       display: inline-block;
-      padding-left: 10px;
+      padding-left: 2vw;
+    }
+    .select {
+      position: relative;
+      color: $Theme-font-default-color;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        width: 30px;
+        left: 15%;
+        height: 4px;
+        border-radius: 6px;
+        background-color: $Theme-assist-color;
+      }
     }
   }
 
   & .menu_user {
-    &>div {
+    & > div {
       display: inline;
     }
   }

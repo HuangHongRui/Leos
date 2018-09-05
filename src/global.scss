@@ -6,7 +6,9 @@
 
 $Theme-bg-color: #fff;
 $Theme-font-color: #999;
+$Theme-font-default-color: #000;
 $Theme-border-color: rgba(0, 0, 0, 0.05);
+$Theme-assist-color: #ffd600;
 
 /*
  |--------------------------------------------------------------------------
@@ -21,6 +23,7 @@ $Theme-border-color: rgba(0, 0, 0, 0.05);
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: $Theme-font-color;
+  font-family: SIYUAN;
 }
 
 body {
@@ -40,7 +43,7 @@ a {
   &:hover {
     @include a-style;
     color: #000;
-    border-bottom: 2px solid #ffaee2;
+    //border-bottom: 2px solid #ffaee2;
   }
 }
 
@@ -76,4 +79,17 @@ button {
   90% {
     transform: rotate(-9deg)
   }
+}
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Font
+ |--------------------------------------------------------------------------
+ */
+
+@font-face {
+  font-family: SIYUAN;
+  src: url("/font/SourceHanSerifCN-Heavy.otf") format("opentype");
+  //src: url("/font/SourceHanSansCN-Medium.otf") format("opentype");
 }

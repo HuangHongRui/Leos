@@ -14,7 +14,8 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: #999; }
+  color: #999;
+  font-family: SIYUAN; }
 
 body {
   height: 100%;
@@ -26,8 +27,7 @@ a:link, a:visited, a:active {
 a:hover {
   color: #999;
   text-decoration: none;
-  color: #000;
-  border-bottom: 2px solid #ffaee2; }
+  color: #000; }
 
 /*
  |--------------------------------------------------------------------------
@@ -54,6 +54,14 @@ button {
     transform: rotate(0deg); }
   90% {
     transform: rotate(-9deg); } }
+/*
+ |--------------------------------------------------------------------------
+ | Font
+ |--------------------------------------------------------------------------
+ */
+@font-face {
+  font-family: SIYUAN;
+  src: url("/font/SourceHanSerifCN-Heavy.otf") format("opentype"); }
 .foot {
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.05); }

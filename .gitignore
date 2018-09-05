@@ -30,6 +30,6 @@ yarn-error.log*
 *.css.map
 out
 gen
-将删除 build/
+build
 将删除 package-lock.json
 将删除 src/component/

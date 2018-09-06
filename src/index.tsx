@@ -7,29 +7,30 @@ import { ConnectedRouter } from 'react-router-redux';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import history from './utils/history';
 import store from './redux/store';
+import './global.scss';
 
-import Home from './pages/home/Home';
 import Menu from './component/Menu';
 import Foot from './component/Foot';
+
+import Home from './pages/home/Home';
+import Article from './pages/article';
 // import Info from './pages/info/Info';
 // import Test from './pages/test/Redux';
 // import User from './pages/user/User';
 // import Name from './pages/message';
 // import Rx from './pages/test/Rxjs';
 // import Drag from './pages/test/Drag';
-//
 // import Login from './pages/user';
 // import Sign from './pages/user';
-
-import './global.scss';
 
 ReactDOM.render(
   <Provider store={store}>
     <LocaleProvider locale={zhCN}>
       <ConnectedRouter history={history}>
-        <div>
-        <Menu/>
+        <div id="wrap">
+          <Menu/>
           <Route exact={true} path="/" component={Home}/>
+          <Route path="/article" component={Article}/>
           {/*<Route path="/home" component={Home}/>*/}
           {/*<Route path="/save" component={Info}/>*/}
           {/*<Route path="/test" component={Drag}/>*/}
@@ -40,7 +41,7 @@ ReactDOM.render(
           {/*<Route path="/user" component={User}/>*/}
           {/*<Route path="/login" component={Login}/>*/}
           {/*<Route path="/sign" component={Sign}/>*/}
-        <Foot/>
+          <Foot/>
         </div>
       </ConnectedRouter>
     </LocaleProvider>

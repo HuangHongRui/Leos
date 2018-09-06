@@ -14,7 +14,7 @@ export default class Home extends React.PureComponent<any> {
 
   render() {
     return (
-      <div className="home">
+      <div className="home content">
         <BirdSvg/>
         {/*<Card*/}
         {/*className="card"*/}

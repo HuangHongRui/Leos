@@ -7,8 +7,9 @@
 $Theme-bg-color: #fff;
 $Theme-font-color: #999;
 $Theme-font-default-color: #000;
-$Theme-border-color: rgba(0, 0, 0, 0.05);
 $Theme-assist-color: #ffd600;
+$Theme-border-color: rgba(0, 0, 0, 0.05);
+$Theme-select-color: rgba(255, 201, 139, 0.8);
 
 /*
  |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ $Theme-assist-color: #ffd600;
 body {
   height: 100%;
   width: 100%;
+  #wrap {
+    > .content {
+      height: 80vh;
+      padding: 40px 0;
+    }
+  }
 }
 
 @mixin a-style {
@@ -80,7 +87,6 @@ button {
     transform: rotate(-9deg)
   }
 }
-
 
 /*
  |--------------------------------------------------------------------------

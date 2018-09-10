@@ -1,78 +1,72 @@
 /*
- |--------------------------------------------------------------------------
- | Color
- |--------------------------------------------------------------------------
- */
-/*
- |--------------------------------------------------------------------------
- | Global
- |--------------------------------------------------------------------------
- */
-@import url(~antd/dist/antd.min.css);
-* {
-  font-size: 14px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  color: #999;
-  font-family: SIYUAN; }
+Error: Invalid US-ASCII character "\xE9"
+        on line 78 of ../../global.scss
+        from line 1 of index.scss
 
-body {
-  height: 100%;
-  width: 100%; }
-  body #wrap > .content {
-    height: 80vh;
-    padding: 40px 0; }
+73:       padding: 40px 0;
+74:     }
+75:   }
+76: 
+77:   /**
+78:    *  鏈接
+79:    *\/
+80:   a {
+81:     &:link, &:visited, &:active {
+82:       @include a-style;
+83:     }
 
-a:link, a:visited, a:active {
-  color: #999;
-  text-decoration: none; }
-a:hover {
-  color: #999;
-  text-decoration: none;
-  color: #000; }
-
-/*
- |--------------------------------------------------------------------------
- | Button
- |--------------------------------------------------------------------------
- */
-button {
-  border-style: none;
-  background: #fff;
-  outline: none;
-  cursor: pointer; }
-
-/*
- |--------------------------------------------------------------------------
- | Animation
- |--------------------------------------------------------------------------
- */
-@keyframes my-face {
-  0% {
-    transform: rotate(0deg); }
-  30% {
-    transform: rotate(9deg); }
-  60% {
-    transform: rotate(0deg); }
-  90% {
-    transform: rotate(-9deg); } }
-/*
- |--------------------------------------------------------------------------
- | Font
- |--------------------------------------------------------------------------
- */
-@font-face {
-  font-family: SIYUAN;
-  src: url("/font/SourceHanSerifCN-Heavy.otf") format("opentype"); }
-.foot {
-  text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.05); }
-  .foot p {
-    margin: 5px; }
-  .foot .am-my-face {
-    animation: my-face .3s infinite ease-in-out;
-    display: inline-block;
-    margin: 0 5px; }
-
-/*# sourceMappingURL=index.css.map */
+Backtrace:
+../../global.scss:78
+index.scss:1
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1325:in `rescue in block in find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1322:in `block in find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each_with_index'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:930:in `check_sass_encoding'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:439:in `check_encoding!'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:395:in `_to_tree'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:315:in `to_tree'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:327:in `block in visit_import'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:88:in `block in with_import'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:88:in `with_import'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin.rb:82:in `update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:52:in `parse'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:19:in `parse!'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:23:in `load'
+/usr/local/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xE9\"\A         on line 78 of ../../global.scss\A         from line 1 of index.scss\A \A 73:       padding: 40px 0;\A 74:     }\A 75:   }\A 76: \A 77:   /**\A 78:    *  鏈接\A 79:    */\A 80:   a {\A 81:     &:link, &:visited, &:active {\A 82:       @include a-style;\A 83:     }"; }

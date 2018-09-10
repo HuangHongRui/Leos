@@ -1,0 +1,21 @@
+.author-info {
+  min-width: 220px;
+  width: 15vw;
+  padding: 10px;
+
+  .about-me {
+    border-bottom: 1px solid $Theme-border-color;
+    padding: 10px;
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .author-info {
+    display: none;
+  }
+}

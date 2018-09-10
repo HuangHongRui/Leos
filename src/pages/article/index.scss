@@ -2,13 +2,6 @@
  *  日期：2018/9/5
  */
 
-$Theme-border-color: rgba(0, 0, 0, 0.05);
-$Theme-select-color: rgba(255, 201, 139, 0.8);
-@mixin a-style {
-  color: $Theme-select-color;
-  text-decoration: none;
-}
-
 .article-content {
   display: flex;
   flex-direction: row;
@@ -16,7 +9,9 @@ $Theme-select-color: rgba(255, 201, 139, 0.8);
 }
 
 .article-list {
+  position: relative;
   max-width: 50vw;
+  padding: 10px;
 
   .article-item {
     border-bottom: solid 1px $Theme-border-color;
@@ -25,26 +20,10 @@ $Theme-select-color: rgba(255, 201, 139, 0.8);
     .hover-select {
       color: $Theme-select-color;
     }
-    h1 {
-      font-size: 26px;
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-    h3 {
-      font-size: 15px;
-      line-height: 1.3;
-      margin: 0;
-      font-weight: 300;
-      margin-bottom: 10px;
-    }
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  .author-info {
-    display: none;
-  }
-
   .article-list {
     max-width: 80%;
   }

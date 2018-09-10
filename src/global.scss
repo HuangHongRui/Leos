@@ -9,7 +9,17 @@ $Theme-font-color: #999;
 $Theme-font-default-color: #000;
 $Theme-assist-color: #ffd600;
 $Theme-border-color: rgba(0, 0, 0, 0.05);
-$Theme-select-color: rgba(255, 201, 139, 0.8);
+$Theme-select-color: rgba(91, 180, 255, 0.8);
+
+/*
+ |--------------------------------------------------------------------------
+ | Variable
+ |--------------------------------------------------------------------------
+ */
+@mixin a-style {
+  color: $Theme-font-color;
+  text-decoration: none;
+}
 
 /*
  |--------------------------------------------------------------------------
@@ -27,30 +37,65 @@ $Theme-select-color: rgba(255, 201, 139, 0.8);
   font-family: SIYUAN;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: $Theme-font-color;
+}
+
+h6 {
+  font-size: 1.2rem;
+}
+
 body {
   height: 100%;
   width: 100%;
   #wrap {
     > .content {
-      height: 80vh;
+      height: 650px;
       padding: 40px 0;
     }
   }
-}
 
-@mixin a-style {
-  color: $Theme-font-color;
-  text-decoration: none;
-}
-
-a {
-  &:link, &:visited, &:active {
-    @include a-style;
+  /**
+   *  鏈接
+   */
+  a {
+    &:link, &:visited, &:active {
+      @include a-style;
+    }
+    &:hover {
+      @include a-style;
+      color: #000;
+      //border-bottom: 2px solid #ffaee2;
+    }
   }
-  &:hover {
-    @include a-style;
-    color: #000;
-    //border-bottom: 2px solid #ffaee2;
+
+  /**
+   *  消失
+   */
+  .v-vanish {
+    visibility: hidden;
+  }
+  .d-vanish {
+    display: none;
   }
 }
 

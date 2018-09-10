@@ -1,6 +1,8 @@
 import React from 'react';
 import './index.scss';
 import { Link } from 'react-router-dom';
+import Pagination from '../../component/Pagination';
+import Author from '../../component/Author';
 
 // tslint:disable-next-line
 class Article extends React.Component<any, any> {
@@ -68,20 +70,20 @@ class Article extends React.Component<any, any> {
             this.mokeData && this.mokeData.map((data, i) => (
               <div key={i} className="article-item">
                 <Link to={data.address}>
-                  <h1
+                  <h4
                     onMouseEnter={() => this.onHoverTitle(i)}
                     onMouseLeave={this.onHoverTitle}
                     className={hoverTitleColor === i || hoverArticleColor === i ? 'hover-select' : ''}
                   >
                     {data.caption}
-                  </h1>
-                  <h3
+                  </h4>
+                  <h6
                     onMouseEnter={() => this.onHoverTitle(i)}
                     onMouseLeave={this.onHoverTitle}
                     className={hoverTitleColor === i || hoverArticleColor === i ? 'hover-select' : ''}
                   >
                     {data.title}
-                  </h3>
+                  </h6>
                   <p
                     onMouseEnter={() => this.onHoverArticle(i)}
                     onMouseLeave={this.onHoverArticle}
@@ -94,11 +96,12 @@ class Article extends React.Component<any, any> {
               </div>
             ))
           }
-
+          <Pagination/>
         </div>
-        <div className="author-info">
-          INFO
-        </div>
+        {/*<div className="author-info">*/}
+          {/*<h2>关于我 | ABOUT ME</h2>*/}
+        {/*</div>*/}
+        <Author/>
       </div>
     );
   }

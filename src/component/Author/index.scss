@@ -1,15 +1,72 @@
+@mixin i-style {
+  display: block;
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}
+
 .author-info {
   min-width: 220px;
   width: 15vw;
   padding: 10px;
 
-  .about-me {
+  > div {
+    padding: 10px 10px 0;
+  }
+
+  .author-about-me {
     border-bottom: 1px solid $Theme-border-color;
-    padding: 10px;
     img {
       width: 100%;
       border-radius: 8px;
       margin: 20px 0;
+    }
+    .author-icons {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        background: #ccc;
+        border-radius: 100%;
+        cursor: pointer;
+        &:hover {
+          background: #666;
+          transition: .5s;
+        }
+
+        &.author-git::before {
+          @include i-style;
+          background-image: url('/picture/icon/github.png');
+        }
+        &.author-zhihu::before {
+          @include i-style;
+          background-image: url('/picture/icon/zhihu.png');
+        }
+        &.author-weibo::before {
+          @include i-style;
+          background-image: url('/picture/icon/weibo.png');
+        }
+        &.author-twitter::before {
+          @include i-style;
+          background-image: url('/picture/icon/twitter.png');
+        }
+      }
+    }
+  }
+
+  .author-friends {
+    h5 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    span {
+      padding-right: 5px;
     }
   }
 }

@@ -10,16 +10,24 @@ class Author extends React.Component<PropsType, StateType> {
   render() {
     return (
       <div className="author-info">
-        <div className="about-me">
+        <div className="author-about-me">
           <h5>ABOUT ME</h5>
           <img src="/picture/Avatar.jpg" alt="HEADER"/>
           <span className="author-mood">
             EveryThing Will Be Fine.
           </span>
-          {/*<div>*/}
-            {/*<a href=""> GitHub </a>*/}
-            {/*<a href=""> Twitter </a>*/}
-          {/*</div>*/}
+          <div className="author-icons">
+            <i className="author-git"/>
+            <i className="author-zhihu"/>
+            <i className="author-weibo"/>
+            <i className="author-twitter"/>
+          </div>
+        </div>
+        <div className="author-friends">
+          <h5>FRIENDS</h5>
+          <span>Leo</span>
+          <span>Jie</span>
+          <span>夏夜</span>
         </div>
       </div>
     );

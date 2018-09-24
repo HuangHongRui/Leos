@@ -6,7 +6,20 @@
 
 $Theme-bg-color: #fff;
 $Theme-font-color: #999;
+$Theme-font-default-color: #000;
+$Theme-assist-color: #ffd600;
 $Theme-border-color: rgba(0, 0, 0, 0.05);
+$Theme-select-color: rgba(91, 180, 255, 0.8);
+
+/*
+ |--------------------------------------------------------------------------
+ | Variable
+ |--------------------------------------------------------------------------
+ */
+@mixin a-style {
+  color: $Theme-font-color;
+  text-decoration: none;
+}
 
 /*
  |--------------------------------------------------------------------------
@@ -21,26 +34,68 @@ $Theme-border-color: rgba(0, 0, 0, 0.05);
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: $Theme-font-color;
+  font-family: SIYUAN;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: $Theme-font-color;
+}
+
+h6 {
+  font-size: 1.2rem;
 }
 
 body {
   height: 100%;
   width: 100%;
-}
-
-@mixin a-style {
-  color: $Theme-font-color;
-  text-decoration: none;
-}
-
-a {
-  &:link, &:visited, &:active {
-    @include a-style;
+  #wrap {
+    > .content {
+      height: 650px;
+      padding: 40px 0;
+    }
   }
-  &:hover {
-    @include a-style;
-    color: #000;
-    border-bottom: 2px solid #ffaee2;
+
+  /**
+   *  鏈接
+   */
+  a {
+    &:link, &:visited, &:active {
+      @include a-style;
+    }
+    &:hover {
+      @include a-style;
+      color: #000;
+      //border-bottom: 2px solid #ffaee2;
+    }
+  }
+
+  /**
+   *  消失
+   */
+  .v-vanish {
+    visibility: hidden;
+  }
+  .d-vanish {
+    display: none;
   }
 }
 
@@ -76,4 +131,16 @@ button {
   90% {
     transform: rotate(-9deg)
   }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Font
+ |--------------------------------------------------------------------------
+ */
+
+@font-face {
+  font-family: SIYUAN;
+  src: url("/font/SourceHanSerifCN-Heavy.otf") format("opentype");
+  //src: url("/font/SourceHanSansCN-Medium.otf") format("opentype");
 }

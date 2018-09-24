@@ -38,6 +38,14 @@ class MenuComponent extends React.PureComponent {
     });
   }
 
+  isSelect(path: string) {
+    let result;
+    if (this.state.tag === path) {
+      result = 'select';
+    }
+    return result;
+  }
+
   render() {
     return (
       <div className="menu">
@@ -48,19 +56,10 @@ class MenuComponent extends React.PureComponent {
 
         <div className="menu_btn">
           <span>
-            <Link to="/">Home</Link>
+            <Link to="/" className={this.isSelect('home')}>Home</Link>
           </span>
           <span>
-            <Link to="todo">Todo</Link>
-          </span>
-          <span>
-            <Link to="article">Article</Link>
-          </span>
-          <span>
-            <Link to="music">Music</Link>
-          </span>
-          <span>
-            <Link to="laboratory">Laboratory</Link>
+            <Link to="article" className={this.isSelect('article')}>Article</Link>
           </span>
         </div>
 

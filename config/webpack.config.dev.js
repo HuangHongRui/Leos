@@ -16,7 +16,7 @@ const tsImportPluginFactory = require("ts-import-plugin");
 const publicPath = "/";
 const publicUrl = "";
 const env = getClientEnvironment(publicUrl);
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: "cheap-module-source-map",
@@ -52,7 +52,7 @@ module.exports = {
     ],
     alias: {
       "react-native": "react-native-web",
-      'component' : 'src/component'
+      "component": "src/component"
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
@@ -158,54 +158,58 @@ module.exports = {
               name: "static/media/[name].[hash:8].[ext]",
             },
           },
-          {
-            // local
-            test: /\.less$/,
-            exclude: /antd|node_modules/,
-            use: [
-              require.resolve("style-loader"),
-              {
-                loader: require.resolve("css-loader"),
-                options: {
-                  // local
-                  importLoaders: 1,
-                  modules: true,
-                  localIdentName: "[name]__[local]__[hash:5]",
-                },
-              },
-              {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  ident: "postcss",
-                  plugins: () => [
-                    require("postcss-flexbugs-fixes"),
-                    autoprefixer({
-                      browsers: [
-                        ">1%",
-                        "last 4 versions",
-                        "Firefox ESR",
-                        "not ie < 9", // React doesn't support IE8 anyway
-                      ],
-                      flexbox: "no-2009",
-                    }),
-                  ],
-                },
-              },
-              {
-                loader: require.resolve("less-loader"),
-              },
-            ],
-          },
+          // {
+          //   // local
+          //   test: /\.less$/,
+          //   exclude: /antd|node_modules/,
+          //   use: [
+          //     require.resolve("style-loader"),
+          //     {
+          //       loader: require.resolve("css-loader"),
+          //       options: {
+          //         // local
+          //         importLoaders: 1,
+          //         modules: true,
+          //         localIdentName: "[name]__[local]__[hash:5]",
+          //       },
+          //     },
+          //     {
+          //       loader: require.resolve("postcss-loader"),
+          //       options: {
+          //         ident: "postcss",
+          //         plugins: () => [
+          //           require("postcss-flexbugs-fixes"),
+          //           autoprefixer({
+          //             browsers: [
+          //               ">1%",
+          //               "last 4 versions",
+          //               "Firefox ESR",
+          //               "not ie < 9", // React doesn't support IE8 anyway
+          //             ],
+          //             flexbox: "no-2009",
+          //           }),
+          //         ],
+          //       },
+          //     },
+          //     {
+          //       loader: require.resolve("less-loader"),
+          //     },
+          //   ],
+          // },
           {
 
             test: /\.scss$/,
-            use: [{
-              loader: "style-loader" // 将 JS 字符串生成为 style 节点
-            }, {
-              loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
-            }, {
-              loader: "sass-loader" // 将 Sass 编译成 CSS
-            }]
+            use: [
+              "style-loader",
+              "css-loader",
+              "sass-loader",
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: './src/global.scss'
+                }
+              }
+            ]
           },
           {
             test: /\.tsx?$/,

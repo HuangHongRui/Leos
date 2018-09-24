@@ -5,6 +5,7 @@
  */
 
 $Theme-bg-color: #fff;
+$Theme-bg-span-color: #ccc;
 $Theme-font-color: #999;
 $Theme-font-default-color: #000;
 $Theme-assist-color: #ffd600;
@@ -69,7 +70,7 @@ body {
   width: 100%;
   #wrap {
     > .content {
-      height: 650px;
+      min-height: 650px;
       padding: 40px 0;
     }
   }

@@ -12,27 +12,34 @@
   padding: 10px;
 
   > div {
-    padding: 10px 10px 0;
+    h5 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    padding: 10px;
+    border-bottom: 1px solid $Theme-border-color;
   }
 
   .author-about-me {
-    border-bottom: 1px solid $Theme-border-color;
     img {
       width: 100%;
       border-radius: 8px;
-      margin: 20px 0;
+      margin: 10px 0;
+    }
+    .author-mood {
+      line-height: 2rem;
     }
     .author-icons {
       display: flex;
       justify-content: space-between;
-      margin: 20px 0;
+      margin: 20px 0 10px;
       i {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 32px;
         height: 32px;
-        background: #ccc;
+        background: $Theme-bg-span-color;
         border-radius: 100%;
         cursor: pointer;
         &:hover {
@@ -60,13 +67,21 @@
     }
   }
 
-  .author-friends {
-    h5 {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
+  .author-tags {
     span {
-      padding-right: 5px;
+      display: inline-block;
+      border-radius: 25%;
+      background: $Theme-bg-span-color;
+      padding: 5px;
+      margin: 10px 5px 10px 0;
+      color: #fff;
+    }
+  }
+
+  .author-friends {
+    span {
+      margin: 5px 10px 5px 0;
+      display: inline-block;
     }
   }
 }

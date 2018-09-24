@@ -17,17 +17,22 @@ class Author extends React.Component<PropsType, StateType> {
             EveryThing Will Be Fine.
           </span>
           <div className="author-icons">
-            <i className="author-git"/>
-            <i className="author-zhihu"/>
-            <i className="author-weibo"/>
-            <i className="author-twitter"/>
+            <a href="https://github.com/HuangHongRui"><i className="author-git"/></a>
+            <a href="https://www.zhihu.com/people/HuangHongRui"><i className="author-zhihu"/></a>
+            <a href="https://weibo.com/huanghongrui"><i className="author-weibo"/></a>
+            <a href="https://twitter.com/HongRui_Huang"><i className="author-twitter"/></a>
           </div>
+        </div>
+        <div className="author-tags">
+          <h5>TAGS</h5>
+          <span>腾讯CDC</span>
+          <span>前端开发</span>
         </div>
         <div className="author-friends">
           <h5>FRIENDS</h5>
-          <span>Leo</span>
-          <span>Jie</span>
-          <span>夏夜</span>
+          <span><a href="https://spontaleo.github.io/">SpontaLeo</a></span>
+          <span><a href="https://overtrue.me/">Overtrue</a></span>
+          <span><a href="https://github.com/incuisting/blogs/issues">Incuisting</a></span>
         </div>
       </div>
     );

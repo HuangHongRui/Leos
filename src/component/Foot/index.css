@@ -1,22 +1,22 @@
 /*
 Error: Invalid US-ASCII character "\xE9"
-        on line 79 of ../../global.scss
+        on line 65 of ../../global.scss
         from line 1 of index.scss
 
-74:       padding: 40px 0;
-75:     }
-76:   }
-77: 
-78:   /**
-79:    *  鏈接
-80:    *\/
-81:   a {
-82:     &:link, &:visited, &:active {
-83:       @include a-style;
-84:     }
+60:       padding: 40px 0;
+61:     }
+62:   }
+63: 
+64:   /**
+65:    *  鏈接
+66:    *\/
+67:   a {
+68:     &:link, &:visited, &:active {
+69:       @include a-style;
+70:     }
 
 Backtrace:
-../../global.scss:79
+../../global.scss:65
 index.scss:1
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1325:in `rescue in block in find_encoding_error'
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1322:in `block in find_encoding_error'
@@ -69,4 +69,4 @@ index.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid US-ASCII character \"\xE9\"\A         on line 79 of ../../global.scss\A         from line 1 of index.scss\A \A 74:       padding: 40px 0;\A 75:     }\A 76:   }\A 77: \A 78:   /**\A 79:    *  鏈接\A 80:    */\A 81:   a {\A 82:     &:link, &:visited, &:active {\A 83:       @include a-style;\A 84:     }"; }
+  content: "Error: Invalid US-ASCII character \"\xE9\"\A         on line 65 of ../../global.scss\A         from line 1 of index.scss\A \A 60:       padding: 40px 0;\A 61:     }\A 62:   }\A 63: \A 64:   /**\A 65:    *  鏈接\A 66:    */\A 67:   a {\A 68:     &:link, &:visited, &:active {\A 69:       @include a-style;\A 70:     }"; }

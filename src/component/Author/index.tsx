@@ -1,5 +1,5 @@
-import React from 'react';
-import './index.scss';
+import React from "react";
+import "./index.scss";
 
 class Author extends React.Component<PropsType, StateType> {
   constructor(props: PropsType) {

@@ -5,13 +5,15 @@ const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
+console.log("☞☞☞ 9527 webpack.config.dev 8", paths.appPublic);
+
 module.exports = {
   entry: path.resolve(paths.appSrc, "index.tsx"),
   output: {
-    publicPath: "/",
-    path: paths.appPublic,
+    path: paths.appDist,
     filename: "[name].bundle.js",
     chunkFilename: "[name].chunk.js",
+    publicPath: "/"
   },
   resolve: {
     modules: ["node_modules"],
@@ -21,7 +23,7 @@ module.exports = {
       "utils": path.resolve(paths.appSrc, "utils"),
       "component": path.resolve(paths.appSrc, "component"),
       "page": path.resolve(paths.appSrc, "page"),
-      "@public": paths.appPublic,
+      "public": paths.appPublic,
     },
   },
   module: {
@@ -35,6 +37,7 @@ module.exports = {
             // PostCSS 根据你在package.json中设置的browser版本为css属性添加prefix
             loader: "postcss-loader",
             options: {
+              sourceMap: true,
               ident: "postcss",
               plugins: () => [
                 require("postcss-flexbugs-fixes"),
@@ -46,9 +49,7 @@ module.exports = {
           },
           {
             loader: "sass-loader",
-            options: {
-              sourceMap: true
-            }
+            options: {sourceMap: true}
           },
           {
             // 只导入全局变量, 而非全局样式(坑)
@@ -63,7 +64,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(eot|ttf|woff|woff2|png|jpg|jpeg|gif)$/,
+        test: /\.(ico|eot|ttf|woff|woff2|png|jpg|jpeg|gif)$/,
         use: [{
           loader: "file-loader",
           options: {
@@ -82,7 +83,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({template: path.resolve(paths.appPublic, "index.html")}),
+    new HtmlWebpackPlugin({
+      template: path.resolve(paths.appPublic, "index.html"),
+      favicon: path.resolve(paths.appPublic, "favicon.ico"),
+    }),
     new CleanWebpackPlugin(["dist/*.js"], {
       exclude: ["index.html"]
     }),

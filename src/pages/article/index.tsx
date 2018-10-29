@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './index.scss';
 import { Link } from 'react-router-dom';
 import Pagination from '../../component/Pagination';

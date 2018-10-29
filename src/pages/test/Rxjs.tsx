@@ -1,5 +1,5 @@
 // tslint:disable
-import React from 'react';
+import * as React from 'react';
 import { Layout, Button } from 'antd';
 
 var Rx = require('rxjs/Rx');

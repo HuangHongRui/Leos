@@ -5,13 +5,11 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import history from './utils/history';
 import store from './redux/store';
-// import 'src/style/global.scss';
-//
 import Menu from './component/Menu';
 import Foot from './component/Foot';
 import Home from './pages/home/Home';
 import Article from './pages/article';
-import './style/global.scss';
+import 'src/style/global.scss';
 
 // import Info from './pages/info/Info';
 // import Test from './pages/test/Redux';

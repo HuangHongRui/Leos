@@ -5,8 +5,6 @@ const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-console.log("☞☞☞ 9527 webpack.config.dev 8", paths.appPublic);
-
 module.exports = {
   entry: path.resolve(paths.appSrc, "index.tsx"),
   output: {
@@ -37,7 +35,6 @@ module.exports = {
             // PostCSS 根据你在package.json中设置的browser版本为css属性添加prefix
             loader: "postcss-loader",
             options: {
-              sourceMap: true,
               ident: "postcss",
               plugins: () => [
                 require("postcss-flexbugs-fixes"),

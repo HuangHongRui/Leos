@@ -13,7 +13,9 @@
   }
 
   & .menu_logo {
-    //float: left;
+    img {
+      vertical-align: middle;
+    }
   }
 
   & .menu_btn {

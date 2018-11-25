@@ -21,6 +21,19 @@ export async function fetchOnline() {
 }
 
 /**
+ * 運行時長
+ * @param None
+ * @return Promise response
+ */
+export async function fetchRunTime() {
+  const result = await axios({
+    method: 'GET',
+    url: API.RUNTIME
+  });
+  return result;
+}
+
+/**
  * 注册账号
  * @param userInfo email string
  * @param userInfo password string

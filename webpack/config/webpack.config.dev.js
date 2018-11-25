@@ -20,7 +20,7 @@ module.exports = {
       "src": paths.appSrc,
       "utils": path.resolve(paths.appSrc, "utils"),
       "component": path.resolve(paths.appSrc, "component"),
-      "page": path.resolve(paths.appSrc, "page"),
+      "pages": path.resolve(paths.appSrc, "pages"),
       "public": paths.appPublic,
     },
   },

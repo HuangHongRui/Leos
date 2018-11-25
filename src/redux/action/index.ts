@@ -1,16 +1,19 @@
-import * as ActionTypes from '../actionType';
-import * as API from '../../request/api';
+import * as ActionTypes from "../actionType";
+import * as API from "src/request/api";
+import * as Req from 'src/request';
+import set = Reflect.set;
 
 /**
  * 在线人数
  * @param None
  */
 export function fetchOnline() {
-  return {
-    type: ActionTypes.API_ONLINE,
-    payload: API.ONLINE
+  return function (dispatch) {
+    Req.fetchOnline()
+      .then(e => dispatch(setOnline(e.data)));
   };
-}
+};
+
 
 /**
  * 设置在线人数
@@ -28,10 +31,10 @@ export function setOnline(param: {}) {
  * @param None
  */
 export function fetchRunTime() {
-  return {
-    type: ActionTypes.API_RUNTIME,
-    payload: API.RUNTIME
-  };
+  return function (dispatch) {
+    Req.fetchRunTime()
+      .then(e => dispatch(setRunTime(e.data)));
+  }
 }
 
 /**
@@ -63,8 +66,6 @@ export function fetchSign(param: {}) {
  * @param email: string
  */
 export function fetchCaptcha(param: string) {
-  // tslint:disable-next-line
-  console.log('☞☞☞ 9527 index 44', 111);
   return {
     type: ActionTypes.API_CAPTCHA,
     payload: {
@@ -82,20 +83,5 @@ export function setCaptchaCountdown(param: number) {
   return {
     type: ActionTypes.SET_CPATCHA_COUNTDOWN,
     payload: param
-  };
-}
-
-/**
- * TEST_example
- */
-export function test() {
-  return {
-    type: ActionTypes.TEST
-  };
-}
-
-export function test1() {
-  return {
-    type: ActionTypes.TESTONE
   };
 }

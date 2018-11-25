@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-// import { fetchOnline, fetchRunTime, setRunTime } from '../../redux/action';
-import { fetchOnline, fetchRunTime, setRunTime } from '../../redux/action';
+import { fetchOnline, fetchRunTime, setRunTime } from 'src/redux/action';
 import './index.scss';
 import * as moment from 'moment';
 

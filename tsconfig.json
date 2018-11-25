@@ -6,16 +6,26 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
+    "moduleResolution": "node",
     // 省略 * as name from 'module'
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "src": ["src"],
+      "utils": ["src/utils"],
+      "component": ["src/component"],
+      "pages": ["src/pages"],
+      "public": ["public"]
+    }
   },
   "include": [
     "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
   ]
+//  "exclude": [
+//    "node_modules"
+//  ]
 }
+
 //{
 //  "include": [
 //    "src/*",

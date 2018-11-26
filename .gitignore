@@ -3,6 +3,7 @@
 
 ### Sass ###
 *.css.map
+*.css
 
 # dependencies
 /node_modules

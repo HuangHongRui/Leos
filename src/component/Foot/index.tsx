@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 // import { fetchOnline, fetchRunTime, setRunTime } from '../../redux/action';
 import { fetchOnline, fetchRunTime, setRunTime } from '../../redux/action';
 import './index.scss';
-import moment from 'moment';
+import * as moment from 'moment';
 
 // tslint:disable-next-line
-class FootComponent extends Component <PropsTypes, any > {
+class FootComponent extends React.Component <PropsTypes, any > {
 
   static getDerivedStateFromProps(nextProps: PropsTypes, prevState: PropsTypes): void | {} {
     if (nextProps !== prevState) {

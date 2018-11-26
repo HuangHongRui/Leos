@@ -1,8 +1,8 @@
-import React from 'react';
-import './index.scss';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from '../../component/Pagination';
 import Author from '../../component/Author';
+import './index.scss';
 
 // tslint:disable-next-line
 class Article extends React.Component<any, any> {

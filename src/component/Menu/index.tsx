@@ -5,7 +5,7 @@
  *  文件：index
  *  參數：
  */
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 //   }
 // `;
 
-class MenuComponent extends React.PureComponent {
+class MenuComponent extends React.Component {
   state = {
     tag: 'home'
   };

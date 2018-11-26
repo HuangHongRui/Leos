@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import styled from 'styled-components';
 
+// @ts-ignore
 const Wrap = styled(Form)`
   width: 50vw;
 `;

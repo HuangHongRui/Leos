@@ -26,10 +26,7 @@ yarn-error.log*
 .idea
 .package-lock.json
 *.iml
-*.css
-*.css.map
 out
 gen
-build
 将删除 package-lock.json
 将删除 src/component/

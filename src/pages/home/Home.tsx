@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './Home.scss';
 import BirdSvg from '../../component/Svg/Bird_Svg';
 

@@ -1,37 +1,36 @@
 /*
-Error: Invalid US-ASCII character "\xE9"
-        on line 79 of ../../global.scss
-        from line 1 of index.scss
+Error: Undefined variable: "$Theme-border-color".
+        on line 3 of index.scss
 
-74:       padding: 40px 0;
-75:     }
-76:   }
-77: 
-78:   /**
-79:    *  鏈接
-80:    *\/
-81:   a {
-82:     &:link, &:visited, &:active {
-83:       @include a-style;
-84:     }
+1: .foot {
+2:   text-align: center;
+3:   border-top: 1px solid $Theme-border-color;
+4:   p {
+5:     margin: 5px;
+6:   }
+7:   .am-my-face {
+8:     animation: my-face .3s infinite ease-in-out;
 
 Backtrace:
-../../global.scss:79
-index.scss:1
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1325:in `rescue in block in find_encoding_error'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1322:in `block in find_encoding_error'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each_with_index'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `find_encoding_error'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:930:in `check_sass_encoding'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:439:in `check_encoding!'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:395:in `_to_tree'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:315:in `to_tree'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:327:in `block in visit_import'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:88:in `block in with_import'
+index.scss:3
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/variable.rb:49:in `_perform'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `map'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `_perform'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:88:in `with_import'
-/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block (2 levels) in visit_rule'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `map'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block in visit_rule'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:432:in `visit_rule'
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 /usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
@@ -69,4 +68,4 @@ index.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid US-ASCII character \"\xE9\"\A         on line 79 of ../../global.scss\A         from line 1 of index.scss\A \A 74:       padding: 40px 0;\A 75:     }\A 76:   }\A 77: \A 78:   /**\A 79:    *  鏈接\A 80:    */\A 81:   a {\A 82:     &:link, &:visited, &:active {\A 83:       @include a-style;\A 84:     }"; }
+  content: "Error: Undefined variable: \"$Theme-border-color\".\A         on line 3 of index.scss\A \A 1: .foot {\A 2:   text-align: center;\A 3:   border-top: 1px solid $Theme-border-color;\A 4:   p {\A 5:     margin: 5px;\A 6:   }\A 7:   .am-my-face {\A 8:     animation: my-face .3s infinite ease-in-out;"; }

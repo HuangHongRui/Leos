@@ -1,5 +1,5 @@
 var Rx = require('rxjs/Rx');
-import React from 'react';
+import * as React from 'react';
 import { Form, Input, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';

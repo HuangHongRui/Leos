@@ -1,5 +1,3 @@
-@import "../../global";
-
 .menu {
   display: flex;
   justify-content: space-between;
@@ -15,7 +13,9 @@
   }
 
   & .menu_logo {
-    //float: left;
+    img {
+      vertical-align: middle;
+    }
   }
 
   & .menu_btn {

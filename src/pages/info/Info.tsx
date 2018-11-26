@@ -11,7 +11,6 @@ class Info extends React.PureComponent<InfoTypes> {
         Info Works!<br/>
         <button onClick={() => {
           // tslint:disable-next-line
-          console.log('☞☞☞ 9527 Info 14', this.props);
         }}>
           haha
           {/*<Link to="home"> onClick </Link>*/}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import WrappedNormalLoginForm from '../../component/Login';
+import WrappedNormalLoginForm from 'src/component/Login';
 
 const Wrap = styled.div`
   height: 100vh;

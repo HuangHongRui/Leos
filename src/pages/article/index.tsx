@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Pagination from '../../component/Pagination';
-import Author from '../../component/Author';
+import Pagination from 'src/component/Pagination';
+import Author from 'src/component/Author';
 import './index.scss';
 
 // tslint:disable-next-line

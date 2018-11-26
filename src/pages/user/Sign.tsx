@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Form, Input, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { fetchSign, fetchCaptcha, setCaptchaCountdown } from '../../redux/action';
+import { fetchSign, fetchCaptcha, setCaptchaCountdown } from 'src/redux/action';
 import { connect } from 'react-redux';
-import judge from '../../utils/judgement';
+import judge from 'src/utils/judgement';
 
 const Wrap = styled.div`
   display: flex;

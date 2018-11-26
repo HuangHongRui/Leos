@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import Styled from 'styled-components';
 import Login from './Login';
 import Sign from './Sign';
-import Menu from '../../component/Menu';
-import FootComponent from '../../component/Foot';
+import Menu from 'src/component/Menu';
+import FootComponent from 'src/component/Foot';
 
 const Wrap = Styled.div`
   display: grid;

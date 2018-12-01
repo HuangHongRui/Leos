@@ -9,6 +9,7 @@ import Menu from './component/Menu';
 import Foot from './component/Foot';
 import Home from './pages/home/Home';
 import Article from './pages/article';
+import Login from './pages/login';
 import 'src/style/global.scss';
 
 render(
@@ -19,6 +20,7 @@ render(
           <Route exact={true} path="/" component={Home}/>
           <Route path="/article" component={Article}/>
           <Route path="/home" component={Home}/>
+          <Route path="/login" component={Login}/>
           <Foot/>
         </div>
       </ConnectedRouter>

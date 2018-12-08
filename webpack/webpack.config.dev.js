@@ -21,7 +21,7 @@ module.exports = {
       "utils": path.resolve(paths.appSrc, "utils"),
       "component": path.resolve(paths.appSrc, "component"),
       "pages": path.resolve(paths.appSrc, "pages"),
-      "public": paths.appPublic,
+      "@public": paths.appPublic,
     },
   },
   module: {
@@ -83,9 +83,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(paths.appPublic, "index.html"),
       favicon: path.resolve(paths.appPublic, "favicon.ico"),
-    }),
-    new CleanWebpackPlugin(["dist/*.js"], {
-      exclude: ["index.html"]
     }),
     //  热加载
     new webpack.HotModuleReplacementPlugin(),

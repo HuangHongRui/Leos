@@ -7,8 +7,9 @@
  */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import './index.scss';
 import { Link } from 'react-router-dom';
+import {Logo} from 'src/style/pic';
+import './index.scss';
 
 class MenuComponent extends React.Component {
   state = {
@@ -40,7 +41,7 @@ class MenuComponent extends React.Component {
       <div className="menu">
 
         <div className="menu_logo">
-          <img src="picture/logo.png" alt="logo"/>
+          <img src={Logo} alt="logo"/>
         </div>
 
         <div className="menu_btn">

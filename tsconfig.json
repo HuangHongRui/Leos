@@ -11,11 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "src": ["src"],
-      "utils": ["src/utils"],
-      "component": ["src/component"],
-      "pages": ["src/pages"],
-      "public": ["public"]
+      "src": ["src"]
     }
   },
   "include": [

@@ -59,7 +59,7 @@ module.exports = {
       "utils": path.resolve(paths.appSrc, "utils"),
       "component": path.resolve(paths.appSrc, "component"),
       "pages": path.resolve(paths.appSrc, "pages"),
-      "public": paths.appPublic,
+      "@public": paths.appPublic,
     },
   },
   module: {
@@ -67,7 +67,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          {loader: "style-loader"},
+          MiniCssExtractPlugin.loader,
           {loader: "css-loader", options: {importLoaders: 3, minimize: true}},
           {
             // PostCSS 根据你在package.json中设置的browser版本为css属性添加prefix
@@ -131,8 +131,6 @@ module.exports = {
       template: path.resolve(paths.appPublic, "index.html"),
       favicon: path.resolve(paths.appPublic, "favicon.ico"),
     }),
-    new CleanWebpackPlugin(["dist/*.js"], {
-      exclude: ["index.html"]
-    }),
+    new CleanWebpackPlugin(['*'],{root: paths.appBuild}),
   ]
 };

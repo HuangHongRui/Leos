@@ -1,7 +1,6 @@
 import * as ActionTypes from "../actionType";
 import * as API from "src/request/api";
 import * as Req from 'src/request';
-import set = Reflect.set;
 
 /**
  * 在线人数

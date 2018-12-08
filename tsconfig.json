@@ -4,7 +4,7 @@
     "sourceMap": false,
     "noImplicitAny": false,
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
     "moduleResolution": "node",
     // 省略 * as name from 'module'
@@ -16,14 +16,16 @@
       "component": ["src/component"],
       "pages": ["src/pages"],
       "public": ["public"]
-    },
-    "compilerOptions": {
-      "strict": true,
-      "noEmit": true
     }
   },
   "include": [
     "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "webpack",
+    "public"
   ]
 //  "exclude": [
 //    "node_modules"

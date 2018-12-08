@@ -10,7 +10,7 @@ const path = require('path');
 
 // 當前路徑
 const appDir = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDir, '../../',relativePath);
+const resolveApp = relativePath => path.resolve(appDir, '../',relativePath);
 
 module.exports = {
   appPath: resolveApp('.'),
@@ -18,6 +18,5 @@ module.exports = {
   appDist: resolveApp('./dist'),
   appPublic: resolveApp('./public'),
   appBuild: resolveApp('./build'),
-  appBuildOnline: resolveApp('./build/v4'),
-  appBuildTest: resolveApp('./build/test'),
+  appTsConfig: resolveApp('./tsconfig.json'),
 }

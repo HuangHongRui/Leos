@@ -1,0 +1,36 @@
+/**
+ *  日期：2018/9/5
+ */
+
+.article-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.article-list {
+  position: relative;
+  max-width: 50vw;
+  padding: 10px 10px 69px;
+
+  .article-item {
+    border-bottom: solid 1px $Theme-border-color;
+    padding: 10px;
+    margin-bottom: 20px;
+    .hover-select {
+      color: $Theme-select-color;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .article-list {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .article-list {
+    max-width: 100%;
+  }
+}

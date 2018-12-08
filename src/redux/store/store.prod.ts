@@ -5,9 +5,8 @@ import rootReducer from '../reducer';
 const configureStore = () => {
   const store = createStore(
     rootReducer,
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware)
   );
-
   return store;
 };
 

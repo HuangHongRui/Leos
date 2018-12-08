@@ -1,0 +1,41 @@
+/*
+Error: Invalid US-ASCII character "\xE6"
+        on line 2 of index.scss
+
+1: /**
+2:  *  日期：2018/9/5
+3:  *\/
+4: 
+5: .article-content {
+6:   display: flex;
+7:   flex-direction: row;
+
+Backtrace:
+index.scss:2
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1325:in `rescue in block in find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1322:in `block in find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `each_with_index'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:1321:in `find_encoding_error'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/util.rb:930:in `check_sass_encoding'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:439:in `check_encoding!'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:395:in `_to_tree'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/plugin.rb:82:in `update_stylesheets'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:52:in `parse'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:19:in `parse!'
+/usr/local/lib/ruby/gems/2.5.0/gems/sass-3.4.25/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:23:in `load'
+/usr/local/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xE6\"\A         on line 2 of index.scss\A \A 1: /**\A 2:  *  日期：2018/9/5\A 3:  */\A 4: \A 5: .article-content {\A 6:   display: flex;\A 7:   flex-direction: row;"; }

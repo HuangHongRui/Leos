@@ -1,30 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {LocaleProvider} from "antd";
-import {Provider} from 'react-redux';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
-import Routes from "./routes";
+import * as React from "react";
+import { render } from "react-dom";
+import { Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import history from './utils/history';
 import store from './redux/store';
-import './global.scss';
+import Menu from './component/Menu';
+import Foot from './component/Foot';
+import Home from './pages/home/Home';
+import Article from './pages/article';
+import SignIn from './pages/signin';
+import SignUp from './pages/signup';
+import 'src/style/global.scss';
 
-ReactDOM.render(
+render(
   <Provider store={store}>
-    <LocaleProvider locale={zhCN}>
-      <Routes/>
-    </LocaleProvider>
-  </Provider>
-  , document.getElementById('root')
+      <ConnectedRouter history={history}>
+        <div id="wrap">
+          <Menu/>
+          <Route exact={true} path="/" component={Home}/>
+          <Route path="/article" component={Article}/>
+          <Route path="/home" component={Home}/>
+          <Route path="/signin" component={SignIn}/>
+          <Route path="/signup" component={SignUp}/>
+          <Foot/>
+        </div>
+      </ConnectedRouter>
+  </Provider>,
+  document.getElementById("root")
 );
-
-// if (module.hot) {
-//   module.hot.accept('./pages/home/Home', () => {
-//     ReactDOM.render(
-//       <Provider store={store}>
-//         <ConnectedRouter history={history}>
-//           <Routes/>
-//         </ConnectedRouter>
-//       </Provider>,
-//       document.getElementById('root'),
-//     );
-//   });
-// }

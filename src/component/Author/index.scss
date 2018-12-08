@@ -1,0 +1,93 @@
+@mixin i-style {
+  display: block;
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}
+
+.author-info {
+  min-width: 220px;
+  width: 15vw;
+  padding: 10px;
+
+  > div {
+    h5 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    padding: 10px;
+    border-bottom: 1px solid $Theme-border-color;
+  }
+
+  .author-about-me {
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .author-mood {
+      line-height: 2rem;
+    }
+    .author-icons {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0 10px;
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        background: $Theme-bg-span-color;
+        border-radius: 100%;
+        cursor: pointer;
+        &:hover {
+          background: #666;
+          transition: .5s;
+        }
+
+        &.author-git::before {
+          @include i-style;
+          background-image: url('/picture/icon/github.png');
+        }
+        &.author-zhihu::before {
+          @include i-style;
+          background-image: url('/picture/icon/zhihu.png');
+        }
+        &.author-weibo::before {
+          @include i-style;
+          background-image: url('/picture/icon/weibo.png');
+        }
+        &.author-twitter::before {
+          @include i-style;
+          background-image: url('/picture/icon/twitter.png');
+        }
+      }
+    }
+  }
+
+  .author-tags {
+    span {
+      display: inline-block;
+      border-radius: 25%;
+      background: $Theme-bg-span-color;
+      padding: 5px;
+      margin: 10px 5px 10px 0;
+      color: #fff;
+    }
+  }
+
+  .author-friends {
+    span {
+      margin: 5px 10px 5px 0;
+      display: inline-block;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .author-info {
+    display: none;
+  }
+}

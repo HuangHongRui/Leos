@@ -1,11 +1,11 @@
-// import thunk from 'redux-thunk';
-import history from '../../utils/history';
-import { routerMiddleware } from 'react-router-redux';
-const RouterMiddleware = routerMiddleware(history);
+import history from "src/utils/history";
+import { routerMiddleware } from "react-router-redux";
+import thunk from 'redux-thunk'
 
-const middlewares = [
-  // thunk,
+const RouterMiddleware = routerMiddleware(history);
+const middlewaresa = [
+  thunk,
   RouterMiddleware,
 ];
 
-export default middlewares;
+export default middlewaresa;

@@ -51,7 +51,10 @@ class MenuComponent extends React.Component {
             <Link to="article" className={this.isSelect('article')}>Article</Link>
           </span>
           <span>
-            <Link to="login" className={this.isSelect('login')}>Login</Link>
+            <Link to="signin" className={this.isSelect('signin')}>Sign in</Link>
+          </span>
+          <span>
+            <Link to="signup" className={this.isSelect('signup')}>Sign up</Link>
           </span>
         </div>
 

@@ -16,6 +16,10 @@
       "component": ["src/component"],
       "pages": ["src/pages"],
       "public": ["public"]
+    },
+    "compilerOptions": {
+      "strict": true,
+      "noEmit": true
     }
   },
   "include": [

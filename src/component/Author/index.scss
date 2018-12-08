@@ -49,19 +49,19 @@
 
         &.author-git::before {
           @include i-style;
-          background-image: url('/picture/icon/github.png');
+          background-image: url('~@public/picture/icon/github.png');
         }
         &.author-zhihu::before {
           @include i-style;
-          background-image: url('/picture/icon/zhihu.png');
+          background-image: url('~@public/picture/icon/zhihu.png');
         }
         &.author-weibo::before {
           @include i-style;
-          background-image: url('/picture/icon/weibo.png');
+          background-image: url('~@public/picture/icon/weibo.png');
         }
         &.author-twitter::before {
           @include i-style;
-          background-image: url('/picture/icon/twitter.png');
+          background-image: url('~@public/picture/icon/twitter.png');
         }
       }
     }

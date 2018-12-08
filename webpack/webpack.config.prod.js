@@ -59,7 +59,7 @@ module.exports = {
       "utils": path.resolve(paths.appSrc, "utils"),
       "component": path.resolve(paths.appSrc, "component"),
       "pages": path.resolve(paths.appSrc, "pages"),
-      "public": paths.appPublic,
+      "@public": paths.appPublic,
     },
   },
   module: {

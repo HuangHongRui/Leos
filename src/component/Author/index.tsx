@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Avatar } from "src/style/pic";
 import "./index.scss";
 
 class Author extends React.Component<PropsType, StateType> {
@@ -12,7 +13,7 @@ class Author extends React.Component<PropsType, StateType> {
       <div className="author-info">
         <div className="author-about-me">
           <h5>ABOUT ME</h5>
-          <img src="/picture/Avatar.jpg" alt="HEADER"/>
+          <img src={Avatar} alt="HEADER"/>
           <span className="author-mood">
             EveryThing Will Be Fine.
           </span>

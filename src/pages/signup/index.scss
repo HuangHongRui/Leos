@@ -29,7 +29,7 @@
                 color: #444;
                 outline: none;
             }
-            .code {
+            .v-code {
                 width: auto;
                 display: inline-block;
             }
@@ -48,5 +48,8 @@
             p {
                 text-align: center;
             }
+    }
+    #iframe_none {
+        display: none;
     }
 }

@@ -34,16 +34,54 @@ export async function fetchRunTime() {
 }
 
 /**
+ *  功能: 验证邮箱是否注册
+ *  @param email str
+ */
+export async function fetchVerifyEmail(email) {
+  const result = await axios({
+    method: 'GET',
+    url: `${API.VERIFYEMAIL}?email=${email}`,
+  });
+  return result
+}
+
+/**
+ *  功能: 注册验证码
+ *  @param email str
+ */
+export async function fetchVerifyCode(email) {
+  const result = await axios({
+    method: 'GET',
+    url: `${API.SENDEMAIL}?email=${email}`,
+  });
+  return result
+}
+
+/**
  * 注册账号
  * @param userInfo email string
  * @param userInfo password string
  * @param userInfo captcha string
  * @return Promise response
  */
-export async function fetchSign(userInfo: {}) {
+export async function fetchSignUp(userInfo: {}) {
   const result = await axios({
     method: 'POST',
-    url: API.SIGN,
+    url: API.SIGN_UP,
+    data: userInfo
+  });
+  return result;
+}
+
+/**
+ * 登录账号
+ * @param userInfo email string
+ * @param userInfo password string
+ */
+export async function fetchSignIn(userInfo: {}) {
+  const result = await axios({
+    method: 'POST',
+    url: API.SIGN_IN,
     data: userInfo
   });
   return result;

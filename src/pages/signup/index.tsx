@@ -1,29 +1,31 @@
 import * as React from "react";
-import { fetchSignUp, fetchVerifyCode, fetchVerifyEmail } from "../../request";
+import { fetchSendEmail, fetchSignUp, fetchVerifyCode, fetchVerifyEmail } from "../../request";
 import "./index.scss";
 
 class SignUp extends React.Component<{}, any> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      vCode: null
-    };
-  }
 
   sendCode = () => {
-    async function verifyCode() {
-      let a = await fetchVerifyEmail(this.state.email);
-      if (a.data.state === 0) {
-        fetchVerifyCode(this.state.email);
+    async function verifyEmail() {
+      let res = await fetchVerifyEmail(this.state.email);
+      if (res.data.state === 0) {
+        fetchSendEmail(this.state.email);
       }
       //  这里如果是已注册，需要提示。
     }
 
-    verifyCode.bind(this)();
+    verifyEmail.bind(this)();
   };
 
   signup = () => {
-    fetchSignUp(this.state);
+    async function signup_sub() {
+      let res = await fetchVerifyCode(this.state.email, this.state.vCode);
+      console.log("☞☞☞ 9527 index 22",1);
+      if (!res.data.state) {return res.data.state}
+      console.log("☞☞☞ 9527 index 23",2);
+      fetchSignUp(this.state);
+      console.log("☞☞☞ 9527 index 26",3);
+    }
+    signup_sub.bind(this)()
   };
 
   onInput = (key, val) => {

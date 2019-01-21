@@ -46,13 +46,26 @@ export async function fetchVerifyEmail(email) {
 }
 
 /**
- *  功能: 注册验证码
+ *  功能: 发送注册验证码
  *  @param email str
  */
-export async function fetchVerifyCode(email) {
+export async function fetchSendEmail(email) {
   const result = await axios({
     method: 'GET',
     url: `${API.SENDEMAIL}?email=${email}`,
+  });
+  return result
+}
+
+/**
+ *  功能: 验证验证码
+ *  @param email str
+ *  @param vCode str
+ */
+export async function fetchVerifyCode(email, vCode) {
+  const result = await axios({
+    method: 'GET',
+    url: `${API.VERIFYCODE}?email=${email}&vCode=${vCode}`,
   });
   return result
 }

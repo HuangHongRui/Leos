@@ -7,7 +7,7 @@ class SignUp extends React.Component<{}, any> {
   sendCode = () => {
     async function verifyEmail() {
       let res = await fetchVerifyEmail(this.state.email);
-      if (res.data.state === 0) {
+      if (res.data.status === 0) {
         fetchSendEmail(this.state.email);
       }
       //  这里如果是已注册，需要提示。
@@ -17,15 +17,12 @@ class SignUp extends React.Component<{}, any> {
   };
 
   signup = () => {
-    async function signup_sub() {
+    (async () => {
       let res = await fetchVerifyCode(this.state.email, this.state.vCode);
-      console.log("☞☞☞ 9527 index 22",1);
-      if (!res.data.state) {return res.data.state}
-      console.log("☞☞☞ 9527 index 23",2);
+      if (!res.data.status)
+        return res.data.status;
       fetchSignUp(this.state);
-      console.log("☞☞☞ 9527 index 26",3);
-    }
-    signup_sub.bind(this)()
+    })()
   };
 
   onInput = (key, val) => {

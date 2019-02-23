@@ -1,14 +1,11 @@
-import { createEpicMiddleware } from 'redux-observable';
-import history from '../../utils/history';
-import { routerMiddleware } from 'react-router-redux';
-import rootEpic from '../../epics';
+import history from "src/utils/history";
+import { routerMiddleware } from "react-router-redux";
+import thunk from 'redux-thunk'
 
 const RouterMiddleware = routerMiddleware(history);
-// tslint:disable-next-line
-const epicMiddleware = createEpicMiddleware(rootEpic as any);
-const middlewares = [
-  epicMiddleware,
-  RouterMiddleware
+const middlewaresa = [
+  thunk,
+  RouterMiddleware,
 ];
 
-export default middlewares;
+export default middlewaresa;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -11,7 +11,6 @@ class Info extends React.PureComponent<InfoTypes> {
         Info Works!<br/>
         <button onClick={() => {
           // tslint:disable-next-line
-          console.log('☞☞☞ 9527 Info 14', this.props);
         }}>
           haha
           {/*<Link to="home"> onClick </Link>*/}

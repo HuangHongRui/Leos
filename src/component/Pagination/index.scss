@@ -3,6 +3,7 @@
   justify-content: space-between;
   position: absolute;
   bottom: 0px;
+  left: 0;
   width: 100%;
   color: $Theme-font-default-color;
 
@@ -10,6 +11,7 @@
     border: solid 1px $Theme-border-color;
     padding: 16px;
     border-radius: 8px;
+    margin: 10px;
 
     &:hover {
       background: $Theme-assist-color;

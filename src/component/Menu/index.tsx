@@ -5,45 +5,42 @@
  *  文件：index
  *  參數：
  */
-import React from 'react';
-import { connect } from 'react-redux';
-import './index.scss';
-import { Link } from 'react-router-dom';
-// import { Menu, Icon } from 'antd';
-// import styled from 'styled-components';
+import * as React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Logo } from "src/style/pic";
+import classname from "classnames";
+import { withRouter } from 'react-router';
+import { action_isLogin } from "../../redux/action";
+import "./index.scss";
 
-// const Wrap = styled.div`
-//   .menu_ui {
-//     padding: 0 2rem;
-//     .user{
-//       //float: right !important;
-//     }
-//   }
-// `;
-
-class MenuComponent extends React.PureComponent {
+class MenuComponent extends React.Component <PropsTypes> {
   state = {
-    tag: 'home'
+    tag: "home",
+    isLogin: false
   };
 
-  static getDerivedStateFromProps(nextProps: StateTypes, prevState: StateTypes): void | {} {
+  static getDerivedStateFromProps(nextProps: PropsTypes, prevState: PropsTypes): void | {} {
     if (nextProps !== prevState) {
-      return {tag: nextProps.tag};
+      return {...nextProps};
     }
   }
 
-  handleClick = (e: { key: string }) => {
-    this.setState({
-      tag: e.key
-    });
+  componentDidMount(): void | {} {
+    this.props.action_isLogin();
   }
 
   isSelect(path: string) {
-    let result;
-    if (this.state.tag === path) {
-      result = 'select';
+    let {tag, isLogin} = this.state;
+    if (isLogin && /sign/.test(tag)) {
+      this.props.history.push('/home')
     }
-    return result;
+
+    return classname({
+      'select': tag === path,
+      'd-vanish': isLogin && /sign/.test(path)
+    });
+
   }
 
   render() {
@@ -51,117 +48,54 @@ class MenuComponent extends React.PureComponent {
       <div className="menu">
 
         <div className="menu_logo">
-          <img src="picture/logo.png" alt="logo"/>
+          <img src={Logo} alt="logo"/>
         </div>
 
         <div className="menu_btn">
-          <span>
-            <Link to="/" className={this.isSelect('home')}>Home</Link>
+          <span className={this.isSelect('home')}>
+            <Link to="/">Home</Link>
           </span>
-          <span>
-            <Link to="article" className={this.isSelect('article')}>Article</Link>
+          <span className={this.isSelect('article')}>
+            <Link to="article">Article</Link>
+          </span>
+          <span className={this.isSelect('signin')}>
+            <Link to="signin">Sign in</Link>
+          </span>
+          <span className={this.isSelect('signup')}>
+            <Link to="signup">Sign up</Link>
           </span>
         </div>
 
-        {/*
-        <div className="menu_user">
-          <img src="" alt="headerPic"/>
-          <span>Leo</span>
-          <div><img src="" alt="More"/></div>
-        </div>
-        */}
-
-        {/* <Wrap>
-        <Menu
-          onClick={this.handleClick}
-          selectedKeys={[this.state.tag]}
-          mode="horizontal"
-          className="menu_ui"
-        >
-          <Menu.Item key="home">
-            <Link to="/">
-              <Icon type="home"/>
-              主页
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="save">
-            <Link to="/save">
-              <Icon type="hdd"/>
-              归档
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="test">
-            <Link to="/test">
-              <Icon type="setting"/>
-              实验室
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="gift">
-            <Link to="/gift">
-              <Icon type="gift"/>
-              投喂
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="team">
-            <Link to="/team">
-              <Icon type="team"/>
-              后宫
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="message">
-            <Link to="/message">
-              <Icon type="message"/>
-              留言板
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item key="about">
-            <Link to="/about">
-              <Icon type="notification"/>
-              关于
-            </Link>
-          </Menu.Item>
-
-          <Menu.SubMenu
-            key="user"
-            className="user"
-            title={<span><Icon type="user"/>用户</span>}
-          >
-            <Menu.ItemGroup>
-              <Menu.Item key="setting:1"><Link to="/login">登录</Link></Menu.Item>
-              <Menu.Item key="setting:2"><Link to="/sign">注册</Link></Menu.Item>
-            </Menu.ItemGroup>
-          </Menu.SubMenu>
-        </Menu>
-      </Wrap>
-      */}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: StateTypes) => {
-  const value = state.router.location.pathname.substr(1)
-    ? state.router.location.pathname.substr(1)
-    : 'home';
+const mapStateToProps = ({generalData, router}: PropsTypes) => {
+  const value = router.location.pathname.substr(1)
+    ? router.location.pathname.substr(1)
+    : "home";
   return {
+    isLogin: generalData.isLogin,
     tag: value
   };
 };
 
-// tslint:disable-next-line
-export default connect(mapStateToProps)(MenuComponent as any);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    action_isLogin: () => dispatch(action_isLogin()),
+  };
+};
 
-interface StateTypes {
+// tslint:disable-next-line
+export default withRouter(connect(mapStateToProps, mapDispatchToProps )(MenuComponent as any));
+
+interface PropsTypes {
+  action_isLogin: Function;
   tag?: string;
+  history: any;
+  generalData: { isLogin: number; };
   router: {
-    location: {
-      pathname: string;
-    }
+    location: { pathname: string; }
   };
 }

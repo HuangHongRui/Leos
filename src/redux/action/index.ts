@@ -84,3 +84,23 @@ export function setCaptchaCountdown(param: number) {
     payload: param
   };
 }
+
+/**
+ * 登录狀態
+ */
+export function action_isLogin() {
+  return function (dispatch) {
+    Req.fetchIsLogin()
+      .then(e => dispatch(action_setLoginStatus(e.data)));
+  }
+}
+
+/**
+ * 保存登錄態
+ */
+export function action_setLoginStatus(param: {}) {
+  return {
+    type: ActionTypes.SET_LOGIN_STATUS,
+    payload: param
+  }
+}

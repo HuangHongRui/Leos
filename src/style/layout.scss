@@ -80,6 +80,6 @@ body {
     visibility: hidden;
   }
   .d-vanish {
-    display: none;
+    display: none !important;
   }
 }

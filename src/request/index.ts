@@ -99,3 +99,14 @@ export async function fetchSignIn(userInfo: {}) {
   });
   return result;
 }
+
+/**
+ * 登錄狀態
+ */
+export async function fetchIsLogin() {
+  const result = await axios({
+    method: 'GET',
+    url: API.IS_LOGIN,
+  });
+  return result;
+}

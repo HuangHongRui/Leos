@@ -7,14 +7,15 @@
  |--------------------------------------------------------------------------
  */
 
-export const TEST = 'TEST';
-export const TESTONE = 'TESTONE';
+export const TEST = "TEST";
+export const TESTONE = "TESTONE";
 
-export const API_SIGN = 'API_SIGN';
-export const API_ONLINE = 'API_ONLINE';
-export const API_RUNTIME = 'API_RUNTIME';
-export const API_CAPTCHA = 'API_CAPTCHA';
+export const API_SIGN = "API_SIGN";
+export const API_ONLINE = "API_ONLINE";
+export const API_RUNTIME = "API_RUNTIME";
+export const API_CAPTCHA = "API_CAPTCHA";
 
-export const SET_ONLINE = 'SET_ONLINE';
-export const SET_RUNTIME = 'SET_RUNTIME';
-export const SET_CPATCHA_COUNTDOWN = 'SET_CAPTCHA_COUNTDOWN';
+export const SET_LOGIN_STATUS = "SET_LOGIN_STATUS";
+export const SET_ONLINE = "SET_ONLINE";
+export const SET_RUNTIME = "SET_RUNTIME";
+export const SET_CPATCHA_COUNTDOWN = "SET_CAPTCHA_COUNTDOWN";

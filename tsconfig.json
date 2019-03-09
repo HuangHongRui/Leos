@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./build/",
+    "lib": ["dom","es2015"],
     "sourceMap": false,
     "noImplicitAny": false,
     "module": "commonjs",

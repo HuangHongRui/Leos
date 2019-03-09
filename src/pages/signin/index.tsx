@@ -1,9 +1,11 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import { fetchSignIn } from "../../request";
+import { fetchSignIn } from "src/request";
+import { action_isLogin } from "src/redux/action";
 
-class SignIn extends React.Component {
+class SignIn extends React.Component <PropsTypes>{
 
   onInput = (key, val) => {
     this.setState({
@@ -11,8 +13,11 @@ class SignIn extends React.Component {
     });
   };
 
-  signin = () => {
-    fetchSignIn(this.state);
+  signin = async () => {
+    let login = await fetchSignIn(this.state);
+    if (login && login.status) {
+      this.props.action_isLogin();
+    }
   };
 
   render() {
@@ -68,5 +73,13 @@ class SignIn extends React.Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    action_isLogin: () => dispatch(action_isLogin())
+  }
+};
 
-export default SignIn;
+export default connect(null, mapDispatchToProps)(SignIn as any);
+interface PropsTypes {
+  action_isLogin: Function;
+}

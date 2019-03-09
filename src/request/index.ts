@@ -97,7 +97,7 @@ export async function fetchSignIn(userInfo: {}) {
     url: API.SIGN_IN,
     data: userInfo
   });
-  return result;
+  return result.data;
 }
 
 /**

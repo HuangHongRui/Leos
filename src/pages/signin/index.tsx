@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 import "./index.scss";
 import { fetchSignIn } from "src/request";
 import { action_isLogin } from "src/redux/action";
+import Tip from "src/component/Tip";
 
-class SignIn extends React.Component <PropsTypes>{
+class SignIn extends React.Component <PropsTypes, StateType> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tipText: null
+    };
+  }
 
   onInput = (key, val) => {
     this.setState({
-      [key]: val
+      [key]: val,
     });
   };
 
@@ -17,17 +24,28 @@ class SignIn extends React.Component <PropsTypes>{
     let login = await fetchSignIn(this.state);
     if (login && login.status) {
       this.props.action_isLogin();
+    } else {
+      this.setState({
+        tipText: login.message
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            tipText: null
+          });
+        }, 3000);
+      });
     }
   };
 
   render() {
+
+    let {tipText} = this.state;
+
     return (
       <div className="signin-wrap content">
         <div className='main'>
-
           <div className="form-wrap">
             <form action="" acceptCharset="UTF-8" method="POST">
-
               <div className="form-fields">
                 <fieldset>
                   <label htmlFor="email">Username or Email:</label>
@@ -60,26 +78,33 @@ class SignIn extends React.Component <PropsTypes>{
                 tabIndex={3}
                 onClick={this.signin}
               />
-
             </form>
+
             <p>
               Not a number?
               <Link to="signup">Sign up now</Link>
             </p>
           </div>
-
         </div>
+
+        <Tip text={tipText}/>
       </div>
     );
+
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
-  return {
+
+const mapDispatchToProps = (dispatch: any) => ({
     action_isLogin: () => dispatch(action_isLogin())
-  }
-};
+  });
 
 export default connect(null, mapDispatchToProps)(SignIn as any);
+
 interface PropsTypes {
   action_isLogin: Function;
+  tipText?: string;
+}
+
+interface StateType {
+  tipText?: string;
 }

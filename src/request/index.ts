@@ -42,7 +42,7 @@ export async function fetchVerifyEmail(email) {
     method: 'GET',
     url: `${API.VERIFYEMAIL}?email=${email}`,
   });
-  return result
+  return result.data
 }
 
 /**
@@ -54,7 +54,7 @@ export async function fetchSendEmail(email) {
     method: 'GET',
     url: `${API.SENDEMAIL}?email=${email}`,
   });
-  return result
+  return result.data
 }
 
 /**
@@ -67,7 +67,7 @@ export async function fetchVerifyCode(email, vCode) {
     method: 'GET',
     url: `${API.VERIFYCODE}?email=${email}&vCode=${vCode}`,
   });
-  return result
+  return result.data
 }
 
 /**
@@ -83,7 +83,7 @@ export async function fetchSignUp(userInfo: {}) {
     url: API.SIGN_UP,
     data: userInfo
   });
-  return result;
+  return result.data;
 }
 
 /**
@@ -97,7 +97,7 @@ export async function fetchSignIn(userInfo: {}) {
     url: API.SIGN_IN,
     data: userInfo
   });
-  return result;
+  return result.data;
 }
 
 /**

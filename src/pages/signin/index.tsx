@@ -1,28 +1,44 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import { fetchSignIn } from "../../request";
+import { fetchSignIn } from "src/request";
+import { action_isLogin } from "src/redux/action";
+import Tip from "src/component/Tip";
+import { onTipHandle } from "src/utils/Methods";
 
-class SignIn extends React.Component {
+class SignIn extends React.Component <PropsTypes, StateType> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tipText: null
+    };
+  }
 
   onInput = (key, val) => {
     this.setState({
-      [key]: val
+      [key]: val,
     });
   };
 
-  signin = () => {
-    fetchSignIn(this.state);
+  signin = async () => {
+    let login = await fetchSignIn(this.state);
+    onTipHandle.call(this, login.message, () => {
+      if (login && login.status) {
+        this.props.action_isLogin();
+      }
+    });
   };
 
   render() {
+
+    let {tipText} = this.state;
+
     return (
       <div className="signin-wrap content">
         <div className='main'>
-
           <div className="form-wrap">
             <form action="" acceptCharset="UTF-8" method="POST">
-
               <div className="form-fields">
                 <fieldset>
                   <label htmlFor="email">Username or Email:</label>
@@ -55,18 +71,33 @@ class SignIn extends React.Component {
                 tabIndex={3}
                 onClick={this.signin}
               />
-
             </form>
+
             <p>
               Not a number?
               <Link to="signup">Sign up now</Link>
             </p>
           </div>
-
         </div>
+
+        <Tip text={tipText}/>
       </div>
     );
+
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch: any) => ({
+  action_isLogin: () => dispatch(action_isLogin())
+});
+
+export default connect(null, mapDispatchToProps)(SignIn as any);
+
+interface PropsTypes {
+  action_isLogin: Function;
+  tipText?: string;
+}
+
+interface StateType {
+  tipText?: string;
+}

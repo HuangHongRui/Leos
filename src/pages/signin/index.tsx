@@ -5,6 +5,7 @@ import "./index.scss";
 import { fetchSignIn } from "src/request";
 import { action_isLogin } from "src/redux/action";
 import Tip from "src/component/Tip";
+import { onTipHandle } from "src/utils/Methods";
 
 class SignIn extends React.Component <PropsTypes, StateType> {
   constructor(props) {
@@ -22,19 +23,11 @@ class SignIn extends React.Component <PropsTypes, StateType> {
 
   signin = async () => {
     let login = await fetchSignIn(this.state);
-    if (login && login.status) {
-      this.props.action_isLogin();
-    } else {
-      this.setState({
-        tipText: login.message
-      }, () => {
-        setTimeout(() => {
-          this.setState({
-            tipText: null
-          });
-        }, 3000);
-      });
-    }
+    onTipHandle.call(this, login.message, () => {
+      if (login && login.status) {
+        this.props.action_isLogin();
+      }
+    });
   };
 
   render() {
@@ -95,8 +88,8 @@ class SignIn extends React.Component <PropsTypes, StateType> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-    action_isLogin: () => dispatch(action_isLogin())
-  });
+  action_isLogin: () => dispatch(action_isLogin())
+});
 
 export default connect(null, mapDispatchToProps)(SignIn as any);
 

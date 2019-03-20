@@ -11,6 +11,7 @@ import Home from './pages/home/Home';
 import Article from './pages/article';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
+import Write from './pages/write';
 import 'src/style/global.scss';
 
 render(
@@ -23,6 +24,7 @@ render(
           <Route path="/home" component={Home}/>
           <Route path="/signin" component={SignIn}/>
           <Route path="/signup" component={SignUp}/>
+          <Route path="/write" component={Write}/>
           <Foot/>
         </div>
       </ConnectedRouter>

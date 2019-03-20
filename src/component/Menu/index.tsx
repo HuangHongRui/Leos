@@ -64,6 +64,9 @@ class MenuComponent extends React.Component <PropsTypes> {
           <span className={this.isSelect('signup')}>
             <Link to="signup">Sign up</Link>
           </span>
+          <span className={this.isSelect('write')}>
+            <Link to="write">Write</Link>
+          </span>
         </div>
 
       </div>

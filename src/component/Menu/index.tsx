@@ -5,20 +5,21 @@
  *  文件：index
  *  參數：
  */
-import * as React from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { Logo } from "src/style/pic";
 import classname from "classnames";
-import { withRouter } from 'react-router';
+import { withRouter, Link } from "react-router-dom";
 import { action_isLogin } from "../../redux/action";
 import "./index.scss";
 
-class MenuComponent extends React.Component <PropsTypes> {
-  state = {
-    tag: "home",
-    isLogin: false
-  };
+class MenuComponent extends React.Component <PropsTypes, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLogin: false
+    };
+  }
 
   static getDerivedStateFromProps(nextProps: PropsTypes, prevState: PropsTypes): void | {} {
     if (nextProps !== prevState) {
@@ -31,14 +32,15 @@ class MenuComponent extends React.Component <PropsTypes> {
   }
 
   isSelect(path: string) {
-    let {tag, isLogin} = this.state;
-    if (isLogin && /sign/.test(tag)) {
-      this.props.history.push('/home')
+    let {isLogin} = this.state;
+    let pathname = location.pathname;
+    if (isLogin && /sign/.test(pathname)) {
+      this.props.history.push("/home");
     }
 
     return classname({
-      'select': tag === path,
-      'd-vanish': isLogin && /sign/.test(path)
+      "select": pathname.substr(1) === path,
+      "d-vanish": isLogin && /sign/.test(path)
     });
 
   }
@@ -52,20 +54,20 @@ class MenuComponent extends React.Component <PropsTypes> {
         </div>
 
         <div className="menu_btn">
-          <span className={this.isSelect('home')}>
-            <Link to="/">Home</Link>
+          <span className={this.isSelect("home")}>
+            <Link to='/home'>Home</Link>
           </span>
-          <span className={this.isSelect('article')}>
-            <Link to="article">Article</Link>
+          <span className={this.isSelect("article")}>
+            <Link to='/article'>Article</Link>
           </span>
-          <span className={this.isSelect('signin')}>
-            <Link to="signin">Sign in</Link>
+          <span className={this.isSelect("signin")}>
+            <Link to='/signin'>Sign in</Link>
           </span>
-          <span className={this.isSelect('signup')}>
-            <Link to="signup">Sign up</Link>
+          <span className={this.isSelect("signup")}>
+            <Link to='/signup'>Sign up</Link>
           </span>
-          <span className={this.isSelect('write')}>
-            <Link to="write">Write</Link>
+          <span className={this.isSelect("write")}>
+            <Link to='/write'>Write</Link>
           </span>
         </div>
 
@@ -75,12 +77,8 @@ class MenuComponent extends React.Component <PropsTypes> {
 }
 
 const mapStateToProps = ({generalData, router}: PropsTypes) => {
-  const value = router.location.pathname.substr(1)
-    ? router.location.pathname.substr(1)
-    : "home";
   return {
     isLogin: generalData.isLogin,
-    tag: value
   };
 };
 
@@ -91,11 +89,10 @@ const mapDispatchToProps = (dispatch: any) => {
 };
 
 // tslint:disable-next-line
-export default withRouter(connect(mapStateToProps, mapDispatchToProps )(MenuComponent as any));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MenuComponent as any));
 
 interface PropsTypes {
   action_isLogin: Function;
-  tag?: string;
   history: any;
   generalData: { isLogin: number; };
   router: {

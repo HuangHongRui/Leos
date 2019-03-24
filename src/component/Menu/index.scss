@@ -22,25 +22,26 @@
   & .menu_btn {
     span {
       display: inline-block;
-      padding-left: 2vw;
-    }
-    .select {
-      & > a {
+      padding: 0 1vw;
+      cursor: pointer;
+
+      &.select {
         position: relative;
         color: $Theme-font-default-color;
+
         &:after {
           content: '';
           display: block;
           position: absolute;
           bottom: -10px;
-          width: 30px;
-          left: 15%;
+          width: calc(100% - 2vw);
           height: 4px;
           border-radius: 6px;
           background-color: $Theme-assist-color;
         }
       }
     }
+
   }
 
   & .menu_user {

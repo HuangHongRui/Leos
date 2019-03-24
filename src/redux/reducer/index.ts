@@ -1,8 +1,11 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import generalData from './generalData';
+import { combineReducers } from "redux";
+import { createBrowserHistory } from "history";
+import { connectRouter } from "connected-react-router";
+import generalData from "./generalData";
+
+const history = createBrowserHistory();
 
 export default combineReducers({
   generalData,
-  router: routerReducer
+  router: connectRouter(history)
 });

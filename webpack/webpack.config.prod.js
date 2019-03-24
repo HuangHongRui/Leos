@@ -7,7 +7,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   mode: "production",
@@ -21,15 +20,6 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: 4,
-        uglifyOptions: {
-          compress: {
-            unused: false
-          }
-        },
-      }),
       new OptimizeCSSAssetsPlugin({
         assetNameRegExp: /\.css\.*(?!.*map)/g,  //注意不要写成 /\.css$/g
         cssProcessor: require("cssnano"),
@@ -68,7 +58,7 @@ module.exports = {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {loader: "css-loader", options: {importLoaders: 3, minimize: true}},
+          {loader: "css-loader", options: {importLoaders: 3}},
           {
             // PostCSS 根据你在package.json中设置的browser版本为css属性添加prefix
             loader: "postcss-loader",
@@ -120,9 +110,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new TsConfigPathsPlugin({
-      configFile: paths.appTsConfig
-    }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash:8].css",
       chunkFilename: "[id].[hash:8].css"
@@ -131,6 +118,6 @@ module.exports = {
       template: path.resolve(paths.appPublic, "index.html"),
       favicon: path.resolve(paths.appPublic, "favicon.ico"),
     }),
-    new CleanWebpackPlugin(['*'],{root: paths.appBuild}),
+    new CleanWebpackPlugin({root: paths.appBuild}),
   ]
 };

@@ -1,13 +1,16 @@
-import { createStore, applyMiddleware } from 'redux';
-import middleware from '../middleware';
-import rootReducer from '../reducer';
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "../reducer";
+import middleware from "../middleware";
 
-const configureStore = () => {
+const prodStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
-    applyMiddleware(...middleware)
+    preloadedState,
+    compose(
+      applyMiddleware(...middleware)
+    )
   );
   return store;
 };
 
-export default configureStore;
+export default prodStore;

@@ -33,13 +33,13 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
   isSelect(path: string) {
     let {isLogin} = this.state;
-    let pathname = location.pathname;
+    let pathname = location.pathname.substr(1) || 'home';
     if (isLogin && /sign/.test(pathname)) {
       this.props.history.push("/home");
     }
 
     return classname({
-      "select": pathname.substr(1) === path,
+      "select": pathname === path,
       "d-vanish": isLogin && /sign/.test(path)
     });
 

@@ -89,6 +89,11 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        include: /node_modules/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.(ico|eot|ttf|woff|woff2|png|jpg|jpeg|gif)$/,
         use: [{
           loader: "file-loader",

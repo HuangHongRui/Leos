@@ -5,7 +5,9 @@
  *  @params：
  */
 import React from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { EditorState } from "draft-js";
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./index.scss";
 
 class LeoEditor extends React.Component {
@@ -17,32 +19,21 @@ class LeoEditor extends React.Component {
     this.editor = {};
   }
 
-  componentDidMount() {
-    this.focusEditor();
-  }
-
-  setEditor = (editor) => {
-    this.editor = editor;
-  };
-
-  focusEditor = () => {
-    if (this.editor) {
-      this.editor.focus();
-    }
-  };
+  componentDidMount() {}
 
   onChange = (editorState) => this.setState({editorState});
 
   render() {
+    let {editorState} = this.state;
     return (
       <div className="leo-editor-wrap">
         <Editor
-          ref={this.setEditor}
-          // style={styles.editor}
-          placeholder="heyyyyy"
-          editorKey="foobaz"
-          editorState={this.state.editorState}
-          onChange={this.onChange}
+          placeholder=""
+          editorState={editorState}
+          toolbarClassName="toolbarClassName"
+          wrapperClassName="wrapperClassName"
+          editorClassName="editorClassName"
+          onEditorStateChange={this.onChange}
         />
       </div>
     );

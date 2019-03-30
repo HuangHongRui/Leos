@@ -47,7 +47,7 @@ module.exports = {
     alias: {
       "src": paths.appSrc,
       "@public": paths.appPublic,
-      "pages": path.resolve(paths.appSrc, "pages"),
+      "node_modules": path.resolve(paths.appPath, "node_modules")
     },
   },
   module: {

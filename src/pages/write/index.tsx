@@ -2,20 +2,20 @@ import React from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown/with-html";
-
-import "node_modules/codemirror/keymap/vim"
-import "node_modules/codemirror/mode/javascript/javascript";
 import CodeMirror from "node_modules/codemirror/lib/codemirror";
+import "node_modules/codemirror/keymap/vim";
+import "node_modules/codemirror/mode/markdown/markdown";
 
 import "./index.scss";
+import "node_modules/codemirror/theme/monokai.css";
 import "node_modules/codemirror/lib/codemirror.css";
-import "node_modules/codemirror/theme/monokai.css"
+
 
 class Write extends React.Component <{}, StateType> {
   constructor(props) {
     super(props);
     this.state = {
-      markdown: "# FUCKFUCFUCKFUCFUCKFUCKKKFUCK"
+      markdown: ""
     };
   }
 
@@ -26,14 +26,17 @@ class Write extends React.Component <{}, StateType> {
     const editor = CodeMirror.fromTextArea(textarea, {
       value: markdown,
       theme: "monokai",
-      keyMap: "vim"
+      keyMap: "vim",
+      mode: "markdown",
+      lineNumbers: true,
+      lineWrapping: true,
     });
 
     editor.on("change", () => {
       this.setState({
         markdown: editor.getValue()
-      })
-    })
+      });
+    });
   }
 
   onEdit = (e) => {
@@ -42,8 +45,6 @@ class Write extends React.Component <{}, StateType> {
       markdown: e.target.value
     });
   };
-
-
 
   render() {
     let {markdown} = this.state;

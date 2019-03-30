@@ -46,10 +46,8 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx",],
     alias: {
       "src": paths.appSrc,
-      "utils": path.resolve(paths.appSrc, "utils"),
-      "component": path.resolve(paths.appSrc, "component"),
-      "pages": path.resolve(paths.appSrc, "pages"),
       "@public": paths.appPublic,
+      "pages": path.resolve(paths.appSrc, "pages"),
     },
   },
   module: {
@@ -105,7 +103,6 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         include: paths.appSrc,
-        exclude: /node_modules/,
         use: [
           {
             loader: "awesome-typescript-loader",

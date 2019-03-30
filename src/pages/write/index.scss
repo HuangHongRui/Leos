@@ -1,0 +1,31 @@
+.write-wrap {
+  display: flex;
+  position: relative;
+  padding: 0 !important;
+
+  > div {
+    position: absolute;
+    height: 100%;
+    width: calc(50vw);
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  .editor-pane {
+    box-shadow: 15px 0 15px -5px rgba(0, 0, 0, 0.5);
+
+    .CodeMirror {
+      height: 100%;
+      font-size: 16px;
+    }
+  }
+
+  .result-pane {
+    left: 50%;
+    padding: 10px 25px;
+    color: #444;
+    font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+}

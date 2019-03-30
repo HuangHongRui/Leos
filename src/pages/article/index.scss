@@ -6,6 +6,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    color: rgba(0, 0, 0, .85);
+  }
+
 }
 
 .article-list {
@@ -17,6 +24,7 @@
     border-bottom: solid 1px $Theme-border-color;
     padding: 10px;
     margin-bottom: 20px;
+
     .hover-select {
       color: $Theme-select-color;
     }

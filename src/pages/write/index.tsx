@@ -1,49 +1,85 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Editor, EditorState, RichUtils } from "draft-js";
 import { connect } from "react-redux";
+import ReactMarkdown from "react-markdown/with-html";
+import CodeMirror from "node_modules/codemirror/lib/codemirror";
+import CodeBlock from "./code-block";
+import "node_modules/codemirror/keymap/vim";
+import "node_modules/codemirror/mode/markdown/markdown";
+import "src/utils/placeholder.min";
 
-class Write extends React.Component <any, any> {
+import "./index.scss";
+import "node_modules/codemirror/theme/monokai.css";
+import "node_modules/codemirror/lib/codemirror.css";
+
+const placeholder = `
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+ __                         __                  ____       ___
+/\\ \\                       /\\ \\                /\\  _\`\\    /\\_ \\
+\\ \\ \\         __     ___   \\ \\/      ____      \\ \\ \\L\\ \\  \\//\\ \\      ___      __
+ \\ \\ \\  __  /'__\`\\  / __\`\\  \\/      /',__\\      \\ \\  _ <'   \\ \\ \\    / __\`\\  /'_ \`\\
+  \\ \\ \\L\\ \\/\\  __/ /\\ \\L\\ \\        /\\__, \`\\      \\ \\ \\L\\ \\   \\_\\ \\_ /\\ \\L\\ \\/\\ \\L\\ \\
+   \\ \\____/\\ \\____\\\\ \\____/        \\/\\____/       \\ \\____/   /\\____\\\\ \\____/\\ \\____ \\
+    \\/___/  \\/____/ \\/___/          \\/___/         \\/___/    \\/____/ \\/___/  \\/___L\\ \\
+                                                                               /\\____/
+                                                                               \\_/__/
+`;
+
+class Write extends React.Component <{}, StateType> {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = (editorState) => this.setState({editorState});
+    this.state = {
+      markdown: ""
+    };
   }
 
   componentDidMount() {
-    this.focusEditor();
+    const {markdown} = this.state;
+    const textarea: any = this.refs.textarea;
+
+    const editor = CodeMirror(ele => {
+      textarea.parentNode.replaceChild(ele, textarea);
+    }, {
+      value: markdown,
+      theme: "monokai",
+      keyMap: "vim",
+      mode: "markdown",
+      lineNumbers: true,
+      lineWrapping: true,
+      placeholder: placeholder
+    });
+
+    editor.on("change", () => {
+      this.setState({
+        markdown: editor.getValue()
+      });
+    });
   }
 
-  setEditor = (editor) => {
-    // this.editor = editor;
+  onEdit = (e) => {
+    this.setState({
+      markdown: e.target.value
+    });
   };
-
-  focusEditor = () => {
-    // if (this.editor) {
-    // this.editor.focus();
-    // }
-  };
-
-  onChange = (editorState) => this.setState({editorState});
-
-  handleKeyCommand(command, editorState) {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return "handled";
-    }
-    return "not-handled";
-  }
 
   render() {
+    let {markdown} = this.state;
+
     return (
-      <div style={styles.editor} onClick={this.focusEditor}>
-        <Editor
-          // ref={this.setEditor}
-          placeholder="heyyyyy"
-          editorKey="foobaz"
-          editorState={this.state.editorState}
-          onChange={this.onChange}
+      <div className="write-wrap content">
+        <div className="editor-pane" ref="editorPane">
+          <textarea
+            ref="textarea"
+            value={markdown}
+            onChange={this.onEdit}
+          />
+
+        </div>
+        <ReactMarkdown
+          className={"result-pane rely-bag"}
+          source={markdown}
+          escapeHtml={false}
+          renderers={{code: CodeBlock}}
         />
       </div>
     );
@@ -52,9 +88,6 @@ class Write extends React.Component <any, any> {
 
 export default withRouter(Write);
 
-const styles = {
-  editor: {
-    border: "1px solid gray",
-    minHeight: "6em"
-  }
-};
+interface StateType {
+  markdown: string;
+}

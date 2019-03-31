@@ -10,7 +10,8 @@
   border-bottom: 1px solid $Theme-border-color;
 
   & > div {
-    display: inline-block;
+    display: flex;
+    flex-wrap: nowrap;
   }
 
   & .menu_logo {
@@ -24,6 +25,7 @@
       display: inline-block;
       padding: 0 1vw;
       cursor: pointer;
+      white-space: nowrap;
 
       &.select {
         position: relative;
@@ -33,7 +35,7 @@
           content: '';
           display: block;
           position: absolute;
-          bottom: -10px;
+          bottom: 15px;
           width: calc(100% - 2vw);
           height: 4px;
           border-radius: 6px;

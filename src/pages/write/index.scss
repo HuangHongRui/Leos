@@ -54,6 +54,30 @@
     a {
       color: RGB(174, 129, 255);
     }
+
+    blockquote {
+      color: #666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #eee solid;
+    }
+
+    code {
+      &:not(.language-null):not(.language-js) {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 4px;
+      }
+      padding: .5em;
+    }
+
+    img {
+      max-width: 35%;
+      vertical-align: middle;
+    }
+
   }
 }
 

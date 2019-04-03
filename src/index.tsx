@@ -14,6 +14,7 @@ import Article from "./pages/article";
 import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
 import Write from "./pages/write";
+import Test from "./pages/test";
 import "src/style/global.scss";
 
 const history = createBrowserHistory();
@@ -32,6 +33,8 @@ render(
           <Route path="/signin" component={SignIn}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/write" component={Write}/>
+
+          <Route path="/test" component={Test}/>
         </Switch>
         <Foot/>
 

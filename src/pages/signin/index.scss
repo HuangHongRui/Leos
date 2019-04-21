@@ -44,5 +44,23 @@
             p {
                 text-align: center;
             }
+        .social-sign-in {
+            display: flex;
+            justify-content: center;
+            i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 32px;
+                height: 32px;
+                background: $Theme-bg-span-color;
+                border-radius: 100%;
+                cursor: pointer;
+                &.author-git::before {
+                    @include i-style;
+                    background-image: url('~@public/picture/icon/github.png');
+                }
+            }
+        }
     }
 }

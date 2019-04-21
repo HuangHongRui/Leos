@@ -21,3 +21,11 @@ $Theme-select-color: rgba(91, 180, 255, 0.8);
   color: $Theme-font-color;
   text-decoration: none;
 }
+
+@mixin i-style {
+  display: block;
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}

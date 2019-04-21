@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import { fetchSignIn } from "src/request";
+import { fetchSignIn, fetchLoginGitHub } from "src/request";
 import { action_isLogin } from "src/redux/action";
 import Tip from "src/component/Tip";
 import { onTipHandle } from "src/utils/Methods";
@@ -28,6 +28,10 @@ class SignIn extends React.Component <PropsTypes, StateType> {
         this.props.action_isLogin();
       }
     });
+  };
+
+  onLogin = async() => {
+    window.location.href = 'https://github.com/login/oauth/authorize?client_id=0dd096fba4d58d671f24&scope=user:email';
   };
 
   render() {
@@ -77,6 +81,10 @@ class SignIn extends React.Component <PropsTypes, StateType> {
               Not a number?
               <Link to="signup">Sign up now</Link>
             </p>
+
+            <div className="social-sign-in">
+              <i className="author-git" onClick={this.onLogin}/>
+            </div>
           </div>
         </div>
 

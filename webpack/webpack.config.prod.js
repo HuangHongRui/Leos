@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: "production",
@@ -112,6 +113,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash:8].css",
       chunkFilename: "[id].[hash:8].css"
@@ -121,5 +125,15 @@ module.exports = {
       favicon: path.resolve(paths.appPublic, "favicon.ico"),
     }),
     new CleanWebpackPlugin({root: paths.appBuild}),
+    new CompressionPlugin({
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp(
+        '\\.(js|css)$'
+      ),
+      threshold: 1024,
+      minRatio: 0.8,
+      cache: true
+    }),
   ]
 };

@@ -110,3 +110,14 @@ export async function fetchIsLogin() {
   });
   return result;
 }
+
+/**
+ *  第三方登录Github
+ */
+export async function fetchLoginGitHub() {
+  const result = await axios({
+    method: 'GET',
+    url: API.SOCIAL_LOGIN,
+  });
+  return result;
+}

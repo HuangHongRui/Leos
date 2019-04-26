@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import { fetchSignIn, fetchLoginGitHub } from "src/request";
+import { fetchSignIn } from "src/request";
 import { action_isLogin } from "src/redux/action";
 import Tip from "src/component/Tip";
 import { onTipHandle } from "src/utils/Methods";

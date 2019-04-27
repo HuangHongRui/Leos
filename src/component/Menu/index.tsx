@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { Logo } from "src/style/pic";
 import classname from "classnames";
 import { withRouter, Link } from "react-router-dom";
-import { action_isLogin } from "../../redux/action";
+import { action_isLogin, action_Logout } from "../../redux/action";
 import "./index.scss";
 
 class MenuComponent extends React.Component <PropsTypes, any> {
@@ -32,6 +32,7 @@ class MenuComponent extends React.Component <PropsTypes, any> {
   }
 
   isSelect(path: string) {
+
     let {isLogin} = this.state;
     let pathname = location.pathname.substr(1) || 'home';
     if (isLogin && /sign/.test(pathname)) {
@@ -40,10 +41,14 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
     return classname({
       "select": pathname === path,
-      "d-vanish": isLogin && /sign/.test(path)
+      "d-vanish": isLogin && /sign/.test(path) || !isLogin && /logout/.test(path)
     });
 
   }
+
+  onLogout = () => {
+    this.props.action_Logout();
+  };
 
   render() {
     return (
@@ -69,6 +74,12 @@ class MenuComponent extends React.Component <PropsTypes, any> {
           <span className={this.isSelect("write")}>
             <Link to='/write'>Write</Link>
           </span>
+          <span
+          className={this.isSelect("logout")}
+          onClick={this.onLogout}
+          >
+            Logout
+          </span>
         </div>
 
       </div>
@@ -85,6 +96,7 @@ const mapStateToProps = ({generalData, router}: PropsTypes) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     action_isLogin: () => dispatch(action_isLogin()),
+    action_Logout: () => dispatch(action_Logout()),
   };
 };
 
@@ -93,6 +105,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MenuCompo
 
 interface PropsTypes {
   action_isLogin: Function;
+  action_Logout: Function;
   history: any;
   generalData: { isLogin: number; };
   router: {

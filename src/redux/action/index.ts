@@ -104,3 +104,14 @@ export function action_setLoginStatus(param: {}) {
     payload: param
   }
 }
+
+/**
+ * 退出登錄
+ */
+export function action_Logout() {
+  Req.fetchLogout();
+  return {
+    type: ActionTypes.SET_LOGIN_STATUS,
+    payload: {status: 0}
+  }
+}

@@ -17,7 +17,7 @@ export async function fetchOnline() {
     method: 'GET',
     url: API.ONLINE
   });
-  return result;
+  return result.data;
 }
 
 /**
@@ -30,7 +30,7 @@ export async function fetchRunTime() {
     method: 'GET',
     url: API.RUNTIME
   });
-  return result;
+  return result.data;
 }
 
 /**
@@ -112,12 +112,12 @@ export async function fetchIsLogin() {
 }
 
 /**
- *  第三方登录Github
+ *  登出账号
  */
-export async function fetchLoginGitHub() {
+export async function fetchLogout() {
   const result = await axios({
     method: 'GET',
-    url: API.SOCIAL_LOGIN,
+    url: API.LOGOUT,
   });
   return result;
 }

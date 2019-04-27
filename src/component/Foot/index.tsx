@@ -1,66 +1,56 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { fetchOnline, fetchRunTime, setRunTime } from 'src/redux/action';
-import './index.scss';
-import * as moment from 'moment';
+import * as React from "react";
+import { connect } from "react-redux";
+import { fetchOnline, fetchRunTime } from "src/request";
+import "./index.scss";
+import * as moment from "moment";
 
-// tslint:disable-next-line
-class FootComponent extends React.Component <PropsTypes, any > {
+class FootComponent extends React.Component<{}, StateTypes> {
 
-  static getDerivedStateFromProps(nextProps: PropsTypes, prevState: PropsTypes): void | {} {
-    if (nextProps !== prevState) {
-      return {
-        online: nextProps.generalData.online,
-        runtime: nextProps.generalData.runtime
-      };
-    }
-  }
-
-// tslint:disable-next-line
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.state = {
       online: 0,
       runtime: 0,
-      onRockon: null
+      intervalID: 0
     };
     this.onTransition = this.onTransition.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchOnline();
-    this.props.fetchRunTime();
-    let onRockon = setInterval(
-      () => this.props.setRunTime({runtime: this.state.runtime + 1000}),
+    this.initReq();
+    let intervalID = setInterval(
+      () => this.setState({runtime: this.state.runtime + 1000}),
       1000
     );
     this.setState({
-      intervalId: onRockon
+      intervalID: intervalID
     });
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.intervalId);
+    clearInterval(this.state.intervalID);
   }
 
-  // onRockon() {
-  //   setInterval(
-  //     () => this.props.setRunTime({runtime: this.state.runtime + 1000}),
-  //     1000
-  //   );
-  // }
+  initReq = async() => {
+    let ONLINE = await fetchOnline();
+    let RUNTIME = await fetchRunTime();
+    this.setState({
+      online: ONLINE.online,
+      runtime: RUNTIME.runtime
+    })
+  };
 
   onTransition(runtime: number | string) {
     let result = runtime;
     let calculate = (arg: number, base: number) => {
       return Math.floor(arg) % base;
     };
-    let year = calculate(moment.duration(result).as('years'), 1);
-    let day = calculate(moment.duration(result).as('days'), 365);
-    let hours = calculate(moment.duration(result).as('hours'), 24);
-    let minutes = calculate(moment.duration(result).as('minutes'), 60);
-    let seconds = calculate(moment.duration(result).as('seconds'), 60);
-    return `${year ? year + '年-' : ''}${day}天-${hours}小時-${minutes}分鐘-${seconds}秒`;
+    let year = calculate(moment.duration(result).as("years"), 1);
+    let day = calculate(moment.duration(result).as("days"), 365);
+    let hours = calculate(moment.duration(result).as("hours"), 24);
+    let minutes = calculate(moment.duration(result).as("minutes"), 60);
+    let seconds = calculate(moment.duration(result).as("seconds"), 60);
+    return `${year ? year + "年-" : ""}${day}天-${hours}小時-${minutes}分鐘-${seconds}秒`;
   }
 
   render() {
@@ -79,23 +69,10 @@ class FootComponent extends React.Component <PropsTypes, any > {
   }
 }
 
-// tslint:disable-next-line
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    fetchOnline: () => dispatch(fetchOnline()),
-    fetchRunTime: () => dispatch(fetchRunTime()),
-    setRunTime: (arg: {}) => dispatch(setRunTime(arg))
-  };
-};
-
-export default connect(
-  // {fetchOnline, fetchRunTime, setRunTime}
-  ({generalData}: PropsTypes) => ({generalData}),
-  mapDispatchToProps
-// tslint:disable-next-line
-)(FootComponent as any);
+export default connect( ({generalData}: PropsTypes) => ({generalData}) )(FootComponent as any);
 
 interface PropsTypes {
+  intervalId: Function;
   fetchOnline: Function;
   fetchRunTime: Function;
   setRunTime: Function;
@@ -105,9 +82,8 @@ interface PropsTypes {
   };
 }
 
-// interface StateTypes {
-//   online: number | string;
-//   runtime: number;
-// // tslint:disable-next-line
-//   intervalId: any;
-// }
+interface StateTypes {
+  online: number | string;
+  runtime: number;
+  intervalID: any;
+}

@@ -34,7 +34,17 @@ class Article extends React.Component<any, any> {
       address: "/"
     }
   ];
-
+  hopeData = [{
+    id: 437955529,
+    title: "文章标题",
+    date: "2019-04-27",
+    labels: [{
+      name: "Blog",
+      color: "#fef000"
+    }],
+    description: "简介描述",
+    content: "文章内容."
+  }]
   issuesData = [
     {
       "url": "https://api.github.com/repos/HuangHongRui/Leos/issues/5",
@@ -122,37 +132,37 @@ class Article extends React.Component<any, any> {
     return (
       <div className="article-content content">
         <div className="article-list">
-          {/*{*/}
-            {/*this.mokeData && this.mokeData.map((data, i) => (*/}
-              {/*<div key={i} className="article-item">*/}
-                {/*<Link to={data.address}>*/}
-                  {/*<h4*/}
-                    {/*onMouseEnter={() => this.onHoverTitle(i)}*/}
-                    {/*onMouseLeave={this.onHoverTitle}*/}
-                    {/*className={hoverTitleColor === i || hoverArticleColor === i ? "hover-select" : ""}*/}
-                  {/*>*/}
-                    {/*{data.caption}*/}
-                  {/*</h4>*/}
-                  {/*<h6*/}
-                    {/*onMouseEnter={() => this.onHoverTitle(i)}*/}
-                    {/*onMouseLeave={this.onHoverTitle}*/}
-                    {/*className={hoverTitleColor === i || hoverArticleColor === i ? "hover-select" : ""}*/}
-                  {/*>*/}
-                    {/*{data.title}*/}
-                  {/*</h6>*/}
-                  {/*<p*/}
-                    {/*onMouseEnter={() => this.onHoverArticle(i)}*/}
-                    {/*onMouseLeave={this.onHoverArticle}*/}
-                    {/*className={hoverArticleColor === i ? "hover-select" : ""}*/}
-                  {/*>*/}
-                    {/*{data.intro}*/}
-                  {/*</p>*/}
-                {/*</Link>*/}
-                {/*<span>{data.date}</span>*/}
-              {/*</div>*/}
-            {/*))*/}
-          {/*}*/}
           {
+            this.hopeData.map((data, i) => (
+              <div key={i} className="article-item">
+                <Link to={{pathname: 'article', search: `?id=${data.id}`}}>
+                  <h4
+                    onMouseEnter={() => this.onHoverTitle(i)}
+                    onMouseLeave={this.onHoverTitle}
+                    className={hoverTitleColor === i || hoverArticleColor === i ? "hover-select" : ""}
+                  >
+                    {data.title}
+                  </h4>
+                  <h6
+                    onMouseEnter={() => this.onHoverTitle(i)}
+                    onMouseLeave={this.onHoverTitle}
+                    className={hoverTitleColor === i || hoverArticleColor === i ? "hover-select" : ""}
+                  >
+                    {data.labels.map((item) => item.name)}
+                  </h6>
+                  <p
+                    onMouseEnter={() => this.onHoverArticle(i)}
+                    onMouseLeave={this.onHoverArticle}
+                    className={hoverArticleColor === i ? "hover-select" : ""}
+                  >
+                    {data.description}
+                  </p>
+                </Link>
+                <span>{data.date}</span>
+              </div>
+            ))
+          }
+          {/* {
             this.issuesData.map((data, i) => (
               <div key={i} className="article-item">
                 <Link to={data.url}>
@@ -181,7 +191,7 @@ class Article extends React.Component<any, any> {
                 <span>{data.created_at.match(/^\d+[-]\d.[-]\d./g)[0]}</span>
               </div>
             ))
-          }
+          } */}
           <Pagination/>
         </div>
         <Author/>

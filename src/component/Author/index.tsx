@@ -9,8 +9,9 @@ class Author extends React.Component<PropsType, StateType> {
   }
 
   render() {
+    const { classNames } = this.props;
     return (
-      <div className="author-info">
+      <div className={`author-info ${classNames}`}>
         <div className="author-about-me">
           <h5>ABOUT ME</h5>
           <img src={Avatar} alt="HEADER"/>
@@ -43,6 +44,7 @@ class Author extends React.Component<PropsType, StateType> {
 export default Author;
 
 interface PropsType {
+  classNames: String
 }
 
 interface StateType {

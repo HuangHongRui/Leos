@@ -121,3 +121,14 @@ export async function fetchLogout() {
   });
   return result;
 }
+
+/**
+ *  获取ISSUES
+ */
+export async function fetchGetIssues() {
+  const result = await axios({
+    method: 'GET',
+    url: API.GETISSUES,
+  });
+  return result.data;
+}

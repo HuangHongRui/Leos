@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown/with-html";
 import CodeMirror from "node_modules/codemirror/lib/codemirror";
-import CodeBlock from "./code-block";
+import CodeBlock from "src/component/Markdown/code-block";
 import "node_modules/codemirror/keymap/vim";
 import "node_modules/codemirror/mode/markdown/markdown";
 import "src/utils/placeholder.min";

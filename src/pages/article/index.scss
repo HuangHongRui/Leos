@@ -2,7 +2,7 @@
  *  日期：2018/9/5
  */
 
-.article-content {
+.article-wrap {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,6 +13,65 @@
     color: rgba(0, 0, 0, .85);
   }
 
+  .result-pane {
+    width: 60vw;
+    padding: 10px 25px;
+    color: #444;
+    font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.5em;
+
+    pre {
+      border: 1px solid #ccc;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    tr {
+      border-top: 1px solid #c6cbd1;
+      background: #fff;
+    }
+
+    tr:nth-child(2n) {
+      background: #f6f8fa;
+    }
+
+    th, td {
+      padding: 6px 13px;
+      border: 1px solid #dfe2e5;
+    }
+
+    a {
+      color: RGB(174, 129, 255);
+    }
+
+    blockquote {
+      color: #666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #eee solid;
+    }
+
+    code {
+      &:not(.language-null):not(.language-js) {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 4px;
+      }
+      padding: .5em;
+    }
+
+    img {
+      max-width: 100%;
+      vertical-align: middle;
+    }
+
+  }
 }
 
 .article-list {

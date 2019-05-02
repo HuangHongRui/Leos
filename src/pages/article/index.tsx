@@ -1,33 +1,38 @@
 import React from "react";
+import ReactMarkdown from "react-markdown/with-html";
+import CodeBlock from "src/component/Markdown/code-block";
 import { Link } from "react-router-dom";
 import Pagination from "src/component/Pagination";
 import Author from "src/component/Author";
 import cn from "classnames";
+import { fetchGetIssues } from "src/request"
 import "./index.scss";
 
 class Article extends React.Component<PropsType, StatesType> {
   constructor(props) {
     super(props);
     this.state = {
+      issues: [],
       hoverTitleColor: false,
       hoverArticleColor: false,
-      articleId: props.location.search
+      articleId: props.location.search,
+      article: {}
     };
     this.onHoverTitle = this.onHoverTitle.bind(this);
     this.onHoverArticle = this.onHoverArticle.bind(this);
   }
 
-  hopeData = [{
-    id: 437955529,
-    title: "文章标题",
-    date: "2019-04-27",
-    labels: [{
-      name: "Blog",
-      color: "#fef000"
-    }],
-    description: "简介描述",
-    content: "文章内容."
-  }]
+  componentDidMount() {
+    this.getIssuesa();
+  }
+
+  getIssuesa = async() => {
+    const res = await fetchGetIssues()
+    if (res.status)
+      this.setState({
+        issues: res.data
+      })
+  }
 
   onHoverTitle = (i?: Number) => {
     if (i || i === 0) {
@@ -54,20 +59,22 @@ class Article extends React.Component<PropsType, StatesType> {
 
   readArticle = (id) => {
     this.setState({
-      articleId: id
+      articleId: id,
+      article: this.state.issues.find((item) => item.id === id)
     })
   }
 
   render() {
-    let {hoverTitleColor, hoverArticleColor, articleId} = this.state;
+    let {hoverTitleColor, hoverArticleColor, articleId, issues, article} = this.state;
     const authorStyle = cn({ "d-vanish": articleId })
     const articleListStyle = cn("article-list", { "d-vanish": articleId })
-
+    const markdownStyle = cn("result-pane rely-bag", {"d-vanish": !articleId})
+    
     return (
-      <div className="article-content content">
+      <div className="article-wrap content">
         <div className={articleListStyle}>
 
-          {this.hopeData.map((data, i) => (
+          {issues.map((data, i) => (
             <div key={i} className="article-item">
               <Link
                 to={{ pathname: 'article', search: `?id=${data.id}` }}
@@ -92,7 +99,7 @@ class Article extends React.Component<PropsType, StatesType> {
                   onMouseLeave={() => this.onHoverArticle()}
                   className={hoverArticleColor === i ? "hover-select" : ""}
                 >
-                  {data.description}
+                  {data.intro}
                 </p>
               </Link>
               <span>{data.date}</span>
@@ -102,6 +109,13 @@ class Article extends React.Component<PropsType, StatesType> {
 
         </div>
         <Author classNames={authorStyle} />
+
+        <ReactMarkdown
+          className={markdownStyle}
+          source={article.body}
+          escapeHtml={false}
+          renderers={{code: CodeBlock}}
+        />
       </div>
     );
   }
@@ -109,11 +123,19 @@ class Article extends React.Component<PropsType, StatesType> {
 
 export default Article;
 
-interface PropsType {
+interface PropsType {}
 
-}
 interface StatesType {
   hoverTitleColor: Boolean | String | Number
   hoverArticleColor: Boolean | String | Number
   articleId: String | Number
+  article?: {body?: String}
+  issues?: {
+    id: string
+    body: String
+    date: String
+    title: String
+    intro: String
+    labels: [{ color: String, name: String }]
+  }[]
 }

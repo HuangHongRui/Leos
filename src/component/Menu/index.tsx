@@ -41,7 +41,9 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
     return classname({
       "select": pathname === path,
-      "d-vanish": isLogin && /sign/.test(path) || !isLogin && /logout/.test(path)
+      "d-vanish": isLogin && /sign/.test(path) ||
+        !isLogin && /logout/.test(path) ||
+        /write/.test(path) && !(isLogin && isLogin.email === '464362353@qq.com')
     });
 
   }
@@ -67,9 +69,6 @@ class MenuComponent extends React.Component <PropsTypes, any> {
           </span>
           <span className={this.isSelect("signin")}>
             <Link to='/signin'>Sign in</Link>
-          </span>
-          <span className={this.isSelect("signup")}>
-            <Link to='/signup'>Sign up</Link>
           </span>
           <span className={this.isSelect("write")}>
             <Link to='/write'>Write</Link>

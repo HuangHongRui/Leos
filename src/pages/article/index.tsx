@@ -1,11 +1,12 @@
 import React from "react";
-import ReactMarkdown from "react-markdown/with-html";
-import CodeBlock from "src/component/Markdown/code-block";
-import { Link } from "react-router-dom";
-import Pagination from "src/component/Pagination";
-import Author from "src/component/Author";
+import qs from "qs";
 import cn from "classnames";
+import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown/with-html";
+import Author from "src/component/Author";
 import { fetchGetIssues } from "src/request"
+import Pagination from "src/component/Pagination";
+import CodeBlock from "src/component/Markdown/code-block";
 import "./index.scss";
 
 class Article extends React.Component<PropsType, StatesType> {
@@ -27,11 +28,14 @@ class Article extends React.Component<PropsType, StatesType> {
   }
 
   getIssuesa = async() => {
+    const {id} = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
     const res = await fetchGetIssues()
-    if (res.status)
+    if (res.status) {
       this.setState({
-        issues: res.data
+        issues: res.data,
+        article: id ? res.data.find(item => (item.id == id)) : {}
       })
+    }
   }
 
   onHoverTitle = (i?: Number) => {
@@ -123,7 +127,11 @@ class Article extends React.Component<PropsType, StatesType> {
 
 export default Article;
 
-interface PropsType {}
+interface PropsType {
+  location: {
+    search: String
+  }
+}
 
 interface StatesType {
   hoverTitleColor: Boolean | String | Number

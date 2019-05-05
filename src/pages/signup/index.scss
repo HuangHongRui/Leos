@@ -29,9 +29,13 @@
                 color: #444;
                 outline: none;
             }
+
             .v-code {
                 width: auto;
                 display: inline-block;
+            }
+            input.v-code {
+              max-width: 35vw;
             }
         }
             .sign-up-btn {

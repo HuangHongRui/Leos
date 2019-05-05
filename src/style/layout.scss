@@ -12,9 +12,8 @@ body {
   color: $Theme-font-color;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   #root {
-    height: 99vh;
+    min-height: 99vh;
     display: flex;
-    overflow-x: hidden;
     flex-direction: column;
 
     > .content {

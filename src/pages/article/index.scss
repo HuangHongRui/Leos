@@ -7,12 +7,7 @@
   flex-direction: row;
   justify-content: center;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: .5em;
     color: rgba(0, 0, 0, .85);
@@ -43,8 +38,7 @@
       background: #f6f8fa;
     }
 
-    th,
-    td {
+    th, td {
       padding: 6px 13px;
       border: 1px solid #dfe2e5;
     }
@@ -69,7 +63,6 @@
         background-color: #f9f2f4;
         border-radius: 4px;
       }
-
       padding: .5em;
     }
 
@@ -78,8 +71,7 @@
       vertical-align: middle;
     }
 
-    pre,
-    code {
+    pre, code {
       display: block;
       overflow: auto;
       background: #f4f4f4;

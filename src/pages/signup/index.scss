@@ -44,6 +44,7 @@
                 padding: 10px 12px;
                 color: #fff;
                 cursor: pointer;
+                -webkit-appearance: none;
             }
             p {
                 text-align: center;
@@ -52,4 +53,10 @@
     #iframe_none {
         display: none;
     }
+}
+
+@media only screen and (max-width: 600px) {
+  .signup-wrap {
+    padding: 0 50px !important;
+  }
 }

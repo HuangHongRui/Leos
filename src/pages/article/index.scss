@@ -57,11 +57,15 @@
 
     code {
       &:not(.language-null):not(.language-js) {
+        display: inline-block;
         padding: 2px 4px;
         font-size: 90%;
         color: #c7254e;
         background-color: #f9f2f4;
         border-radius: 4px;
+        line-height: 100%;
+        vertical-align: text-bottom;
+        word-break: break-all;
       }
       padding: .5em;
     }

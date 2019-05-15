@@ -84,12 +84,26 @@
       word-wrap: break-word;
       white-space: pre-wrap;
     }
+
+    h2:not(:first-child) {
+      margin-top: 1em;
+    }
+
+    details {
+      summary {
+        outline: none;
+        line-height: 2em;
+      }
+      p {
+         width: 90%;
+         margin: 10px auto;
+      }
+    }
   }
 }
 
 .article-list {
   position: relative;
-  max-width: 50vw;
   width: 50vw;
   padding: 10px 10px 69px;
 
@@ -106,13 +120,13 @@
 
 @media only screen and (max-width: 1000px) {
   .article-list {
-    max-width: 80%;
+    width: 80%;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .article-list {
-    max-width: 100%;
+    width: 100%;
   }
   .result-pane {
     width: 80vw !important;

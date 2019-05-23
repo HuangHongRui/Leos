@@ -84,6 +84,11 @@
     pre {
       border: 1px solid #ccc;
       white-space: pre;
+      padding: 5px;
+      word-wrap: normal;
+      resize: none;
+      box-sizing: border-box;
+      // https://stackoverflow.com/questions/44754987/getting-osx-safari-to-honor-css-white-space-pre
     }
 
     h2:not(:first-child) {

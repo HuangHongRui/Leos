@@ -23,6 +23,15 @@ class Article extends React.Component<PropsType, StatesType> {
     this.onHoverArticle = this.onHoverArticle.bind(this);
   }
 
+  static getDerivedStateFromProps(nextProps: nextProps, prevState: prevState): void | {} {
+    if (prevState.articleId !== nextProps.location.search) {
+      return {
+        articleId: nextProps.location.search
+      }
+    }
+    return;
+  }
+
   componentDidMount() {
     this.getIssuesa();
   }
@@ -68,12 +77,20 @@ class Article extends React.Component<PropsType, StatesType> {
     })
   }
 
+  getArticle = () => {
+    let {article, articleId} = this.state;
+    if (articleId && !article.body) {
+      this.getIssuesa()
+    }
+    return article.body
+  }
+
   render() {
     let {hoverTitleColor, hoverArticleColor, articleId, issues, article} = this.state;
     const authorStyle = cn({ "d-vanish": articleId })
     const articleListStyle = cn("article-list", { "d-vanish": articleId })
     const markdownStyle = cn("result-pane rely-bag", {"d-vanish": !articleId})
-    
+
     return (
       <div className="article-wrap content">
         <div className={articleListStyle}>
@@ -116,7 +133,7 @@ class Article extends React.Component<PropsType, StatesType> {
 
         <ReactMarkdown
           className={markdownStyle}
-          source={article.body}
+          source={this.getArticle()}
           escapeHtml={false}
           renderers={{code: CodeBlock}}
         />
@@ -125,12 +142,23 @@ class Article extends React.Component<PropsType, StatesType> {
   }
 }
 
+// export default connect(a, b)(Article as any);
 export default Article;
 
 interface PropsType {
   location: {
     search: String
   }
+}
+
+interface nextProps {
+  location: {
+    search: string;
+  }
+}
+
+interface prevState {
+  articleId: string;
 }
 
 interface StatesType {

@@ -108,12 +108,13 @@ class Article extends React.Component<PropsType, StatesType> {
                 >
                   {data.title}
                 </h4>
-                <h6
-                  onMouseEnter={() => this.onHoverTitle(i)}
-                  onMouseLeave={() => this.onHoverTitle()}
-                  className={hoverTitleColor === i || hoverArticleColor === i ? "hover-select" : ""}
-                >
-                  {data.labels.map((item) => item.name)}
+                <h6>
+                  {data.labels.map((item) => {
+                    return <span
+                      style={{ background: `#${item.color}` }}
+                      className="labels"
+                    >{item.name}</span>
+                  })}
                 </h6>
                 <p
                   onMouseEnter={() => this.onHoverArticle(i)}

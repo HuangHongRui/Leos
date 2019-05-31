@@ -11,6 +11,7 @@ import "src/utils/placeholder.min";
 import "./index.scss";
 import "node_modules/codemirror/theme/monokai.css";
 import "node_modules/codemirror/lib/codemirror.css";
+import VConsole from 'vconsole';
 
 const placeholder = `
 \n\n\n\n\n\n\n\n\n\n
@@ -229,6 +230,7 @@ The killer feature of \`markdown-it\` is very effective support of
         markdown: editor.getValue()
       });
     });
+    new VConsole();
   }
 
   onEdit = (e) => {

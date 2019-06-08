@@ -29,7 +29,7 @@ class Article extends React.Component<PropsType, StatesType> {
         articleId: nextProps.location.search
       }
     }
-    return;
+    return null;
   }
 
   componentDidMount() {
@@ -109,8 +109,9 @@ class Article extends React.Component<PropsType, StatesType> {
                   {data.title}
                 </h4>
                 <h6>
-                  {data.labels.map((item) => {
+                  {data.labels.map((item, i) => {
                     return <span
+                      key={i}
                       style={{ background: `#${item.color}` }}
                       className="labels"
                     >{item.name}</span>

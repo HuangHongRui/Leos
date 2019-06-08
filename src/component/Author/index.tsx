@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Avatar } from "src/style/pic";
 import "./index.scss";
 
@@ -32,9 +32,9 @@ class Author extends React.Component<PropsType, StateType> {
         </div>
         <div className="author-friends">
           <h5>FRIENDS</h5>
-          <span><a href="https://spontaleo.github.io/">SpontaLeo</a></span>
           <span><a href="https://overtrue.me/">Overtrue</a></span>
-          <span><a href="https://github.com/incuisting/blogs/issues">Incuisting</a></span>
+          <span><a href="https://www.tangshuang.net/">Frustigor</a></span>
+          <span><a href="http://cdc.tencent.com/">腾讯CDC</a></span>
         </div>
       </div>
     );

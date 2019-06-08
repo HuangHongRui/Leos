@@ -11,6 +11,7 @@ import { Logo } from "src/style/pic";
 import classname from "classnames";
 import { withRouter, Link } from "react-router-dom";
 import { action_isLogin, action_Logout } from "../../redux/action";
+import vs from "vconsole";
 import "./index.scss";
 
 class MenuComponent extends React.Component <PropsTypes, any> {
@@ -37,6 +38,10 @@ class MenuComponent extends React.Component <PropsTypes, any> {
     let pathname = location.pathname.substr(1) || 'home';
     if (isLogin && /sign/.test(pathname)) {
       this.props.history.push("/home");
+    }
+
+    if (isLogin && isLogin.email === '464362353@qq.com') {
+      new vs();
     }
 
     return classname({

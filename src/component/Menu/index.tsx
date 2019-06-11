@@ -9,16 +9,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { Logo } from "src/style/pic";
 import classname from "classnames";
+import vs from "vconsole";
 import { withRouter, Link } from "react-router-dom";
 import { action_isLogin, action_Logout } from "../../redux/action";
-import vs from "vconsole";
+import Dropdown from './Dropdown';
 import "./index.scss";
 
 class MenuComponent extends React.Component <PropsTypes, any> {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false
+      isLogin: false,
+      dropdown: false,
+      dropdownSwitch: false
     };
   }
 
@@ -34,7 +37,7 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
   isSelect(path: string) {
 
-    let {isLogin} = this.state;
+    let {isLogin, dropdownSwitch} = this.state;
     let pathname = location.pathname.substr(1) || 'home';
     if (isLogin && /sign/.test(pathname)) {
       this.props.history.push("/home");
@@ -46,6 +49,7 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
     return classname({
       "select": pathname === path,
+      "close": !dropdownSwitch,
       "d-vanish": isLogin && /sign/.test(path) ||
         !isLogin && /logout/.test(path) ||
         /write/.test(path) && !(isLogin && isLogin.email === '464362353@qq.com')
@@ -56,6 +60,12 @@ class MenuComponent extends React.Component <PropsTypes, any> {
   onLogout = () => {
     this.props.action_Logout();
   };
+
+  dropdown = () => {
+    this.setState({
+      dropdownSwitch: !this.state.dropdownSwitch
+    })
+  }
 
   render() {
     return (
@@ -69,8 +79,13 @@ class MenuComponent extends React.Component <PropsTypes, any> {
           <span className={this.isSelect("home")}>
             <Link to='/home'>Home</Link>
           </span>
-          <span className={this.isSelect("article")}>
+          <span
+            className={this.isSelect("article")}
+            onMouseEnter={this.dropdown}
+            onMouseLeave={this.dropdown}
+          >
             <Link to='/article'>Article</Link>
+            {Dropdown([{ name: "F&I", path: "article" }])}
           </span>
           <span className={this.isSelect("signin")}>
             <Link to='/signin'>Sign in</Link>

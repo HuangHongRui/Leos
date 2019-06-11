@@ -1,0 +1,31 @@
+.dropdown {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: normal;
+  left: 0;
+  border-top-width: 1px;
+  border-top-color: white;
+  top: 79px;
+  height: 20vh;
+  background: transparent;
+  overflow: hidden;
+  transition: height .6s ease-out;
+  transition: border-top-color .6s ease-out;
+
+  .item {
+    display: block;
+    padding: 1vw;
+    border: solid 1px #e2e8f0;
+    border-top: none;
+
+    &:last-child {
+      border-radius: 0 0 6px 6px;
+    }
+  }
+}
+
+.close>.dropdown {
+  border-top-color: transparent;
+  height: 0;
+}

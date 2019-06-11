@@ -39,7 +39,6 @@
     "react-router-redux": "4.0.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "tailwindcss": "^1.0.3",
     "vconsole": "^3.3.0"
   },
   "devDependencies": {

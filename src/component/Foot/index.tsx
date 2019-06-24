@@ -9,7 +9,7 @@ class FootComponent extends React.Component<{}, StateTypes> {
   constructor(props) {
     super(props);
     this.state = {
-      online: 0,
+      // online: 0,
       runtime: 0,
       intervalID: 0
     };
@@ -32,10 +32,10 @@ class FootComponent extends React.Component<{}, StateTypes> {
   }
 
   initReq = async() => {
-    let ONLINE = await fetchOnline();
+    // let ONLINE = await fetchOnline();
     let RUNTIME = await fetchRunTime();
     this.setState({
-      online: ONLINE.online,
+      // online: ONLINE.online,
       runtime: RUNTIME.runtime
     })
   };
@@ -57,7 +57,7 @@ class FootComponent extends React.Component<{}, StateTypes> {
     let distance = this.onTransition(this.state.runtime);
     return (
       <div className="foot">
-        <p className="foot-inline-num">當前在線人數: {this.state.online}</p>
+        {/* <p className="foot-inline-num">當前在線人數: {this.state.online}</p> */}
         <p className="foot-go-data">
           博客運行時長：
           <span>{distance}</span>
@@ -77,13 +77,13 @@ interface PropsTypes {
   fetchRunTime: Function;
   setRunTime: Function;
   generalData: {
-    online: number | string
+    // online: number | string
     runtime: number | string
   };
 }
 
 interface StateTypes {
-  online: number | string;
+  // online: number | string;
   runtime: number;
   intervalID: any;
 }

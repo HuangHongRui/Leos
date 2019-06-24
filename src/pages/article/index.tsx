@@ -16,7 +16,7 @@ class Article extends React.Component<PropsType, StatesType> {
       issues: [],
       hoverTitleColor: false,
       hoverArticleColor: false,
-      articleId: props.location.search,
+      articleId: qs.parse(props.location.search, { ignoreQueryPrefix: true }).id,
       article: {}
     };
     this.onHoverTitle = this.onHoverTitle.bind(this);
@@ -24,9 +24,10 @@ class Article extends React.Component<PropsType, StatesType> {
   }
 
   static getDerivedStateFromProps(nextProps: nextProps, prevState: prevState): void | {} {
-    if (prevState.articleId !== nextProps.location.search) {
+    const { id } = qs.parse(nextProps.location.search, { ignoreQueryPrefix: true })
+    if (prevState.articleId !== id) {
       return {
-        articleId: nextProps.location.search
+        articleId: id
       }
     }
     return null;

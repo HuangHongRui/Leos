@@ -15,6 +15,12 @@ import { action_isLogin, action_Logout } from "../../redux/action";
 import Dropdown from './Dropdown';
 import "./index.scss";
 
+
+const dropdownBtn = [
+  { name: "前端", path: { pathname: "article", search: "type=web" } },
+  { name: "理财", path: { pathname: "article", search: "type=money" } }
+]
+
 class MenuComponent extends React.Component <PropsTypes, any> {
   constructor(props) {
     super(props);
@@ -61,13 +67,14 @@ class MenuComponent extends React.Component <PropsTypes, any> {
     this.props.action_Logout();
   };
 
-  dropdown = () => {
+  dropdown = (val) => {
     this.setState({
-      dropdownSwitch: !this.state.dropdownSwitch
+      dropdownSwitch: val
     })
   }
 
   render() {
+    const { dropdownSwitch } = this.state;
     return (
       <div className="menu">
 
@@ -77,21 +84,22 @@ class MenuComponent extends React.Component <PropsTypes, any> {
 
         <div className="menu_btn">
           <span className={this.isSelect("home")}>
-            <Link to='/home'>Home</Link>
+            <Link to='/home'>主页</Link>
           </span>
           <span
             className={this.isSelect("article")}
-            onMouseEnter={this.dropdown}
-            onMouseLeave={this.dropdown}
+            onClick={() => this.dropdown(!dropdownSwitch)}
+            onMouseEnter={() => this.dropdown(true)}
+            onMouseLeave={() => this.dropdown(false)}
           >
-            <Link to='/article'>Article</Link>
-            {Dropdown([{ name: "F&I", path: "article" }])}
+            <Link to='/article'>文章</Link>
+            {Dropdown(dropdownBtn, () => this.dropdown(false))}
           </span>
           <span className={this.isSelect("signin")}>
-            <Link to='/signin'>Sign in</Link>
+            <Link to='/signin'>登录</Link>
           </span>
           <span className={this.isSelect("write")}>
-            <Link to='/write'>Write</Link>
+            <Link to='/write'>创作</Link>
           </span>
           <span
           className={this.isSelect("logout")}

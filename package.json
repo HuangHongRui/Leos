@@ -27,7 +27,7 @@
     "connected-react-router": "^6.4.0",
     "draft-js": "^0.10.5",
     "history": "^4.9.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "qs": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
